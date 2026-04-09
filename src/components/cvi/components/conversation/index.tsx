@@ -23,7 +23,7 @@ interface ConversationProps {
 	conversationUrl: string;
 }
 
-const VideoPreview = React.memo(({ id }: { id: string }) => {
+const VideoPreview = React.memo(function VideoPreview({ id }: { id: string }) {
 	const videoState = useVideoTrack(id);
 	const widthVideo = videoState.track?.getSettings()?.width;
 	const heightVideo = videoState.track?.getSettings()?.height;
@@ -46,7 +46,7 @@ const VideoPreview = React.memo(({ id }: { id: string }) => {
 	);
 });
 
-const PreviewVideos = React.memo(() => {
+const PreviewVideos = React.memo(function PreviewVideos() {
 	const localId = useLocalSessionId();
 	const { isScreenSharing } = useLocalScreenshare();
 	const replicaIds = useReplicaIDs();
@@ -62,7 +62,7 @@ const PreviewVideos = React.memo(() => {
 	);
 });
 
-const MainVideo = React.memo(() => {
+const MainVideo = React.memo(function MainVideo() {
 	const replicaIds = useReplicaIDs();
 	const localId = useLocalSessionId();
 	const videoState = useVideoTrack(replicaIds[0]);
@@ -97,78 +97,82 @@ const MainVideo = React.memo(() => {
 	);
 });
 
-export const Conversation = React.memo(({ onLeave, conversationUrl }: ConversationProps) => {
-	const { joinCall, leaveCall } = useCVICall();
-	const meetingState = useMeetingState();
-	const { hasMicError } = useDevices()
+export const Conversation = React.memo(function Conversation({ onLeave, conversationUrl }: ConversationProps) {
+  const { joinCall, leaveCall } = useCVICall();
+  const meetingState = useMeetingState();
+  const { hasMicError } = useDevices();
 
-	useEffect(() => {
-		if (meetingState === 'error') {
-			onLeave();
-		}
-	}, [meetingState, onLeave]);
+  useEffect(() => {
+    if (meetingState === "error") {
+      onLeave();
+    }
+  }, [meetingState, onLeave]);
 
-	// Initialize call when conversation is available
-	useEffect(() => {
-		joinCall({ url: conversationUrl });
-	}, []);
+  // ✅
+  useEffect(() => {
+    joinCall({ url: conversationUrl });
+  }, [conversationUrl]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	const handleLeave = useCallback(() => {
-		leaveCall();
-		onLeave();
-	}, [leaveCall, onLeave]);
+  const handleLeave = useCallback(() => {
+    leaveCall();
+    onLeave();
+  }, [leaveCall, onLeave]);
 
-	return (
-		<div className={styles.container}>
-			<div className={styles.videoContainer}>
-				{
-					hasMicError && (
-						<div className={styles.errorContainer}>
-							<p>
-								Camera or microphone access denied. Please check your settings and try again.
-							</p>
-						</div>
-					)}
+  return (
+    <div className={styles.container}>
+      <div className={styles.videoContainer}>
+        {hasMicError && (
+          <div className={styles.errorContainer}>
+            <p>
+              Camera or microphone access denied. Please check your settings and
+              try again.
+            </p>
+          </div>
+        )}
 
-				{/* Main video */}
-				<div className={styles.mainVideoContainer}>
-					<MainVideo />
-				</div>
+        {/* Main video */}
+        <div className={styles.mainVideoContainer}>
+          <MainVideo />
+        </div>
 
-				{/* Self view */}
-				<div className={styles.selfViewContainer}>
-					<PreviewVideos />
-				</div>
-			</div>
+        {/* Self view */}
+        <div className={styles.selfViewContainer}>
+          <PreviewVideos />
+        </div>
+      </div>
 
-			<div className={styles.footer}>
-				<div className={styles.footerControls}>
-					<MicSelectBtn />
-					<CameraSelectBtn />
-					<ScreenShareButton />
-					<button type="button" className={styles.leaveButton} onClick={handleLeave}>
-						<span className={styles.leaveButtonIcon}>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								role="img"
-								aria-label="Leave Call"
-							>
-								<path
-									d="M18 6L6 18M6 6L18 18"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-						</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	);
+      <div className={styles.footer}>
+        <div className={styles.footerControls}>
+          <MicSelectBtn />
+          <CameraSelectBtn />
+          <ScreenShareButton />
+          <button
+            type="button"
+            className={styles.leaveButton}
+            onClick={handleLeave}
+          >
+            <span className={styles.leaveButtonIcon}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                role="img"
+                aria-label="Leave Call"
+              >
+                <path
+                  d="M18 6L6 18M6 6L18 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 });
