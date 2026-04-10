@@ -85,12 +85,27 @@ Select the best tools available. Avoid unnecessary duplication and complexity. A
 
 ---
 
+## Next.js Best Practices
+
+- Always use the App Router.
+- Always use Next.js Image component for images.
+- Always use Next.js Link for navigation.
+- Always use Next.js Head for SEO.
+- Always use Next.js Metadata for SEO.
+
+---
+
 ## UI & Styling
 
 - Use Tailwind CSS with a **mobile-first** approach.
 - All output must be responsive to mobile devices.
 - Use consistent CSS class naming (BEM convention).
 - Use Tailwind for utility classes and rapid prototyping.
+- Always use variables for colors, fonts, etc.
+- Always use responsive units for spacing, padding, margin, etc.
+- Always use responsive units for font sizes, line heights, etc.
+- Always use responsive units for border radii, etc.
+- Always use responsive units for box shadows, etc.
 
 ---
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { CVIProvider } from "@/components/cvi/components/cvi-provider";
 import { Conversation } from "@/components/cvi/components/conversation";
 import { useConversation } from "@/hooks/use-conversation";
@@ -42,34 +41,20 @@ function WelcomeScreen({
   );
 }
 
-function ActiveSession({
-  url,
-  onLeave,
-  frameClassName,
-  showHeader = true,
-}: {
-  url: string;
-  onLeave: () => void;
-  frameClassName?: string;
-  showHeader?: boolean;
-}) {
+function ActiveSession({ url, onLeave }: { url: string; onLeave: () => void }) {
   return (
-    <div className="flex min-h-full flex-col bg-slate-950">
-      {showHeader ? (
-        <header className="flex items-center gap-3 border-b border-slate-800 px-4 py-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-600 text-sm">
-            💸
-          </div>
-          <span className="text-sm font-semibold text-white">
-            Valentina — WWDW Mentor
-          </span>
-        </header>
-      ) : null}
+    <div className="flex min-h-screen flex-col bg-slate-950">
+      <header className="flex items-center gap-3 border-b border-slate-800 px-4 py-3">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-600 text-sm">
+          💸
+        </div>
+        <span className="text-sm font-semibold text-white">
+          Valentina — WWDW Mentor
+        </span>
+      </header>
 
       <main className="flex flex-1 items-center justify-center p-4">
-        <div
-          className={`w-full max-w-3xl overflow-hidden rounded-2xl shadow-2xl ${frameClassName ?? ""}`}
-        >
+        <div className="w-full max-w-3xl overflow-hidden rounded-2xl shadow-2xl">
           <Conversation conversationUrl={url} onLeave={onLeave} />
         </div>
       </main>
@@ -119,17 +104,7 @@ function ErrorScreen({
   );
 }
 
-type MentorVariant = "page" | "modal";
-
-export function Mentor({
-  autoStart = false,
-  variant = "page",
-  onDismiss,
-}: {
-  autoStart?: boolean;
-  variant?: MentorVariant;
-  onDismiss?: () => void;
-}) {
+export function Mentor() {
   const {
     conversationUrl,
     state,
@@ -138,62 +113,23 @@ export function Mentor({
     endConversation,
     resetConversation,
   } = useConversation();
-  const didAutoStart = useRef(false);
-
-  useEffect(() => {
-    if (!autoStart || didAutoStart.current || state !== "idle") {
-      return;
-    }
-
-    didAutoStart.current = true;
-    void startConversation();
-  }, [autoStart, startConversation, state]);
-
-  const leaveConversation = () => {
-    endConversation();
-    if (variant === "modal") {
-      onDismiss?.();
-    }
-  };
-
-  const retryConversation = () => {
-    void startConversation();
-  };
 
   return (
     <CVIProvider>
-      {state === "idle" && variant === "page" && (
+      {state === "idle" && (
         <WelcomeScreen isLoading={false} onStart={() => startConversation()} />
       )}
-      {state === "loading" && variant === "page" && (
+      {state === "loading" && (
         <WelcomeScreen isLoading={true} onStart={() => startConversation()} />
       )}
-      {state === "loading" && variant === "modal" && (
-        <div className="flex min-h-full flex-col items-center justify-center bg-slate-950 px-6 py-10 text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-purple-600 text-3xl">
-            💸
-          </div>
-          <p className="text-2xl font-bold text-white">Calling your mentor…</p>
-          <p className="mt-3 max-w-sm text-slate-400">
-            Give Tavus a second to put herself together.
-          </p>
-        </div>
-      )}
       {state === "active" && conversationUrl && (
-        <ActiveSession
-          url={conversationUrl}
-          onLeave={leaveConversation}
-          frameClassName={variant === "modal" ? "max-w-none" : undefined}
-          showHeader={variant !== "modal"}
-        />
+        <ActiveSession url={conversationUrl} onLeave={endConversation} />
       )}
-      {state === "ended" && variant === "page" && (
-        <EndScreen onRestart={resetConversation} />
-      )}
+      {state === "ended" && <EndScreen onRestart={resetConversation} />}
       {state === "error" && (
         <ErrorScreen
           message={error ?? "Unknown error"}
-          onRetry={retryConversation}
+          onRetry={() => startConversation()}
         />
       )}
     </CVIProvider>
