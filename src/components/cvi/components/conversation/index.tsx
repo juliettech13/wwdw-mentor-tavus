@@ -1,16 +1,20 @@
-'use client';
+"use client";
 
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import {
-	DailyAudioTrack,
-	DailyVideo,
-	useDevices,
-	useLocalSessionId,
-	useMeetingState,
-	useScreenVideoTrack,
-	useVideoTrack
+  DailyAudioTrack,
+  DailyVideo,
+  useDevices,
+  useLocalSessionId,
+  useMeetingState,
+  useScreenVideoTrack,
+  useVideoTrack,
 } from "@daily-co/daily-react";
-import { MicSelectBtn, CameraSelectBtn, ScreenShareButton } from '../device-select'
+import {
+  MicSelectBtn,
+  CameraSelectBtn,
+  ScreenShareButton,
+} from "../device-select";
 import { useLocalScreenshare } from "../../hooks/use-local-screenshare";
 import { useReplicaIDs } from "../../hooks/use-replica-ids";
 import { useCVICall } from "../../hooks/use-cvi-call";
@@ -19,8 +23,8 @@ import { AudioWave } from "../audio-wave";
 import styles from "./conversation.module.css";
 
 interface ConversationProps {
-	onLeave: () => void;
-	conversationUrl: string;
+  onLeave: () => Promise<void>;
+  conversationUrl: string;
 }
 
 const VideoPreview = React.memo(function VideoPreview({ id }: { id: string }) {
@@ -62,7 +66,11 @@ const PreviewVideos = React.memo(function PreviewVideos() {
 	);
 });
 
-const MainVideo = React.memo(function MainVideo() {
+const MainVideo = React.memo(function MainVideo({
+  isLeaving,
+}: {
+  isLeaving: boolean;
+}) {
 	const replicaIds = useReplicaIDs();
 	const localId = useLocalSessionId();
 	const videoState = useVideoTrack(replicaIds[0]);
@@ -74,7 +82,7 @@ const MainVideo = React.memo(function MainVideo() {
 	if (!replicaId) {
 		return (
 			<div className={styles.waitingContainer}>
-				<p>Connecting...</p>
+				<p>{isLeaving ? "Closing..." : "Connecting..."}</p>
 			</div>
 		);
 	}
@@ -101,6 +109,7 @@ export const Conversation = React.memo(function Conversation({ onLeave, conversa
   const { joinCall, leaveCall } = useCVICall();
   const meetingState = useMeetingState();
   const { hasMicError } = useDevices();
+  const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
     if (meetingState === "error") {
@@ -113,9 +122,11 @@ export const Conversation = React.memo(function Conversation({ onLeave, conversa
     joinCall({ url: conversationUrl });
   }, [conversationUrl]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleLeave = useCallback(() => {
+  const handleLeave = useCallback(async () => {
+    setIsLeaving(true);
     leaveCall();
-    onLeave();
+    await onLeave();
+    setIsLeaving(false);
   }, [leaveCall, onLeave]);
 
   return (
@@ -132,7 +143,7 @@ export const Conversation = React.memo(function Conversation({ onLeave, conversa
 
         {/* Main video */}
         <div className={styles.mainVideoContainer}>
-          <MainVideo />
+          <MainVideo isLeaving={isLeaving} />
         </div>
 
         {/* Self view */}
@@ -150,6 +161,7 @@ export const Conversation = React.memo(function Conversation({ onLeave, conversa
             type="button"
             className={styles.leaveButton}
             onClick={handleLeave}
+            disabled={isLeaving}
           >
             <span className={styles.leaveButtonIcon}>
               <svg

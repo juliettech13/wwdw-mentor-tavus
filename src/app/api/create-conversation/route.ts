@@ -36,6 +36,10 @@ export async function POST(request: Request) {
         ...(body.conversational_context && {
           conversational_context: body.conversational_context,
         }),
+        properties: {
+          participant_left_timeout: 60,
+          participant_absent_timeout: 120,
+        },
       }),
     });
 
@@ -56,8 +60,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const data = (await tavusResponse.json()) as { conversation_url: string };
-    return NextResponse.json({ conversation_url: data.conversation_url });
+    const data = (await tavusResponse.json()) as {
+      conversation_id: string;
+      conversation_url: string;
+    };
+
+    return NextResponse.json({
+      conversation_id: data.conversation_id,
+      conversation_url: data.conversation_url,
+    });
   } catch (err) {
     console.error("Conversation creation failed:", err);
     return NextResponse.json(

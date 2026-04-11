@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Mentor } from "@/components/mentor";
+import { useEffect, useRef, useState } from "react";
+import { Mentor, type MentorHandle } from "@/components/mentor";
 
 import { footerLinks } from "@/lib/constants/footer-links";
 import { mentorPrompts } from "@/lib/constants/mentor-prompts";
@@ -11,6 +11,15 @@ import { supportStack } from "@/lib/constants/support-stack";
 
 export default function Page() {
   const [isMentorOpen, setIsMentorOpen] = useState(false);
+  const mentorRef = useRef<MentorHandle>(null);
+
+  const requestMentorClose = async () => {
+    const didClose = await mentorRef.current?.requestClose();
+
+    if (didClose ?? true) {
+      setIsMentorOpen(false);
+    }
+  };
 
   useEffect(() => {
     if (!isMentorOpen) {
@@ -20,17 +29,8 @@ export default function Page() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsMentorOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
     };
   }, [isMentorOpen]);
 
@@ -86,6 +86,7 @@ export default function Page() {
                 alt="Dreams themed banner art"
                 fill
                 priority
+                sizes="(min-width: 1024px) 22rem, 100vw"
                 className="object-cover"
               />
             </div>
@@ -126,6 +127,7 @@ export default function Page() {
                 src="/images/gloria.webp"
                 alt="Gloria, the AI mentor"
                 fill
+                sizes="(min-width: 1024px) 80rem, 100vw"
                 className="object-cover"
               />
             </div>
@@ -269,7 +271,9 @@ export default function Page() {
           <button
             type="button"
             aria-label="Close AI mentor"
-            onClick={() => setIsMentorOpen(false)}
+            onClick={() => {
+              void requestMentorClose();
+            }}
             className="absolute inset-0 bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
           />
 
@@ -288,7 +292,9 @@ export default function Page() {
 
               <button
                 type="button"
-                onClick={() => setIsMentorOpen(false)}
+                onClick={() => {
+                  void requestMentorClose();
+                }}
                 className="rounded-full border border-(--forest) bg-(--mustard) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
               >
                 Close
@@ -297,8 +303,8 @@ export default function Page() {
 
             <div className="relative min-h-0 flex-1 bg-transparent">
               <Mentor
+                ref={mentorRef}
                 autoStart={true}
-                variant="modal"
                 onDismiss={() => setIsMentorOpen(false)}
               />
             </div>
