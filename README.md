@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./public/images/logo-long.webp" alt="Wealthy Women Don't Wait" width="320" />
-</p>
-
 # Wealthy Women Don't Wait AI Mentor
 
 A Tavus-powered AI Mentor for my investing course hub. The app gives students a direct way to ask questions face-to-face instead of digging through slides, recordings, and tutorials on their own.
