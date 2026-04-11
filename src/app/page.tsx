@@ -72,27 +72,18 @@ export default function Page() {
               <button
                 type="button"
                 onClick={() => setIsMentorOpen(true)}
-                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) text-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) text-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
               >
                 Talk To Your AI Mentor
               </button>
             </div>
           </div>
 
-          <div className="relative w-full max-w-[22rem] justify-self-end overflow-hidden rounded-[2rem] border border-(--forest) bg-[rgba(255,251,244,0.72)] p-3 shadow-[0_25px_60px_rgba(23,53,45,0.12)]">
-            <div className="mb-3 flex items-center gap-3 border border-(--forest) bg-white/70 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-(--forest)">
-              <span className="h-4 w-4 bg-(--rose)" />
-              <span>Hello Investor</span>
-              <span className="flex-1 border-t border-(--forest)" />
-              <span className="grid h-5 w-5 place-items-center border border-(--forest) text-[10px]">
-                +
-              </span>
-            </div>
-
-            <div className="relative aspect-[4/5] overflow-hidden border border-(--forest) bg-(--paper)">
+          <div className="relative w-full max-w-88 justify-self-end overflow-hidden border border-(--forest) p-5 rounded-4xl shadow-[0_25px_60px_rgba(23,53,45,0.12)]">
+            <div className="relative aspect-4/5 overflow-hidden">
               <Image
                 src="/images/real-estate.webp"
-                alt="Real estate themed banner art"
+                alt="Dreams themed banner art"
                 fill
                 priority
                 className="object-cover"
@@ -103,21 +94,22 @@ export default function Page() {
       </section>
 
       <section className="border-y border-(--border) bg-(--mustard) px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 text-(--forest) lg:flex-row lg:items-center lg:justify-between">
-          <p className="font-display text-3xl leading-tight sm:text-4xl">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <p className="font-display text-3xl leading-tight text-(--forest) sm:text-4xl">
             Don&apos;t wait until the next class. Ask anything to your AI mentor
           </p>
-          <a
-            href="https://luma.com/wealthy-women-v2"
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) text-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition hover:bg-[rgba(255,255,255,0.28)]"
+          <button
+            type="button"
+            onClick={() => setIsMentorOpen(true)}
+            className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-90"
           >
-            Let&apos;s chat
-          </a>
+            Meet Gloria
+          </button>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
-        <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-[2rem] border border-(--forest) bg-[rgba(255,251,244,0.72)] p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
+        <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl border border-(--forest) bg-[rgba(255,251,244,0.72)] p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
           <div className="mb-3 flex items-center gap-3 border border-(--forest) bg-white/70 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-(--forest)">
             <span className="h-4 w-4 bg-(--rose)" />
             <span>MEET GLORIA - YOUR AI MENTOR</span>
@@ -129,7 +121,7 @@ export default function Page() {
 
           <div className="relative overflow-hidden border border-(--forest) bg-(--paper)">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_40%),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.18)_100%)]" />
-            <div className="relative aspect-[16/9] w-full">
+            <div className="relative aspect-video w-full">
               <Image
                 src="/images/gloria.webp"
                 alt="Gloria, the AI mentor"
@@ -278,16 +270,18 @@ export default function Page() {
             type="button"
             aria-label="Close AI mentor"
             onClick={() => setIsMentorOpen(false)}
-            className="absolute inset-0 bg-[rgba(93,103,108,0.56)] backdrop-blur-sm"
+            className="absolute inset-0 bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
           />
 
-          <div className="relative z-10 flex h-[min(92vh,860px)] w-full max-w-6xl flex-col overflow-hidden rounded-4xl border border-[rgba(255,255,255,0.18)] bg-slate-950 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
-            <div className="flex items-center justify-between border-b border-slate-800/90 bg-slate-950/95 px-5 py-4 text-white">
+          <div className="relative z-10 flex h-[min(92vh,860px)] w-full max-w-6xl flex-col overflow-hidden rounded-4xl border border-(--forest) bg-[linear-gradient(180deg,rgba(246,241,232,0.98)_0%,rgba(237,229,215,0.96)_100%)] shadow-[0_40px_120px_rgba(23,53,45,0.24)]">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.36),transparent_58%)]" />
+
+            <div className="relative flex items-center justify-between border-b border-(--border) bg-[rgba(255,251,244,0.92)] px-5 py-4 text-(--forest)">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
                   Tavus Mentor
                 </p>
-                <p className="mt-1 font-display text-3xl text-(--paper)">
+                <p className="mt-1 font-display text-3xl text-(--forest)">
                   Ask the investing AI anything.
                 </p>
               </div>
@@ -295,13 +289,13 @@ export default function Page() {
               <button
                 type="button"
                 onClick={() => setIsMentorOpen(false)}
-                className="rounded-full border border-slate-700 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-slate-800"
+                className="rounded-full border border-(--forest) bg-(--mustard) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
               >
                 Close
               </button>
             </div>
 
-            <div className="min-h-0 flex-1">
+            <div className="relative min-h-0 flex-1 bg-transparent">
               <Mentor
                 autoStart={true}
                 variant="modal"

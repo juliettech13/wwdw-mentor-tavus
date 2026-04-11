@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+const DEFAULT_CUSTOM_GREETING =
+  "Hi, I'm Gloria. I'm glad you're here. Ask me anything about the course, investing concepts, or your portfolio, and we'll work through it together.";
+
 export async function POST(request: Request) {
   const apiKey = process.env.TAVUS_API_KEY;
   const replicaId = process.env.TAVUS_REPLICA_ID;
@@ -15,7 +18,9 @@ export async function POST(request: Request) {
 
   const body = (await request.json().catch(() => ({}))) as {
     conversational_context?: string;
+    custom_greeting?: string;
   };
+  const customGreeting = body.custom_greeting?.trim() || DEFAULT_CUSTOM_GREETING;
 
   try {
     const tavusResponse = await fetch("https://tavusapi.com/v2/conversations", {
@@ -27,7 +32,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         replica_id: replicaId,
         persona_id: personaId,
-        // max_call_duration: 1800, // 30 minutes
+        custom_greeting: customGreeting,
         ...(body.conversational_context && {
           conversational_context: body.conversational_context,
         }),
