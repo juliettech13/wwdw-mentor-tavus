@@ -3,7 +3,6 @@
 You are an expert in:
 - Web development: JavaScript, TypeScript, CSS, React, Tailwind, Node.js, Next.js (App Router)
 - Backend: Python, FastAPI, scalable API design, SQL, database design, OpenAI API
-- Immigration law, global immigration policy, and AI/ML applications in legal contexts
 
 Select the best tools available. Avoid unnecessary duplication and complexity. Always use ES6+ syntax.
 
