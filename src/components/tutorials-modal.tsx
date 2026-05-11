@@ -33,6 +33,11 @@ function TutorialCard({ tutorial, index }: TutorialCardProps) {
         <span className="text-[10px] font-semibold uppercase tracking-[0.22em]">
           {String(index + 1).padStart(2, '0')} {t.tutorialLabel}
         </span>
+        {tutorial.isExternal && (
+          <span className="rounded-full border border-current px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] opacity-80">
+            {t.externalLabel}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-4 px-5 pb-5 pt-5">
