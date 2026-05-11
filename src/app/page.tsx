@@ -7,11 +7,14 @@ import { QuizBanner } from "@/components/quiz/quiz-banner";
 import { QuizShell } from "@/components/quiz/quiz-shell";
 import { TutorialsModal } from "@/components/tutorials-modal";
 
+import { locale } from "@/lib/i18n";
 import { footerLinks } from "@/lib/constants/footer-links";
 import { homework } from "@/lib/constants/homework";
-import { mentorPrompts } from "@/lib/constants/mentor-prompts";
 import { sessions } from "@/lib/constants/sessions";
+import { mentorPrompts } from "@/lib/constants/mentor-prompts";
 import { supportStack } from "@/lib/constants/support-stack";
+
+const t = locale.ui;
 
 export default function Page() {
   const [isMentorOpen, setIsMentorOpen] = useState(false);
@@ -46,14 +49,15 @@ export default function Page() {
 
       <div className="w-full border-b border-(--forest) bg-(--lilac-bar)">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-9 text-sm uppercase tracking-[0.24em] text-white sm:px-8 lg:px-10">
-          <h4>Wealthy Women Don&apos;t Wait</h4>
-          <button
-            type="button"
-            onClick={() => setIsMentorOpen(true)}
+          <h4>{t.nav.title}</h4>
+          <a
+            href="https://lu.ma/wealthy-women-v2"
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
           >
-            Ask Anything
-          </button>
+            {t.nav.calendarCta}
+          </a>
         </div>
       </div>
 
@@ -63,15 +67,14 @@ export default function Page() {
           <div className="flex h-full flex-col justify-center space-y-6">
             <div className="space-y-4">
               <h1 className="max-w-4xl font-display text-6xl leading-[0.92] tracking-[-0.04em] text-(--forest) sm:text-7xl lg:text-[6rem]">
-                Hello Investor
+                {t.hero.headline}
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-(--ink-soft)">
-                Welcome to the course hub for{" "}
+                {t.hero.descriptionPrefix}{" "}
                 <span className="font-semibold text-(--forest)">
-                  Wealthy Women Don&apos;t Wait
+                  {t.hero.courseName}
                 </span>{" "}
-                - curriculum, resources, and an AI mentor to
-                answer any questions you have.
+                {t.hero.descriptionSuffix}
               </p>
             </div>
 
@@ -83,7 +86,7 @@ export default function Page() {
                 style={{ color: "white" }}
                 className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
               >
-                When&apos;s the next class?
+                {t.hero.cta}
               </a>
             </div>
           </div>
@@ -112,10 +115,10 @@ export default function Page() {
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                Curriculum Calendar
+                {t.curriculum.eyebrow}
               </p>
               <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                What we&apos;ll learn
+                {t.curriculum.title}
               </h2>
             </div>
           </div>
@@ -143,27 +146,13 @@ export default function Page() {
           <div className="flex items-start justify-between gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-3">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-(--mustard) text-sm text-(--forest)">
-                  ✎
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                  Cohort Assignments
-                </p>
               </div>
               <h2 className="mt-4 font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                Homework
+                {t.homework.title}
               </h2>
               <p className="mt-4 max-w-lg text-base leading-7 text-(--ink-soft)">
-                A running log of what to complete between classes. Check back after each
-                session — new rows appear here as the cohort progresses.
+                {t.homework.description}
               </p>
-            </div>
-
-            <div className="shrink-0 pt-1">
-              <span className="inline-flex items-center gap-2 rounded-full border border-(--forest) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest)">
-                <span className="h-1.5 w-1.5 rounded-full bg-(--forest)" />
-                {homework.length} Assignment{homework.length !== 1 ? 's' : ''}
-              </span>
             </div>
           </div>
 
@@ -171,9 +160,9 @@ export default function Page() {
 
           <div className="overflow-hidden rounded-2xl border border-(--forest)">
             <div className="grid grid-cols-[1fr_2fr_2fr] bg-light-blue px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-(--forest)">
-              <span>Date</span>
-              <span>Class</span>
-              <span>Homework</span>
+              <span>{t.homework.tableDate}</span>
+              <span>{t.homework.tableClass}</span>
+              <span>{t.homework.tableHomework}</span>
             </div>
 
             {homework.map((item, i) => (
@@ -198,7 +187,7 @@ export default function Page() {
                     href={item.href}
                     className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) underline underline-offset-4"
                   >
-                    Open Assignment →
+                    {t.homework.openAssignment}
                   </a>
                 </div>
               </div>
@@ -211,10 +200,10 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-8 space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--forest)">
-              Everything you need
+              {t.resources.eyebrow}
             </p>
             <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-              Course Resources
+              {t.resources.title}
             </h2>
           </div>
 
@@ -259,7 +248,7 @@ export default function Page() {
           <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl border border-(--forest) bg-(--card) p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
           <div className="mb-3 flex items-center gap-3 border border-(--forest) bg-white/70 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-(--forest)">
             <span className="h-4 w-4 bg-(--rose)" />
-            <span>MEET GLORIA - YOUR AI MENTOR</span>
+            <span>{t.mentor.badge}</span>
             <span className="flex-1 border-t border-(--forest)" />
             <span className="grid h-5 w-5 place-items-center border border-(--forest) text-[10px]">
               +
@@ -287,7 +276,7 @@ export default function Page() {
                 className="inline-flex items-center justify-center gap-3 rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
               >
                 <span className="text-xl leading-none">☏</span>
-                <span>Ask Me Anything</span>
+                <span>{t.mentor.cta}</span>
               </button>
             </div>
           </div>
@@ -307,7 +296,7 @@ export default function Page() {
       </section>
 
       <footer className="bg-(--forest) py-16 text-(--paper)">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:px-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div className="space-y-6">
             <Image
               src="/images/logo-small.webp"
@@ -319,7 +308,7 @@ export default function Page() {
 
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
-                Made with love by Juliettech
+                {t.footer.credit}
               </p>
             </div>
           </div>
@@ -346,14 +335,14 @@ export default function Page() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
           <button
             type="button"
-            aria-label="Close tutorials"
+            aria-label={t.tutorials.close}
             onClick={() => setIsTutorialsOpen(false)}
             className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
           />
           <div
             role="dialog"
             aria-modal="true"
-            aria-label="Tutoriales"
+            aria-label={t.tutorials.title}
             className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
           >
             <TutorialsModal onClose={() => setIsTutorialsOpen(false)} />
@@ -365,7 +354,7 @@ export default function Page() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
           <button
             type="button"
-            aria-label="Close quiz"
+            aria-label={t.quiz.shell.close}
             onClick={() => setIsQuizOpen(false)}
             className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
           />
@@ -373,7 +362,7 @@ export default function Page() {
           <div
             role="dialog"
             aria-modal="true"
-            aria-label="Risk profile quiz"
+            aria-label={t.quiz.shell.eyebrow}
             className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-4xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
           >
             <div className="relative flex min-h-0 flex-1">
@@ -387,7 +376,7 @@ export default function Page() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
           <button
             type="button"
-            aria-label="Close AI mentor"
+            aria-label={t.mentor.close}
             onClick={() => {
               void requestMentorClose();
             }}
@@ -400,10 +389,10 @@ export default function Page() {
             <div className="relative flex items-center justify-between border-b border-(--border) bg-(--card-frosted) px-5 py-4 text-(--forest)">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                  Tavus Mentor
+                  {t.mentor.modalEyebrow}
                 </p>
                 <p className="mt-1 font-display text-3xl text-(--forest)">
-                  Ask the investing AI anything.
+                  {t.mentor.modalTitle}
                 </p>
               </div>
 
@@ -414,7 +403,7 @@ export default function Page() {
                 }}
                 className="rounded-full border border-(--forest) bg-(--mustard) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
               >
-                Close
+                {t.mentor.close}
               </button>
             </div>
 

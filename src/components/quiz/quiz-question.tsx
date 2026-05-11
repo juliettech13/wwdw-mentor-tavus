@@ -1,7 +1,9 @@
+import { locale } from '@/lib/i18n';
 import { type QuizQuestion } from '@/lib/quiz-data';
 import { QuizProgress } from './quiz-progress';
 
 const OPT_LETTERS = ['A', 'B', 'C', 'D', 'E'];
+const t = locale.ui.quiz.question;
 
 interface QuizQuestionProps {
   question: QuizQuestion;
@@ -31,7 +33,7 @@ export function QuizQuestionView({
       <div className="flex-1 overflow-y-auto px-6 pb-6 sm:px-10">
         <div className="mx-auto max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--rose-deep)">
-            Question {index + 1}
+            {t.label.replace('{x}', String(index + 1))}
           </p>
           <h3 className="mt-3 font-display text-3xl leading-[1.05] tracking-[-0.02em] text-(--forest) sm:text-4xl">
             {question.text}
@@ -86,7 +88,7 @@ export function QuizQuestionView({
             disabled={index === 0}
             className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-transparent px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost) disabled:opacity-30 disabled:hover:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--forest)"
           >
-            ← Back
+            {t.back}
           </button>
 
           <button
@@ -95,7 +97,7 @@ export function QuizQuestionView({
             disabled={answer === undefined}
             className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-90 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--forest)"
           >
-            {isLast ? 'See my profile →' : 'Next →'}
+            {isLast ? t.seeProfile : t.next}
           </button>
         </div>
       </div>

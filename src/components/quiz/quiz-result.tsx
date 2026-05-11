@@ -1,5 +1,8 @@
+import { locale } from '@/lib/i18n';
 import { type RiskProfile } from '@/lib/quiz-data';
 import { QuizDonutChart } from './quiz-donut-chart';
+
+const t = locale.ui.quiz.result;
 
 interface QuizResultProps {
   profile: RiskProfile;
@@ -14,12 +17,12 @@ function ChipList({ items, tone }: { items: string[]; tone: 'good' | 'avoid' }) 
       : 'border-(--chip-good-border) bg-(--chip-good-bg) text-(--chip-good-text)';
   return (
     <div className="flex flex-wrap gap-2">
-      {items.map((t) => (
+      {items.map((item) => (
         <span
-          key={t}
+          key={item}
           className={`inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold ${styles}`}
         >
-          {t}
+          {item}
         </span>
       ))}
     </div>
@@ -53,10 +56,10 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
               className="inline-flex items-center rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em]"
               style={{ background: profile.badgeBg, color: profile.badgeColor }}
             >
-              Your profile
+              {t.yourProfile}
             </span>
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--ink-soft)">
-              Score {score} / 50
+              {t.score.replace('{score}', String(score))}
             </span>
           </div>
           <h2 className="mt-5 font-display text-5xl leading-[0.95] tracking-[-0.03em] text-(--forest) sm:text-6xl">
@@ -70,7 +73,7 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
 
       <section className="mx-auto w-full max-w-3xl px-6 pt-10 sm:px-10">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--rose-deep)">
-          Your starting portfolio
+          {t.portfolioEyebrow}
         </p>
         <h3 className="mt-2 font-display text-4xl leading-[1.02] tracking-[-0.02em] text-(--forest) sm:text-5xl">
           {profile.name}
@@ -85,7 +88,7 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
                   {profile.allocations.length}
                 </div>
                 <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-(--ink-soft)">
-                  Asset Types
+                  {t.assetTypes}
                 </div>
               </div>
             </div>
@@ -128,7 +131,7 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
       <section className="mx-auto w-full max-w-3xl px-6 pt-10 sm:px-10">
         <div className="rounded-3xl border border-(--forest) bg-(--card-mid) p-5 sm:p-7">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--ink-soft)">
-            Whose playbook
+            {t.whosePlaybook}
           </p>
           <div className="mt-3 flex items-center gap-4">
             <InvestorInitials
@@ -149,17 +152,17 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
             {profile.investor.philosophy}
           </p>
           <p className="mt-4 border-t border-(--border) pt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-(--ink-soft)">
-            Source · {profile.investor.source}
+            {t.source.replace('{source}', profile.investor.source)}
           </p>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-3xl px-6 pt-10 sm:px-10">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--rose-deep)">
-          What this means for you
+          {t.whatThisMeans}
         </p>
         <h3 className="mt-2 font-display text-3xl leading-tight text-(--forest) sm:text-4xl">
-          Built for how you think
+          {t.builtForHow}
         </h3>
         <p className="mt-4 text-base leading-7 text-(--ink)">{profile.likeYou}</p>
       </section>
@@ -168,10 +171,10 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-(--border) bg-white/65 p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--chip-good-text)">
-              Good fits
+              {t.goodFitsEyebrow}
             </p>
             <h4 className="mt-2 font-display text-2xl leading-tight text-(--forest)">
-              Start here
+              {t.startHere}
             </h4>
             <div className="mt-4">
               <ChipList items={profile.what} tone="good" />
@@ -179,10 +182,10 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
           </div>
           <div className="rounded-2xl border border-(--border) bg-white/65 p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--chip-avoid-text)">
-              Be careful with
+              {t.beCarefulEyebrow}
             </p>
             <h4 className="mt-2 font-display text-2xl leading-tight text-(--forest)">
-              Not for you yet
+              {t.notForYou}
             </h4>
             <div className="mt-4">
               <ChipList items={profile.avoid} tone="avoid" />
@@ -203,7 +206,7 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
                 </svg>
               </span>
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--forest)">
-                Watch out for
+                {t.watchOutFor}
               </p>
             </div>
             <p className="mt-4 text-sm leading-7 text-(--ink) sm:text-base">{profile.watchOut}</p>
@@ -218,15 +221,12 @@ export function QuizResult({ profile, score, onRetake }: QuizResultProps) {
             onClick={onRetake}
             className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--forest)"
           >
-            Retake quiz
+            {t.retake}
           </button>
         </div>
         <p className="mt-6 text-center text-[11px] leading-5 text-(--ink-soft) sm:text-xs">
-          <span className="font-semibold uppercase tracking-[0.18em]">Disclaimer ·</span>{' '}
-          This quiz is for educational purposes only and does not constitute financial,
-          investment, tax, or legal advice. Your results reflect a behavioral risk profile,
-          not a personalized recommendation. Always do your own research or speak with a
-          qualified financial professional before making investment decisions.
+          <span className="font-semibold uppercase tracking-[0.18em]">{t.disclaimerLabel} ·</span>{' '}
+          {t.disclaimerText}
         </p>
       </section>
     </div>
