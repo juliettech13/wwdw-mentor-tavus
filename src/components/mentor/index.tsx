@@ -35,7 +35,7 @@ function StatusScreen({
 }) {
   return (
     <div className="flex min-h-full flex-col items-center justify-center bg-transparent px-6 py-10 text-center">
-      <div className="max-w-xl rounded-[2rem] border border-(--forest) bg-[rgba(255,251,244,0.86)] p-8 shadow-[0_25px_70px_rgba(23,53,45,0.12)]">
+      <div className="max-w-xl rounded-[2rem] border border-(--forest) bg-(--card-mid) p-8 shadow-[0_25px_70px_rgba(23,53,45,0.12)]">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-(--forest) bg-(--mustard) text-3xl text-(--forest)">
           ☏
         </div>

@@ -3,14 +3,20 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Mentor, type MentorHandle } from "@/components/mentor";
+import { QuizBanner } from "@/components/quiz/quiz-banner";
+import { QuizShell } from "@/components/quiz/quiz-shell";
+import { TutorialsModal } from "@/components/tutorials-modal";
 
 import { footerLinks } from "@/lib/constants/footer-links";
+import { homework } from "@/lib/constants/homework";
 import { mentorPrompts } from "@/lib/constants/mentor-prompts";
 import { sessions } from "@/lib/constants/sessions";
 import { supportStack } from "@/lib/constants/support-stack";
 
 export default function Page() {
   const [isMentorOpen, setIsMentorOpen] = useState(false);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+  const [isTutorialsOpen, setIsTutorialsOpen] = useState(false);
   const mentorRef = useRef<MentorHandle>(null);
 
   const requestMentorClose = async () => {
@@ -22,7 +28,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    if (!isMentorOpen) {
+    if (!isMentorOpen && !isQuizOpen && !isTutorialsOpen) {
       return;
     }
 
@@ -32,7 +38,7 @@ export default function Page() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [isMentorOpen]);
+  }, [isMentorOpen, isQuizOpen, isTutorialsOpen]);
 
   return (
     <main className="relative overflow-hidden bg-(--card)">
@@ -51,7 +57,8 @@ export default function Page() {
         </div>
       </div>
 
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-5 pb-16 pt-6 sm:px-8 lg:px-10">
+      <section className="border-b border-(--forest) pb-16 pt-6">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-5 sm:px-8 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
           <div className="flex h-full flex-col justify-center space-y-6">
             <div className="space-y-4">
@@ -69,13 +76,15 @@ export default function Page() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => setIsMentorOpen(true)}
-                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) text-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
+              <a
+                href="https://lu.ma/wealthy-women-v2"
+                target="_blank"
+                rel="noreferrer noopener"
+                style={{ color: "white" }}
+                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
               >
-                Talk To Your AI Mentor
-              </button>
+                When&apos;s the next class?
+              </a>
             </div>
           </div>
 
@@ -92,25 +101,162 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="border-y border-(--border) bg-(--mustard) px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-          <p className="font-display text-3xl leading-tight text-(--forest) sm:text-4xl">
-            Don&apos;t wait until the next class. Ask anything to your AI mentor
-          </p>
-          <button
-            type="button"
-            onClick={() => setIsMentorOpen(true)}
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-90"
-          >
-            Meet Gloria
-          </button>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
-        <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl border border-(--forest) bg-[rgba(255,251,244,0.72)] p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
+      <section
+        id="curriculum"
+        className="border-b border-(--forest) bg-(--paper-strong) py-16"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
+                Curriculum Calendar
+              </p>
+              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+                What we&apos;ll learn
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {sessions.map((session) => (
+              <article
+                key={session.title}
+                className="rounded-[1.75rem] border border-(--border) bg-(--card-strong) p-5"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--rose-deep)">
+                  {session.date}
+                </p>
+                <h3 className="mt-3 font-display text-3xl leading-tight text-(--forest)">
+                  {session.title}
+                </h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-(--forest) bg-(--paper-soft) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="flex items-start justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-3">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-(--mustard) text-sm text-(--forest)">
+                  ✎
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
+                  Cohort Assignments
+                </p>
+              </div>
+              <h2 className="mt-4 font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+                Homework
+              </h2>
+              <p className="mt-4 max-w-lg text-base leading-7 text-(--ink-soft)">
+                A running log of what to complete between classes. Check back after each
+                session — new rows appear here as the cohort progresses.
+              </p>
+            </div>
+
+            <div className="shrink-0 pt-1">
+              <span className="inline-flex items-center gap-2 rounded-full border border-(--forest) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest)">
+                <span className="h-1.5 w-1.5 rounded-full bg-(--forest)" />
+                {homework.length} Assignment{homework.length !== 1 ? 's' : ''}
+              </span>
+            </div>
+          </div>
+
+          <div className="my-8 border-t border-(--forest)" />
+
+          <div className="overflow-hidden rounded-2xl border border-(--forest)">
+            <div className="grid grid-cols-[1fr_2fr_2fr] bg-light-blue px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-(--forest)">
+              <span>Date</span>
+              <span>Class</span>
+              <span>Homework</span>
+            </div>
+
+            {homework.map((item, i) => (
+              <div
+                key={i}
+                className="grid grid-cols-[1fr_2fr_2fr] border-t border-(--border) bg-(--paper) px-6 py-5 first:border-t-0"
+              >
+                <div className="flex items-start gap-2.5 pr-4">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-(--mustard)" />
+                  <span className="text-base leading-7 text-(--forest)">
+                    {item.date}
+                  </span>
+                </div>
+                <div className="pr-6">
+                  <span className="text-base font-semibold leading-7 text-(--forest)">
+                    {item.session}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-base leading-7 text-(--ink)">{item.task}</p>
+                  <a
+                    href={item.href}
+                    className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) underline underline-offset-4"
+                  >
+                    Open Assignment →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-(--forest) bg-(--mustard) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-8 space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--forest)">
+              Everything you need
+            </p>
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+              Course Resources
+            </h2>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {supportStack.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[1.75rem] border border-(--border-strong) bg-(--card-mid) p-5"
+              >
+                <h3 className="font-display text-3xl leading-tight text-(--forest)">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-(--ink)">
+                  {item.copy}
+                </p>
+                {item.modal === 'tutorials' ? (
+                  <button
+                    type="button"
+                    onClick={() => setIsTutorialsOpen(true)}
+                    className="mt-5 inline-flex rounded-full border border-(--forest) px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost)"
+                  >
+                    {item.label}
+                  </button>
+                ) : item.href ? (
+                  <a
+                    href={item.href}
+                    className="mt-5 inline-flex rounded-full border border-(--forest) px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost)"
+                  >
+                    {item.label}
+                  </a>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <QuizBanner onOpen={() => setIsQuizOpen(true)} />
+
+      <section className="border-b border-(--forest) bg-(--paper-strong) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl border border-(--forest) bg-(--card) p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
           <div className="mb-3 flex items-center gap-3 border border-(--forest) bg-white/70 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-(--forest)">
             <span className="h-4 w-4 bg-(--rose)" />
             <span>MEET GLORIA - YOUR AI MENTOR</span>
@@ -156,82 +302,12 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </aside>
-      </section>
-
-      <section
-        id="curriculum"
-        className="bg-(--paper-strong) px-5 py-16 sm:px-8 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                Curriculum Calendar
-              </p>
-              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                What we&apos;ll learn
-              </h2>
-            </div>
-          </div>
-
-          <div className="grid gap-4 lg:grid-cols-2">
-            {sessions.map((session) => (
-              <article
-                key={session.title}
-                className="rounded-[1.75rem] border border-(--border) bg-[rgba(255,251,244,0.9)] p-5"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--rose-deep)">
-                  {session.date}
-                </p>
-                <h3 className="mt-3 font-display text-3xl leading-tight text-(--forest)">
-                  {session.title}
-                </h3>
-              </article>
-            ))}
-          </div>
+          </aside>
         </div>
       </section>
 
-      <section className="bg-(--mustard) px-5 py-16 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--forest)">
-              Everything you need
-            </p>
-            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-              Course Resources
-            </h2>
-          </div>
-
-          <div className="grid gap-4 lg:grid-cols-2">
-            {supportStack.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-[1.75rem] border border-[rgba(24,62,53,0.18)] bg-[rgba(255,251,244,0.84)] p-5"
-              >
-                <h3 className="font-display text-3xl leading-tight text-(--forest)">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-(--ink)">
-                  {item.copy}
-                </p>
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    className="mt-5 inline-flex rounded-full border border-(--forest) px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-[rgba(24,62,53,0.08)]"
-                  >
-                    {item.label}
-                  </a>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-(--forest) px-5 py-16 text-(--paper) sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <footer className="bg-(--forest) py-16 text-(--paper)">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:px-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-6">
             <Image
               src="/images/logo-small.webp"
@@ -266,6 +342,47 @@ export default function Page() {
         </div>
       </footer>
 
+      {isTutorialsOpen ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
+          <button
+            type="button"
+            aria-label="Close tutorials"
+            onClick={() => setIsTutorialsOpen(false)}
+            className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Tutoriales"
+            className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
+          >
+            <TutorialsModal onClose={() => setIsTutorialsOpen(false)} />
+          </div>
+        </div>
+      ) : null}
+
+      {isQuizOpen ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
+          <button
+            type="button"
+            aria-label="Close quiz"
+            onClick={() => setIsQuizOpen(false)}
+            className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
+          />
+
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Risk profile quiz"
+            className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-4xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
+          >
+            <div className="relative flex min-h-0 flex-1">
+              <QuizShell onClose={() => setIsQuizOpen(false)} />
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {isMentorOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
           <button
@@ -280,7 +397,7 @@ export default function Page() {
           <div className="relative z-10 flex h-[min(92vh,860px)] w-full max-w-6xl flex-col overflow-hidden rounded-4xl border border-(--forest) bg-[linear-gradient(180deg,rgba(246,241,232,0.98)_0%,rgba(237,229,215,0.96)_100%)] shadow-[0_40px_120px_rgba(23,53,45,0.24)]">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.36),transparent_58%)]" />
 
-            <div className="relative flex items-center justify-between border-b border-(--border) bg-[rgba(255,251,244,0.92)] px-5 py-4 text-(--forest)">
+            <div className="relative flex items-center justify-between border-b border-(--border) bg-(--card-frosted) px-5 py-4 text-(--forest)">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
                   Tavus Mentor

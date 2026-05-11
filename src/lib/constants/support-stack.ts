@@ -3,6 +3,7 @@ type SupportItem = {
   copy: string;
   href?: string;
   label?: string;
+  modal?: 'tutorials';
 };
 
 export const supportStack: ReadonlyArray<SupportItem> = [
@@ -21,13 +22,13 @@ export const supportStack: ReadonlyArray<SupportItem> = [
   {
     title: "Recordings",
     copy: "Session recordings for catching up on what we've covered.",
-    href: "https://drive.google.com/drive/u/1/folders/1N3VZuwx0LFKM49XiFl9UdXYr5Odo9l5U",
+    href: "https://drive.google.com/drive/folders/1CwsYGcedvTHClSr_rDtEzciGUwJ96ajH?usp=sharing",
     label: "Open recordings",
   },
   {
     title: "Tutorials",
     copy: "Walkthroughs for brockerage accounts, crypto, automating trades, and more.",
-    href: "https://www.notion.so/juliettech/wealthy-women-don-t-wait-314347687f4d8074be1bd333c8dece6b?source=copy_link#317347687f4d806c9204fd1697d9f457",
     label: "Open tutorials",
+    modal: "tutorials",
   },
 ];
