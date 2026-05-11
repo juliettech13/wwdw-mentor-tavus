@@ -1,3 +1,4 @@
+import { locale } from '@/lib/i18n';
 import { tutorials, type Tutorial } from '@/lib/constants/tutorials';
 
 const SWATCH_STYLES: Record<string, { bg: string; ink: string }> = {
@@ -5,8 +6,10 @@ const SWATCH_STYLES: Record<string, { bg: string; ink: string }> = {
   mustard:   { bg: 'var(--mustard)',   ink: 'var(--forest)' },
   mint:      { bg: 'var(--mint)',      ink: 'var(--forest)' },
   lilac:     { bg: 'var(--lilac-bar)', ink: '#fff'          },
-  periwinkle:{ bg: 'var(--light-blue)','ink': 'var(--forest)' },
+  periwinkle:{ bg: 'var(--light-blue)', ink: 'var(--forest)' },
 };
+
+const t = locale.ui.tutorials;
 
 interface TutorialCardProps {
   tutorial: Tutorial;
@@ -28,7 +31,7 @@ function TutorialCard({ tutorial, index }: TutorialCardProps) {
         style={{ background: sw.bg, color: sw.ink }}
       >
         <span className="text-[10px] font-semibold uppercase tracking-[0.22em]">
-          {String(index + 1).padStart(2, '0')} / Tutorial
+          {String(index + 1).padStart(2, '0')} {t.tutorialLabel}
         </span>
       </div>
 
@@ -57,21 +60,21 @@ export function TutorialsModal({ onClose }: TutorialsModalProps) {
                 ▶
               </span>
               <span className="text-xs font-semibold uppercase tracking-[0.24em]">
-                Recursos del curso
+                {t.eyebrow}
               </span>
             </div>
             <h2 className="mt-2 font-display text-5xl leading-[0.95] tracking-[-0.03em] text-(--forest) sm:text-6xl">
-              Tutoriales
+              {t.title}
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-6 text-(--ink-soft)">
-              Guías paso a paso para acompañarte mientras pones en práctica lo que aprendes en clase.
+              {t.description}
             </p>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            aria-label="Cerrar"
+            aria-label={t.close}
             className="grid h-10 w-10 place-items-center rounded-full border border-(--forest) bg-(--paper) text-(--forest) transition hover:bg-(--mustard)"
           >
             <span className="text-base leading-none">✕</span>
@@ -81,8 +84,8 @@ export function TutorialsModal({ onClose }: TutorialsModalProps) {
 
       <div className="relative flex-1 overflow-y-auto px-6 py-7 sm:px-8">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {tutorials.map((t, i) => (
-            <TutorialCard key={t.id} tutorial={t} index={i} />
+          {tutorials.map((tutorial, i) => (
+            <TutorialCard key={tutorial.id} tutorial={tutorial} index={i} />
           ))}
         </div>
       </div>

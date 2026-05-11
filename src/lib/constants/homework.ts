@@ -1,3 +1,5 @@
+import { locale } from '@/lib/i18n';
+
 export interface HomeworkAssignment {
   date: string;
   session: string;
@@ -5,11 +7,4 @@ export interface HomeworkAssignment {
   href: string;
 }
 
-export const homework: HomeworkAssignment[] = [
-  {
-    date: 'Monday, May 11th, 2026',
-    session: 'Investing 101: how money actually grows',
-    task: 'Do the Retirement Calculator to determine your investment amount.',
-    href: '#',
-  },
-];
+export const homework: HomeworkAssignment[] = locale.homework;

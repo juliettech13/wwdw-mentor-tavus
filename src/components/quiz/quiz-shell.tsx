@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { locale } from '@/lib/i18n';
 import { questions, type RiskProfile } from '@/lib/quiz-data';
 import { getProfile } from '@/lib/quiz-utils';
 import { QuizQuestionView } from './quiz-question';
@@ -14,6 +15,8 @@ interface QuizShellProps {
   onClose: () => void;
 }
 
+const t = locale.ui.quiz.shell;
+
 function computeScore(answers: Record<number, number>): number {
   return Object.entries(answers).reduce((acc, [qi, oi]) => {
     const q = questions[Number(qi)];
@@ -22,9 +25,9 @@ function computeScore(answers: Record<number, number>): number {
 }
 
 function getHeaderTitle(view: View, profile: RiskProfile | null, current: number, total: number): string {
-  if (view === 'welcome') return 'Find your investor profile.';
-  if (view === 'result' && profile) return `You're ${profile.name}.`;
-  return `Question ${current + 1} of ${total}`;
+  if (view === 'welcome') return t.welcome;
+  if (view === 'result' && profile) return t.resultTitle.replace('{name}', profile.name);
+  return t.questionOf.replace('{x}', String(current + 1)).replace('{y}', String(total));
 }
 
 export function QuizShell({ onClose }: QuizShellProps) {
@@ -64,7 +67,7 @@ export function QuizShell({ onClose }: QuizShellProps) {
       <div className="relative flex items-center justify-between border border-(--border) bg-(--card-frosted) px-5 py-4 text-(--forest) sm:px-8">
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--ink-soft)">
-            Investor Profile · Quiz
+            {t.eyebrow}
           </p>
           <p className="mt-0.5 truncate font-display text-2xl text-(--forest) sm:text-3xl">
             {headerTitle}
@@ -73,10 +76,10 @@ export function QuizShell({ onClose }: QuizShellProps) {
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close quiz"
+          aria-label={t.close}
           className="ml-4 inline-flex shrink-0 items-center gap-2 rounded-full border border-(--forest) bg-(--mustard) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--forest)"
         >
-          Close
+          {t.close}
         </button>
       </div>
 
