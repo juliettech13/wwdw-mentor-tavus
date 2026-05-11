@@ -12,6 +12,7 @@ export interface Tutorial {
   swatch: TutorialSwatch;
   glyph: string;
   href: string;
+  isExternal?: boolean;
 }
 
 export const tutorials: Tutorial[] = locale.tutorials;
