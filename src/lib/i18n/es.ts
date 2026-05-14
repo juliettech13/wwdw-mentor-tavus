@@ -166,6 +166,12 @@ export const es = {
       task: "Determina cuánto debes invertir para llegar a tu retiro ideal.",
       href: "https://www.nerdwallet.com/investing/calculators/retirement-calculator",
     },
+    {
+      date: "Miercoles, 13/05",
+      session: "Mercado publico, acciones y fondos",
+      task: "Recopilar documentos abrir tu cuenta de inversion",
+      href: "https://www.interactivebrokers.com/en/general/what-you-need-sb.php",
+    },
   ],
   supportStack: [
     {
@@ -281,6 +287,19 @@ export const es = {
       swatch: "rose" as const,
       glyph: "◉",
       href: "https://amzn.to/46HACHC",
+      isExternal: true,
+    },
+    {
+      id: "the-most-important-thing",
+      title: "The Most Important Thing, por Howard Marks",
+      summary:
+        "Las lecciones de inversión del cofundador de Oaktree Capital, enfocadas en el pensamiento de segundo nivel y la gestión del riesgo.",
+      platform: null,
+      category: "Libro",
+      minutes: 0,
+      swatch: "rose" as const,
+      glyph: "◉",
+      href: "https://amzn.to/4fqA7Xk",
       isExternal: true,
     },
     {
@@ -408,7 +427,7 @@ export const es = {
       platform: null,
       category: "Recursos",
       minutes: 0,
-      swatch: "lillac" as const,
+      swatch: "lilac" as const,
       glyph: "★",
       href: "https://open.spotify.com/show/1MiXOD6tohVIvnoLndsnQd?si=7a33f34435374659",
       isExternal: true,
