@@ -185,12 +185,14 @@ export default function Page() {
                 </div>
                 <div>
                   <p className="text-base leading-7 text-(--ink)">{item.task}</p>
-                  <a
-                    href={item.href}
-                    className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) underline underline-offset-4"
-                  >
-                    {t.homework.openAssignment}
-                  </a>
+                  {item.href && (
+                    <a
+                      href={item.href}
+                      className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) underline underline-offset-4"
+                    >
+                      {t.homework.openAssignment}
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
