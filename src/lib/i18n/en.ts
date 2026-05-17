@@ -37,6 +37,14 @@ export const en = {
       modalTitle: 'Ask the investing AI anything.',
       close: 'Close',
     },
+    passwordGate: {
+      error: 'Incorrect password. Please try again.',
+      eyebrow: 'Private access',
+      placeholder: 'Password',
+      submit: 'Enter',
+      subtitle: 'Enter the password to access the hub.',
+      title: 'Welcome',
+    },
     footer: {
       credit: 'Made with love by Juliettech',
     },

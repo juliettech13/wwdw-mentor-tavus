@@ -39,6 +39,14 @@ export const es = {
       modalTitle: "Pregúntale lo que sea.",
       close: "Cerrar",
     },
+    passwordGate: {
+      error: "Contraseña incorrecta. Inténtalo de nuevo.",
+      eyebrow: "Acceso exclusivo",
+      placeholder: "Contraseña",
+      submit: "Entrar",
+      subtitle: "Ingresa la contraseña para acceder al hub.",
+      title: "Bienvenida",
+    },
     footer: {
       credit: "Hecho con amor, por juliettech",
     },
