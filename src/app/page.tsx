@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Mentor, type MentorHandle } from "@/components/mentor";
+import { PasswordGate } from "@/components/password-gate";
 import { QuizBanner } from "@/components/quiz/quiz-banner";
 import { QuizShell } from "@/components/quiz/quiz-shell";
 import { TutorialsModal } from "@/components/tutorials-modal";
@@ -44,6 +45,7 @@ export default function Page() {
   }, [isMentorOpen, isQuizOpen, isTutorialsOpen]);
 
   return (
+    <PasswordGate>
     <main className="relative overflow-hidden bg-(--card)">
       <div className="absolute inset-x-0 top-0 -z-10 h-152 bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.44),transparent_48%)]" />
 
@@ -418,5 +420,6 @@ export default function Page() {
         </div>
       ) : null}
     </main>
+    </PasswordGate>
   );
 }
