@@ -180,6 +180,11 @@ export const es = {
       task: "Recopilar documentos abrir tu cuenta de inversion",
       href: "https://www.interactivebrokers.com/en/general/what-you-need-sb.php",
     },
+    {
+      date: "Viernes, 15/05",
+      session: "Play time: Abrir tu cuenta de inversion",
+      task: "Encuentra una accion o fondo que te guste para compartir con la clase el Lunes.",
+    },
   ],
   supportStack: [
     {
