@@ -202,7 +202,7 @@ export const es = {
     {
       title: "Grabaciones",
       copy: "Ponte al día con lo que hemos cubierto.",
-      href: "https://drive.google.com/drive/folders/1CwsYGcedvTHClSr_rDtEzciGUwJ96ajH?usp=sharing",
+      href: "https://drive.google.com/drive/folders/1d39YYs5NwKGnKtvW9otKT8KjSq7ndWZJ?usp=sharing",
       label: "Abrir",
     },
     {
