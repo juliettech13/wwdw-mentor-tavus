@@ -264,6 +264,30 @@ export const es = {
       href: "https://juliettech.notion.site/wwdw-recurrent-investments-ibkr",
     },
     {
+      id: "drip",
+      title: "Qué es el DRIP y cómo activarlo en IBKR?",
+      summary:
+        "Aprende a reinvertir tus dividendos automáticamente para potenciar el interés compuesto — sin hacer nada extra cada mes.",
+      platform: "IBKR",
+      category: "Estrategia",
+      minutes: 10,
+      swatch: "periwinkle" as const,
+      glyph: "◎",
+      href: "https://juliettech.notion.site/wwdw-drip",
+    },
+    {
+      id: "ibkr-global",
+      title: "Como tradear globalmente en IBKR?",
+      summary:
+        "Cómo comprar acciones y ETFs en mercados internacionales desde IBKR — bolsas globales, conversión de divisas y qué considerar al invertir fuera de EE.UU.",
+      platform: "IBKR",
+      category: "Trading",
+      minutes: 15,
+      swatch: "mint" as const,
+      glyph: "↗",
+      href: "https://juliettech.notion.site/wwdw-worldwide-trading",
+    },
+    {
       id: "psicologia-dinero",
       title: "La Psicología del Dinero",
       summary:
