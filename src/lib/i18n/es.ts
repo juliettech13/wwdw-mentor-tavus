@@ -2,7 +2,6 @@ export const es = {
   ui: {
     nav: {
       title: "Wealthy Women Don't Wait",
-      calendarCta: "Subscríbete al calendario",
     },
     hero: {
       headline: "Hola Inversionista",
@@ -10,7 +9,6 @@ export const es = {
       courseName: "Wealthy Women Don't Wait",
       descriptionSuffix:
         "— donde encontrarás todo lo que necesitas para empezar a invertir.",
-      cta: "Cuándo es la próxima clase?",
     },
     curriculum: {
       eyebrow: "Calendario",
@@ -20,7 +18,7 @@ export const es = {
       eyebrow: "To-Do",
       title: "Tareas",
       description:
-        "De nada sirve la teoria si no la aplicamos. Nueva tarea después de cada clase.",
+        "De nada sirve la teoría si no la aplicamos. Nueva tarea después de cada clase.",
       badgeSingular: "Tarea",
       badgePlural: "Tareas",
       tableDate: "Fecha",
@@ -114,6 +112,140 @@ export const es = {
       tutorialLabel: "/ Recurso",
       externalLabel: "Externo",
     },
+    investorsClub: {
+      back: "← Volver al hub",
+      banner: {
+        headline: "Investors Club 💰",
+        proof: "Basado en el programa Wealthy Women Don't Wait",
+        sub: "Por que mi yo jubilada no acepta excusas.",
+        title: "Quieres seguir invirtiendo post-curso?",
+      },
+      cta: "Únete al Investors Club",
+      ctaFinal: "Únete ahora →",
+      discountBanner: 'Usa el código "WWDW" para obtener el descuento',
+      features: {
+        eyebrow: "Todo incluido",
+        items: [
+          { emoji: "📅", label: "1 Tema/Mes * 3x", value: "" },
+          { emoji: "⭐", label: "1 Masterclass/Mes", value: "($65+)" },
+          { emoji: "👩‍🏫", label: "1 Office Hours c/ Jules", value: "($/315h)" },
+          { emoji: "🌍", label: "Comunidad", value: "($35/m)" },
+          { emoji: "🤸", label: "65% Off en 1:1 con Jules", value: "($500/h)" },
+          {
+            emoji: "💌",
+            label: "2x Deep Dives & Market TLDR",
+            value: "($31/m)",
+          },
+          { emoji: "📈", label: "5+ Acciones/Mes", value: "($150+/m)" },
+          { emoji: "👸", label: "Guest Speakers", value: "($200+/h)" },
+          { emoji: "🌳", label: "Librería de Recursos", value: "($100+)" },
+        ],
+        title: "Qué incluye?",
+      },
+      forYou: {
+        items: [
+          {
+            after: " después del curso",
+            before: "Quieres ",
+            bold: "mantenerte activa",
+            emoji: "🚀",
+          },
+          {
+            after: "",
+            before: "Quieres seguir ",
+            bold: "creciendo tu portafolio",
+            emoji: "💰",
+          },
+          {
+            after: " implementar",
+            before: "Sientes que ",
+            bold: "sola te va a costar",
+            emoji: "💡",
+          },
+          {
+            after: '?"',
+            before: "Esto tiene sentido o es ",
+            bold: "scam",
+            emoji: "🙏",
+          },
+          {
+            after: " que invierte",
+            before: "Ser parte de un ",
+            bold: "club de mujeres",
+            emoji: "👯",
+          },
+          {
+            after: "",
+            before: "Quieres seguir ",
+            bold: "puliendo tu estrategia",
+            emoji: "✍️",
+          },
+          {
+            after: " en AI, salud y sostenibilidad",
+            before: "Te interesa ",
+            bold: "profundizar",
+            emoji: "👩‍💻",
+          },
+          {
+            after: " no sea tabú",
+            before: "Que ",
+            bold: "hablar de plata",
+            emoji: "💸",
+          },
+        ],
+        title: "Investors Club es para tí si...",
+      },
+      hero: {
+        eyebrow: "Post-Curso · Comunidad de Inversionistas",
+        headline: "Investors Club 💰",
+        subheadline:
+          "Diseñado para mujeres que quieren continuar creciendo su portafolio.",
+      },
+      pricing: {
+        badge: "Early Bird",
+        ctaHere: "Únete aquí →",
+        eyebrow: "Precio",
+        sectionTitle: "Cuánto cuesta?",
+        originalPrice: "$445",
+        originalPriceLabel: "Precio regular después del 31 de mayo:",
+        price: "$365",
+        strikePrice: "$455",
+        title: "Investors Club 💰",
+        validUntil: "Válido hasta este domingo 31 de mayo",
+        valueTotal: "$1,396+",
+        valueTotalLabel: "Valor total si lo compraras por separado:",
+      },
+      schedule: {
+        eyebrow: "Calendario",
+        months: [
+          {
+            topics: [
+              "AI hype or bubble?",
+              "ETFs enfocados en AI y data centers",
+              "Dashboards & tools",
+              "Robo-advisors?",
+            ],
+          },
+          {
+            topics: [
+              "Biotech, healthtech, o wellness?",
+              "Acciones de biotech",
+              "Wellness & longevity trends",
+              "ETFs de salud global",
+            ],
+          },
+          {
+            topics: [
+              "ESG: qué significa para tu portafolio?",
+              "Energía renovable como inversión",
+              "Clean tech & impact funds",
+              "Cómo medir tu huella financiera?",
+            ],
+          },
+        ],
+        title: "Qué vamos a explorar?",
+      },
+    },
   },
   sessions: [
     {
@@ -124,7 +256,7 @@ export const es = {
     {
       date: "Miércoles, 13/05",
       title: "Acciones, fondos y mercados públicos",
-      note: "¿Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
+      note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
     },
     {
       date: "Viernes, 15/05",
@@ -175,15 +307,15 @@ export const es = {
       href: "https://www.nerdwallet.com/investing/calculators/retirement-calculator",
     },
     {
-      date: "Miercoles, 13/05",
-      session: "Mercado publico, acciones y fondos",
-      task: "Recopilar documentos abrir tu cuenta de inversion",
+      date: "Miércoles, 13/05",
+      session: "Mercado público, acciones y fondos",
+      task: "Recopilar documentos abrir tu cuenta de inversión",
       href: "https://www.interactivebrokers.com/en/general/what-you-need-sb.php",
     },
     {
       date: "Viernes, 15/05",
-      session: "Play time: Abrir tu cuenta de inversion",
-      task: "Encuentra una accion o fondo que te guste para compartir con la clase el Lunes.",
+      session: "Play time: Abrir tu cuenta de inversión",
+      task: "Encuentra una acción o fondo que te guste para compartir con la clase el Lunes.",
     },
   ],
   supportStack: [
@@ -277,7 +409,7 @@ export const es = {
     },
     {
       id: "ibkr-global",
-      title: "Como tradear globalmente en IBKR?",
+      title: "Cómo tradear globalmente en IBKR?",
       summary:
         "Cómo comprar acciones y ETFs en mercados internacionales desde IBKR — bolsas globales, conversión de divisas y qué considerar al invertir fuera de EE.UU.",
       platform: "IBKR",
@@ -617,7 +749,7 @@ export const es = {
       },
       {
         text: "Qué significa emocionalmente para ti perder dinero?",
-        sub: "Imagina que perdiste $500 que habías invertido. ¿Qué surge?",
+        sub: "Imagina que perdiste $500 que habías invertido. Qué surge?",
         opts: [
           {
             text: "Me devastaría. Lo pensaría constantemente y sentiría fracaso.",

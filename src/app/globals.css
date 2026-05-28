@@ -44,6 +44,8 @@
   --chip-avoid-border: rgba(158, 32, 34, 0.25);
   --chip-avoid-bg: rgba(247, 204, 215, 0.45);
   --chip-avoid-text: #7a1c1e;
+  --investors-ai: #9e2022;
+  --investors-teal: #078073;
 }
 
 * {
