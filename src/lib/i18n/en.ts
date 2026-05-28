@@ -1,19 +1,17 @@
 export const en = {
   ui: {
     nav: {
-      title: "Wealthy Women Don’t Wait",
-      calendarCta: 'Subscribe to calendar',
+      title: "Wealthy Women Don't Wait",
     },
     hero: {
       headline: 'Hello Investor',
       descriptionPrefix: 'Welcome to the course hub for',
-      courseName: "Wealthy Women Don’t Wait",
+      courseName: "Wealthy Women Don't Wait",
       descriptionSuffix: '- curriculum, resources, and an AI mentor to answer any questions you have.',
-      cta: "When’s the next class?",
     },
     curriculum: {
       eyebrow: 'Curriculum Calendar',
-      title: "What we’ll learn",
+      title: "What we'll learn",
     },
     homework: {
       eyebrow: 'Cohort Assignments',
@@ -110,6 +108,95 @@ export const en = {
       close: 'Close',
       tutorialLabel: '/ Resource',
       externalLabel: 'External',
+    },
+    investorsClub: {
+      back: '← Back to hub',
+      banner: {
+        headline: 'Feed your inner grandma',
+        proof: 'Built on the Wealthy Women Don\'t Wait program',
+        sub: 'Every dollar you put into your portfolio today is your future grandma raising a glass. Investing for retirement isn\'t boring — it\'s building the richest, freest, most delicious version of yourself. And that\'s better done together.',
+        title: 'Want to keep investing after the course?',
+      },
+      cta: 'Join the Investors Club',
+      ctaFinal: 'Join now →',
+      discountBanner: 'Use code "WWDW" for a discount',
+      features: {
+        eyebrow: "What's included",
+        items: [
+          { emoji: '📅', label: '1 theme/month * 3x', value: '' },
+          { emoji: '⭐', label: '1 Masterclass/Month', value: '($65+)' },
+          { emoji: '👩‍🏫', label: '1 Office Hours w/ Jules', value: '($/315h)' },
+          { emoji: '🌍', label: 'Community', value: '($35/m)' },
+          { emoji: '🤸', label: '65% off 1:1 with Jules', value: '($500/h)' },
+          { emoji: '💌', label: '2x Deep Dives & Market TLDR', value: '($31/m)' },
+          { emoji: '📈', label: '5+ stocks/month', value: '($150+/m)' },
+          { emoji: '👸', label: 'Guest Speakers', value: '($200+/h)' },
+          { emoji: '🌳', label: 'Resource Library', value: '($100+)' },
+        ],
+        title: 'Everything you get',
+      },
+      forYou: {
+        items: [
+          { after: ' after the course', before: 'You want to ', bold: 'stay active', emoji: '🚀' },
+          { after: '', before: 'Keep ', bold: 'growing your portfolio', emoji: '💰' },
+          { after: ' alone', before: 'You feel it\'ll cost more to do ', bold: 'it', emoji: '💡' },
+          { after: '?"', before: 'Somewhere to ask "is this a ', bold: 'scam', emoji: '🙏' },
+          { after: ' that invests', before: 'Be part of a ', bold: 'women\'s club', emoji: '👯' },
+          { after: '', before: 'Keep ', bold: 'refining your strategy', emoji: '✍️' },
+          { after: ' on AI, health & sustainability', before: 'You want to ', bold: 'go deeper', emoji: '👩‍💻' },
+          { after: " isn't taboo", before: 'A group where ', bold: 'talking money', emoji: '💸' },
+        ],
+        title: "Investors Club is for you if...",
+      },
+      hero: {
+        eyebrow: 'Post-Course · Investor Community',
+        headline: 'Investors Club 💰',
+        subheadline: 'For women who finished the course and want to keep growing their portfolio.',
+      },
+      pricing: {
+        badge: 'Early Bird',
+        ctaHere: 'Join here →',
+        eyebrow: 'Pricing',
+        sectionTitle: 'How much does it cost?',
+        originalPrice: '$445',
+        originalPriceLabel: 'Regular price after May 31:',
+        price: '$365',
+        strikePrice: '$455',
+        title: 'Investors Club 💰',
+        validUntil: 'Valid until Sunday May 31',
+        valueTotal: '$1,396+',
+        valueTotalLabel: 'Retail value if bought separately:',
+      },
+      schedule: {
+        eyebrow: 'Calendar',
+        months: [
+          {
+            topics: [
+              'ChatGPT for stock analysis',
+              'AI-focused ETFs',
+              'Automate your portfolio',
+              'Robo-advisors: worth it?',
+            ],
+          },
+          {
+            topics: [
+              'Pharma & biotech: how to invest',
+              'Mental health companies on the market',
+              'Wellness & longevity trends',
+              'Global health ETFs',
+            ],
+          },
+          {
+            topics: [
+              'ESG: what it means for your portfolio',
+              'Renewable energy as an investment',
+              'Clean tech & impact funds',
+              'Measuring your financial footprint',
+            ],
+          },
+        ],
+        title: "What we'll explore",
+      },
     },
   },
   sessions: [

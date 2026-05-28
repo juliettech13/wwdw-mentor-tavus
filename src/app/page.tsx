@@ -1,19 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Mentor, type MentorHandle } from "@/components/mentor";
 import { PasswordGate } from "@/components/password-gate";
 import { QuizBanner } from "@/components/quiz/quiz-banner";
 import { QuizShell } from "@/components/quiz/quiz-shell";
+import { SiteFooter } from "@/components/site-footer";
 import { TutorialsModal } from "@/components/tutorials-modal";
 
 import { locale } from "@/lib/i18n";
-import { footerLinks } from "@/lib/constants/footer-links";
 import { homework } from "@/lib/constants/homework";
 import { sessions } from "@/lib/constants/sessions";
 import { mentorPrompts } from "@/lib/constants/mentor-prompts";
 import { supportStack } from "@/lib/constants/support-stack";
+
+const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?prefilled_promo_code=wwdw';
 
 const t = locale.ui;
 
@@ -52,14 +55,12 @@ export default function Page() {
       <div className="w-full border-b border-(--forest) bg-(--lilac-bar)">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-9 text-sm uppercase tracking-[0.24em] text-white sm:px-8 lg:px-10">
           <h4>{t.nav.title}</h4>
-          <a
-            href="https://lu.ma/wealthy-women-v2"
-            target="_blank"
-            rel="noreferrer noopener"
+          <Link
+            href="/investors-club"
             className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
           >
-            {t.nav.calendarCta}
-          </a>
+            {t.investorsClub.cta}
+          </Link>
         </div>
       </div>
 
@@ -81,15 +82,13 @@ export default function Page() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="https://lu.ma/wealthy-women-v2"
-                target="_blank"
-                rel="noreferrer noopener"
+              <Link
+                href="/investors-club"
                 style={{ color: "white" }}
                 className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
               >
-                {t.hero.cta}
-              </a>
+                {t.investorsClub.cta}
+              </Link>
             </div>
           </div>
 
@@ -109,36 +108,77 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        id="curriculum"
-        className="border-b border-(--forest) bg-(--paper-strong) py-16"
-      >
+      <section className="border-b border-(--forest) bg-(--forest) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                {t.curriculum.eyebrow}
-              </p>
-              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                {t.curriculum.title}
-              </h2>
-            </div>
-          </div>
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            {sessions.map((session) => (
-              <article
-                key={session.title}
-                className="rounded-[1.75rem] border border-(--border) bg-(--card-strong) p-5"
+            {/* Left: pricing card */}
+            <div className="order-2 rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm lg:order-1">
+              {/* Feature list */}
+              <div className="mb-6 space-y-3">
+                {t.investorsClub.features.items.map((feature, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span aria-hidden="true" className="shrink-0 text-lg leading-none">
+                      {feature.emoji}
+                    </span>
+                    <span className="text-sm text-white/75">{feature.label}</span>
+                    {feature.value ? (
+                      <span className="ml-auto text-xs font-bold text-(--mustard) line-through decoration-(--mustard)">
+                        {feature.value}
+                      </span>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+
+              {/* Early Bird badge above price row */}
+              <div className="mb-2">
+                <span className="rounded-full border border-(--mustard)/60 bg-(--mustard)/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-(--mustard)">
+                  {t.investorsClub.pricing.badge}
+                </span>
+              </div>
+
+              {/* Current price (left) + total value (right) on same row */}
+              <div className="mb-1 flex items-baseline justify-between gap-4">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display text-5xl font-bold text-white">
+                    {t.investorsClub.pricing.price}
+                  </span>
+                  <span className="font-display text-2xl font-bold text-white/40 line-through">
+                    {t.investorsClub.pricing.strikePrice}
+                  </span>
+                </div>
+                <span className="font-display text-3xl font-bold text-(--mustard) line-through decoration-(--mustard)">
+                  {t.investorsClub.pricing.valueTotal}
+                </span>
+              </div>
+              <p className="mb-7 text-sm font-semibold text-white/80">
+                {t.investorsClub.pricing.validUntil}
+              </p>
+
+              <a
+                href={STRIPE_URL}
+                rel="noreferrer noopener"
+                target="_blank"
+                className="flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition hover:-translate-y-0.5 hover:brightness-110"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--rose-deep)">
-                  {session.date}
-                </p>
-                <h3 className="mt-3 font-display text-3xl leading-tight text-(--forest)">
-                  {session.title}
-                </h3>
-              </article>
-            ))}
+                {t.investorsClub.cta} →
+              </a>
+            </div>
+
+            {/* Right: messaging */}
+            <div className="order-1 flex flex-col gap-6 lg:order-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--mustard)">
+                {t.investorsClub.hero.eyebrow}
+              </p>
+              <h2 className="font-display text-6xl leading-[0.92] tracking-[-0.04em] text-white sm:text-7xl">
+                {t.investorsClub.banner.headline}
+              </h2>
+              <p className="max-w-lg text-xl leading-8 text-white/75">
+                {t.investorsClub.banner.sub}
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -245,6 +285,40 @@ export default function Page() {
         </div>
       </section>
 
+      <section
+        id="curriculum"
+        className="border-b border-(--forest) bg-(--paper-strong) py-16"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
+                {t.curriculum.eyebrow}
+              </p>
+              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+                {t.curriculum.title}
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {sessions.map((session) => (
+              <article
+                key={session.title}
+                className="rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-5"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--rose-deep)">
+                  {session.date}
+                </p>
+                <h3 className="mt-3 font-display text-3xl leading-tight text-(--forest)">
+                  {session.title}
+                </h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <QuizBanner onOpen={() => setIsQuizOpen(true)} />
 
       <section className="border-b border-(--forest) bg-(--paper-strong) py-16">
@@ -299,41 +373,7 @@ export default function Page() {
         </div>
       </section>
 
-      <footer className="bg-(--forest) py-16 text-(--paper)">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div className="space-y-6">
-            <Image
-              src="/images/logo-small.webp"
-              alt="Logo"
-              width={72}
-              height={72}
-              className="h-14 w-auto"
-            />
-
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
-                {t.footer.credit}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-6">
-            {footerLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={item.label}
-                title={item.label}
-                className="footer-social-link transition"
-              >
-                <span>{item.icon}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {isTutorialsOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
