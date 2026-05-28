@@ -174,10 +174,10 @@ export default function InvestorsClubPage() {
               {t.schedule.title}
             </h2>
           </div>
-          <div className="overflow-x-auto rounded-[1.75rem] border border-(--forest) bg-(--background)">
-            <div className="min-w-[480px] grid grid-cols-3 divide-x divide-(--forest)">
+          <div className="lg:overflow-x-auto lg:rounded-[1.75rem] lg:border lg:border-(--forest) lg:bg-(--background)">
+            <div className="flex flex-col gap-4 lg:min-w-[480px] lg:grid lg:grid-cols-3 lg:divide-x lg:divide-(--forest) lg:gap-0">
               {SCHEDULE_MONTHS.map((month, idx) => (
-                <div key={month.number} className="flex flex-col">
+                <div key={month.number} className="flex flex-col overflow-hidden rounded-[1.75rem] border border-(--forest) bg-(--background) lg:rounded-none lg:border-0">
                   {/* Solid top color bar */}
                   <div className="h-5" style={{ backgroundColor: month.color }} />
 
