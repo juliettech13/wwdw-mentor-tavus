@@ -8,6 +8,18 @@ import { locale } from '@/lib/i18n';
 export const metadata: Metadata = {
   title: "Investors Club · Wealthy Women Don't Wait",
   description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+  openGraph: {
+    title: "Investors Club · Wealthy Women Don't Wait",
+    description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Investors Club · Wealthy Women Don't Wait",
+    description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+    images: ['/og-image.png'],
+  },
 };
 
 const t = locale.ui.investorsClub;
