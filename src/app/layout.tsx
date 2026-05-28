@@ -16,19 +16,27 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+  ),
   title: "Wealthy Women Don't Wait",
   description:
     "A playful course hub for Wealthy Women Don't Wait, with curriculum highlights, resource shortcuts, and direct access to your Tavus AI investing mentor.",
-  icons: {
-    icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.ico' },
-    ],
-    apple: '/android-chrome-192x192.png',
-    other: [
-      { rel: 'mask-icon', url: '/favicon-32x32.png' },
-    ],
+  openGraph: {
+    title: "Wealthy Women Don't Wait",
+    description:
+      "A playful course hub for Wealthy Women Don't Wait, with curriculum highlights, resource shortcuts, and direct access to your Tavus AI investing mentor.",
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Wealthy Women Don't Wait",
+    description:
+      "A playful course hub for Wealthy Women Don't Wait, with curriculum highlights, resource shortcuts, and direct access to your Tavus AI investing mentor.",
+    images: ['/og-image.png'],
   },
 };
 
