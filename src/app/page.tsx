@@ -131,21 +131,11 @@ export default function Page() {
                 ))}
               </div>
 
-              {/* Early Bird badge above price row */}
-              <div className="mb-2">
-                <span className="rounded-full border border-(--mustard)/60 bg-(--mustard)/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-(--mustard)">
-                  {t.investorsClub.pricing.badge}
-                </span>
-              </div>
-
               {/* Current price (left) + total value (right) on same row */}
               <div className="mb-1 flex items-baseline justify-between gap-4">
                 <div className="flex items-baseline gap-3">
                   <span className="font-display text-5xl font-bold text-white">
                     {t.investorsClub.pricing.price}
-                  </span>
-                  <span className="font-display text-2xl font-bold text-white/40 line-through">
-                    {t.investorsClub.pricing.strikePrice}
                   </span>
                 </div>
                 <span className="font-display text-3xl font-bold text-(--mustard) line-through decoration-(--mustard)">
@@ -153,7 +143,7 @@ export default function Page() {
                 </span>
               </div>
               <p className="mb-7 text-sm font-semibold text-white/80">
-                {t.investorsClub.pricing.validUntil}
+                {t.investorsClub.pricing.priceLabel}
               </p>
 
               <a
