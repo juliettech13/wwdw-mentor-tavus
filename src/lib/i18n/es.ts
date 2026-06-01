@@ -145,39 +145,45 @@ export const es = {
       forYou: {
         items: [
           {
-            after: " después del curso",
-            before: "Quieres ",
-            bold: "mantenerte activa",
+            after: " pero quieres aprender más",
+            before: "Ya empezaste a ",
+            bold: "invertir",
             emoji: "🚀",
           },
           {
-            after: "",
-            before: "Quieres seguir ",
-            bold: "creciendo tu portafolio",
+            after: " no sea tabú",
+            before: "Buscas un espacio donde ",
+            bold: "hablar de plata",
+            emoji: "💸",
+          },
+          {
+            after: " para tu retiro",
+            before: "Quieres ",
+            bold: "crecer tu portafolio",
             emoji: "💰",
           },
           {
-            after: " implementar",
-            before: "Sientes que ",
-            bold: "sola te va a costar",
-            emoji: "💡",
-          },
-          {
-            after: '?"',
-            before: "Esto tiene sentido o es ",
-            bold: "scam",
+            after: '',
+            before: "Quieres apoyo validando si un deal ",
+            bold: "es bueno o es un scam",
             emoji: "🙏",
           },
           {
-            after: " que invierte",
-            before: "Ser parte de un ",
+            after: "  pero te va a demorar más llegar lejos",
+            before: "Sabes que ",
+            bold: "puedes sola,",
+            emoji: "💡",
+          },
+          {
+            after: " creciendo sus portafolios",
+            before: "Quieres ser parte de un ",
             bold: "club de mujeres",
             emoji: "👯",
           },
           {
-            after: "",
-            before: "Quieres seguir ",
-            bold: "puliendo tu estrategia",
+            after: " y dejar de improvisar",
+            before: "Quieres desarrollar tu ",
+            bold: "estrategia ",
             emoji: "✍️",
           },
           {
@@ -186,34 +192,24 @@ export const es = {
             bold: "profundizar",
             emoji: "👩‍💻",
           },
-          {
-            after: " no sea tabú",
-            before: "Que ",
-            bold: "hablar de plata",
-            emoji: "💸",
-          },
         ],
         title: "Investors Club es para tí si...",
       },
       hero: {
-        eyebrow: "Post-Curso · Comunidad de Inversionistas",
+        eyebrow: "Comunidad de Inversionistas",
         headline: "Investors Club 💰",
         subheadline:
-          "Diseñado para mujeres que quieren continuar creciendo su portafolio.",
+          "Un Club para mujeres profesionales que quieren crecer su patrimonio, portafolio, y libertad financiera.",
       },
       pricing: {
-        badge: "Early Bird",
         ctaHere: "Únete aquí →",
         eyebrow: "Precio",
+        price: "$445",
+        priceLabel: "Todo incluido, precio válido hasta el domingo 7 de junio",
         sectionTitle: "Cuánto cuesta?",
-        originalPrice: "$445",
-        originalPriceLabel: "Precio regular después del 31 de mayo:",
-        price: "$365",
-        strikePrice: "$455",
         title: "Investors Club 💰",
-        validUntil: "Válido hasta este domingo 31 de mayo",
         valueTotal: "$1,396+",
-        valueTotalLabel: "Valor total si lo compraras por separado:",
+        valueTotalLabel: "Valor total",
       },
       schedule: {
         eyebrow: "Calendario",
@@ -422,7 +418,8 @@ export const es = {
     {
       id: "ibkr-token",
       title: "Cómo obtener tu token de IBKR?",
-      summary: "Genera tu token de acceso en Interactive Brokers para conectar apps y herramientas externas.",
+      summary:
+        "Genera tu token de acceso en Interactive Brokers para conectar apps y herramientas externas.",
       platform: "IBKR",
       category: "Setup",
       minutes: 8,
@@ -433,7 +430,8 @@ export const es = {
     {
       id: "ai-dashboard",
       title: "Configura tu dashboard de AI",
-      summary: "Cómo crear y personalizar un dashboard impulsado por AI para monitorear tus inversiones.",
+      summary:
+        "Cómo crear y personalizar un dashboard impulsado por AI para monitorear tus inversiones.",
       platform: null,
       category: "Herramienta",
       minutes: 15,
@@ -444,7 +442,8 @@ export const es = {
     {
       id: "origin-financial",
       title: "Origin Financial — Gestión patrimonial",
-      summary: "Cómo usar Origin Financial para rastrear tu patrimonio, inversiones y vida financiera en un solo lugar.",
+      summary:
+        "Cómo usar Origin Financial para rastrear tu patrimonio, inversiones y vida financiera en un solo lugar.",
       platform: "Origin",
       category: "Plataforma",
       minutes: 12,

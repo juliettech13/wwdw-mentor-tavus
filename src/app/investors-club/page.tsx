@@ -7,17 +7,17 @@ import { locale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: "Investors Club · Wealthy Women Don't Wait",
-  description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+  description: 'Comunidad para mujeres que quieren crecer su patrimonio.',
   openGraph: {
     title: "Investors Club · Wealthy Women Don't Wait",
-    description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+    description: 'Comunidad para mujeres que quieren crecer su patrimonio.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: "Investors Club · Wealthy Women Don't Wait",
-    description: 'Comunidad post-curso para mujeres que quieren seguir creciendo su portafolio.',
+    description: 'Comunidad para mujeres que quieren crecer su patrimonio.',
     images: ['/og-image.png'],
   },
 };
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const t = locale.ui.investorsClub;
 const navT = locale.ui.nav;
 
-const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?prefilled_promo_code=wwdw';
+const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?';
 
 const SCHEDULE_MONTHS = [
   { color: 'var(--investors-ai)', emoji: '🤖', label: 'AI', month: 'Julio', number: '07' },
@@ -69,7 +69,7 @@ export default function InvestorsClubPage() {
               <h1 className="font-display text-6xl leading-[0.92] tracking-[-0.04em] text-(--forest) sm:text-7xl lg:text-[5.5rem]">
                 {t.hero.headline}
               </h1>
-              <p className="max-w-lg text-xl leading-8 text-(--ink-soft) lg:text-2xl lg:leading-9">
+              <p className="max-w-lg text-lg leading-8 text-(--ink-soft) lg:text-lg lg:leading-9">
                 {t.hero.subheadline}
               </p>
               <a
@@ -98,13 +98,6 @@ export default function InvestorsClubPage() {
         </div>
       </section>
 
-      {/* Discount banner */}
-      <div className="border-b border-(--forest) bg-(--mustard) py-6 text-center">
-        <p className="text-base font-semibold tracking-[0.14em] text-(--forest)">
-          {t.discountBanner}
-        </p>
-      </div>
-
       {/* "Es para tí si..." */}
       <section className="border-b border-(--forest) bg-(--paper-strong) py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -132,15 +125,21 @@ export default function InvestorsClubPage() {
       </section>
 
       {/* Features */}
-      <section className="border-b border-(--forest) bg-(--paper-light) py-16">
+      <section className="border-b border-(--forest) bg-(--forest) py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-8 space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-              {t.features.eyebrow}
-            </p>
-            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-              {t.features.title}
-            </h2>
+          <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/60">
+                {t.features.eyebrow}
+              </p>
+              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-white sm:text-6xl">
+                {t.features.title}
+              </h2>
+            </div>
+            <div className="shrink-0 sm:text-right">
+              <p className="text-sm font-semibold text-white/60">{t.pricing.valueTotalLabel}</p>
+              <p className="font-display text-4xl font-bold text-white">{t.pricing.valueTotal}</p>
+            </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.features.items.map((feature, i) => (
@@ -250,10 +249,10 @@ export default function InvestorsClubPage() {
       </section>
 
       {/* Pricing summary */}
-      <section className="border-b border-(--forest) bg-(--forest) py-16">
+      <section className="border-b border-(--forest) bg-(--mustard) py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-8 text-center">
-            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-white sm:text-6xl">
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
               {t.pricing.sectionTitle}
             </h2>
           </div>
@@ -267,22 +266,9 @@ export default function InvestorsClubPage() {
                 </p>
               </div>
 
-              {/* Regular price */}
-              <div className="flex items-baseline justify-between gap-4 border-t border-(--border) pt-4">
-                <p className="text-sm font-semibold text-(--ink-soft)">{t.pricing.originalPriceLabel}</p>
-                <p className="shrink-0 font-display text-2xl font-bold line-through decoration-(--ink-soft) text-(--ink-soft)">
-                  {t.pricing.originalPrice}
-                </p>
-              </div>
-
-              {/* Current price */}
+              {/* Price */}
               <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
-                <div>
-                  <span className="rounded-full bg-(--mustard) px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-(--forest)">
-                    {t.pricing.badge}
-                  </span>
-                  <p className="mt-1.5 text-xs font-semibold text-(--ink-soft)">{t.pricing.validUntil}</p>
-                </div>
+                <p className="text-sm font-semibold text-(--ink-soft)">{t.pricing.priceLabel}</p>
                 <p className="shrink-0 font-display text-4xl font-bold text-(--forest)">
                   {t.pricing.price}
                 </p>
