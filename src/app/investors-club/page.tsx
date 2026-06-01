@@ -69,7 +69,7 @@ export default function InvestorsClubPage() {
               <h1 className="font-display text-6xl leading-[0.92] tracking-[-0.04em] text-(--forest) sm:text-7xl lg:text-[5.5rem]">
                 {t.hero.headline}
               </h1>
-              <p className="max-w-lg text-xl leading-8 text-(--ink-soft) lg:text-2xl lg:leading-9">
+              <p className="max-w-lg text-lg leading-8 text-(--ink-soft)">
                 {t.hero.subheadline}
               </p>
               <a

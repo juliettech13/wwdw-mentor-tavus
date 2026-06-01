@@ -38,6 +38,7 @@
   --mustard-ghost: rgba(239, 200, 65, 0.20);
   --mustard-faint-border: rgba(239, 200, 65, 0.55);
   --mustard-faint-bg: rgba(239, 200, 65, 0.18);
+  --mustard-pale: #FEF7E4;
   --chip-good-border: rgba(7, 128, 115, 0.28);
   --chip-good-bg: rgba(167, 201, 176, 0.30);
   --chip-good-text: #0a4a3c;
@@ -84,3 +85,13 @@ body {
   color: var(--lilac-bar);
   transform: translateY(-2px);
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
