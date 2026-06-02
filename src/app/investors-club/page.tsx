@@ -11,20 +11,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Investors Club · Wealthy Women Don't Wait",
     description: 'Comunidad para mujeres que quieren crecer su patrimonio.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-investors-club.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: "Investors Club · Wealthy Women Don't Wait",
     description: 'Comunidad para mujeres que quieren crecer su patrimonio.',
-    images: ['/og-image.png'],
+    images: ['/og-investors-club.png'],
   },
 };
 
 const t = locale.ui.investorsClub;
 const navT = locale.ui.nav;
 
+const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/8x24gz0XLebO0fl5AYaIM07';
 const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?';
 
 const SCHEDULE_MONTHS = [
@@ -273,16 +274,34 @@ export default function InvestorsClubPage() {
                   {t.pricing.price}
                 </p>
               </div>
+
+              {/* Payment plan */}
+              <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
+                <p className="text-sm font-semibold text-(--ink-soft)">{t.pricing.paymentPlanLabel}</p>
+                <p className="shrink-0 font-display text-4xl font-bold text-(--forest)">
+                  {t.pricing.paymentPlanInstallment}
+                </p>
+              </div>
             </div>
 
-            <a
-              href={STRIPE_URL}
-              rel="noreferrer noopener"
-              target="_blank"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:brightness-110"
-            >
-              {t.pricing.ctaHere}
-            </a>
+            <div className="mt-8 flex flex-row gap-3">
+              <a
+                href={STRIPE_URL}
+                rel="noreferrer noopener"
+                target="_blank"
+                className="inline-flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:brightness-110"
+              >
+                {t.pricing.ctaHere}
+              </a>
+              <a
+                href={STRIPE_PAYMENT_PLAN_URL}
+                rel="noreferrer noopener"
+                target="_blank"
+                className="inline-flex w-full items-center justify-center rounded-full border border-(--forest) bg-transparent px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--forest) hover:text-white"
+              >
+                {t.pricing.ctaPaymentPlan}
+              </a>
+            </div>
           </div>
         </div>
       </section>
