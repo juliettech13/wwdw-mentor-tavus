@@ -155,7 +155,10 @@ export const en = {
       },
       pricing: {
         ctaHere: 'Join here →',
+        ctaPaymentPlan: 'Payment plan →',
         eyebrow: 'Pricing',
+        paymentPlanInstallment: '$155',
+        paymentPlanLabel: '3-installment payment plan',
         price: '$445',
         priceLabel: 'All included, price valid until Sunday June 7',
         sectionTitle: 'How much does it cost?',

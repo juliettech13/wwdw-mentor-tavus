@@ -203,7 +203,10 @@ export const es = {
       },
       pricing: {
         ctaHere: "Únete aquí →",
+        ctaPaymentPlan: "Plan de pago →",
         eyebrow: "Precio",
+        paymentPlanInstallment: "$155",
+        paymentPlanLabel: "Plan de pago en 3 cuotas",
         price: "$445",
         priceLabel: "Todo incluido, precio válido hasta el domingo 7 de junio",
         sectionTitle: "Cuánto cuesta?",
