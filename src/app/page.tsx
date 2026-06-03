@@ -311,58 +311,6 @@ export default function Page() {
 
       <QuizBanner onOpen={() => setIsQuizOpen(true)} />
 
-      <section className="border-b border-(--forest) bg-(--paper-strong) py-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <aside className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl border border-(--forest) bg-(--card) p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)] backdrop-blur">
-          <div className="mb-3 flex items-center gap-3 border border-(--forest) bg-white/70 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-(--forest)">
-            <span className="h-4 w-4 bg-(--rose)" />
-            <span>{t.mentor.badge}</span>
-            <span className="flex-1 border-t border-(--forest)" />
-            <span className="grid h-5 w-5 place-items-center border border-(--forest) text-[10px]">
-              +
-            </span>
-          </div>
-
-          <div className="relative overflow-hidden border border-(--forest) bg-(--paper)">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_40%),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.18)_100%)]" />
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/images/gloria.webp"
-                alt="Gloria, the AI mentor"
-                fill
-                sizes="(min-width: 1024px) 80rem, 100vw"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/35 to-transparent" />
-
-            <div className="absolute inset-x-0 bottom-6 flex justify-center px-5">
-              <button
-                type="button"
-                onClick={() => setIsMentorOpen(true)}
-                className="inline-flex items-center justify-center gap-3 rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-              >
-                <span className="text-xl leading-none">☏</span>
-                <span>{t.mentor.cta}</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-3 text-sm leading-7 text-(--ink) lg:grid-cols-2">
-            {mentorPrompts.map((prompt) => (
-              <div
-                key={prompt}
-                className="rounded-2xl border border-(--border) bg-white/80 px-4 py-3"
-              >
-                {prompt}
-              </div>
-            ))}
-          </div>
-          </aside>
-        </div>
-      </section>
-
       <SiteFooter />
 
       {isTutorialsOpen ? (

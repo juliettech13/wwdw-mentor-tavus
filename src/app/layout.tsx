@@ -65,6 +65,10 @@ export default function RootLayout({
             gtag('config', 'G-X5YN29Y5GM');
           `}
         </Script>
+        <Script
+          src="https://subscribe-forms.beehiiv.com/attribution.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

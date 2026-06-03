@@ -245,55 +245,271 @@ export const es = {
         title: "Qué vamos a explorar?",
       },
     },
+    landing: {
+      nav: {
+        cta: "Únete al waitlist",
+      },
+      hero: {
+        eyebrow: "De cero a inversionista en 3 semanas",
+        headline: "Wealthy Women Don't Wait",
+        subheadline:
+          "Programa para mujeres rockstars listas para su libertad financiera",
+        cta: "Únete al waitlist →",
+        trustNote: "+50 mujeres ya han tomado el curso",
+        stats: [
+          { number: "10", label: "Clases en vivo" },
+          { number: "3", label: "Semanas" },
+          { number: "24/7", label: "Mentora AI" },
+          { number: "100%", label: "Salen invirtiendo" },
+        ],
+      },
+      pain: {
+        eyebrow: "Te suena familiar?",
+        headline: "Te ha pasado?",
+        items: [
+          '"Sé que tengo que invertir, pero no sé por dónde empezar."',
+          '"Cada vez que me meto a buscar en Google termino más confundida."',
+          '"Empecé pero no pude terminar de abrir mi cuenta de inversión."',
+          '"Siento que es es para gente que ya tiene full plata."',
+          '"Me da miedo perder lo que tengo."',
+          '"Cómo invierto si vivo fuera de USA?"',
+        ],
+      },
+      included: {
+        eyebrow: "Todo lo que incluye",
+        headline: "Qué incluye?",
+        items: [
+          {
+            emoji: "🎓",
+            title: "10 Clases en vivo",
+            sub: "Disponibles hasta 1 año post-curso.",
+          },
+          {
+            emoji: "📋",
+            title: "Tareas prácticas",
+            sub: "Por que solo la acción trae claridad.",
+          },
+          {
+            emoji: "📊",
+            title: "Herramientas y AI",
+            sub: "Para diseñar y monitorear tus inversiones.",
+          },
+          {
+            emoji: "📚",
+            title: "Librería de recursos",
+            sub: "Tutoriales, videos, podcasts y libros.",
+          },
+          {
+            emoji: "👩🏻‍💼",
+            title: "Invitados especiales",
+            sub: "Acceso a profesionales de la industria.",
+          },
+          {
+            emoji: "🤖",
+            title: "Mentora AI",
+            sub: "Ex-alumni, 24/7 para ti y tus dudas.",
+          },
+          {
+            emoji: "🔍",
+            title: "Quiz de riesgo",
+            sub: "Descubre qué tipo de inversionista eres.",
+          },
+          {
+            emoji: "👯‍♀️",
+            title: "Comunidad",
+            sub: "Que rico hablar de plata con otras mujeres.",
+          },
+          {
+            emoji: "🤝",
+            title: "Apoyo",
+            sub: "Buscamos las mejores respuestas para ti.",
+          },
+        ],
+      },
+      curriculum: {
+        eyebrow: "Curriculum",
+        headline: "10 clases. 3 semanas.",
+      },
+      mentor: {
+        eyebrow: "Tu mentora AI, disponible 24/7",
+        headline: "Conoce a Gloria.",
+        sub: "Gloria responde tus preguntas entre clases — sin jargon, sin juicios. Como tener una amiga experta a tu lado en todo momento.",
+        cta: "Habla con Gloria →",
+        prompts: [
+          '"Explícame los ETFs como si tuviera 12 años"',
+          '"Cómo diversifico si solo tengo $500?"',
+          '"Cuál es la diferencia entre una acción y un fondo?"',
+          '"Qué debería revisar antes de la clase de crypto?"',
+        ],
+      },
+      forYou: {
+        eyebrow: "Es para ti si...",
+        headline: "Te estamos buscando 👀",
+        items: [
+          {
+            emoji: "💰",
+            text: "Quieres que tu dinero trabaje para ti",
+          },
+          {
+            emoji: "🤷🏻‍♀️",
+            text: "Te sientes lista, pero no sabes por dónde empezar a invertir",
+          },
+          {
+            emoji: "👯‍♀️",
+            text: "Quieres aprender alado de otras mujeres rockstars",
+          },
+          {
+            emoji: "🚀",
+            text: "Estás lista para tomar acción de tu plata - no solo teoría",
+          },
+          {
+            emoji: "🌎",
+            text: "Hablas español de LATAM o España",
+          },
+        ],
+        notTitle: "Honestamente, no es para ti si...",
+        notItems: [
+          "Buscas hacerte rica de la noche a la mañana.",
+          "Ya tienes años de experiencia invirtiendo.",
+          "No estás dispuesta a comprometerte con el proceso.",
+        ],
+      },
+      instructor: {
+        eyebrow: "Tu instructora",
+        name: "Juliette Chevalier",
+        bio: "Después de 10+ años trabajando como Software Engineer en compañías de AI y crypto, Jules lidera Founder Success en Play Money - una plataforma para 'angel investors'. Aparte de enseñarle a más de 200 profesionales a programar (y ahora a invertir!), Jules tiene una compañía de campamentos para adultos, Adult Camp, y lidera su propio Club de Inversionistas.",
+      },
+      testimonials: {
+        eyebrow: "Lo que dicen las estudiantes",
+        headline: "Ellas lo explican mejor que yo",
+        items: [
+          {
+            quote:
+              "Llegué sin saber absolutamente nada y salí con mi cuenta abierta y mi primer ETF comprado. Jules hace que todo tenga sentido.",
+            name: "María F.",
+            city: "Ciudad de México",
+          },
+          {
+            quote:
+              "Por fin una instructora que habla como humana. Sin jargon, sin condescendencia. El quiz de perfil de riesgo me cambió la forma en que pienso en mi dinero.",
+            name: "Valeria R.",
+            city: "Miami, FL",
+          },
+          {
+            quote:
+              "Gloria, la mentora AI, es increíble. La usé entre clases para mis dudas de crypto y me respondió mejor que cualquier blog.",
+            name: "Daniela M.",
+            city: "Bogotá, Colombia",
+          },
+        ],
+      },
+      pricing: {
+        eyebrow: "Inversión",
+        headline: "Cuánto cuesta?",
+        badge: "Early Bird",
+        validUntil: "Precio por tiempo limitado",
+        price: "$365",
+        strikePrice: "$455",
+        valueLabel: "Valor total incluido:",
+        valueTotal: "$1,200+",
+        cta: "Únete al waitlist →",
+        secure: "🔒 Pago seguro vía Stripe · Garantía de 7 días",
+        items: [
+          "10 clases en vivo + grabaciones permanentes",
+          "Gloria — mentora AI 24/7",
+          "Tareas prácticas por cada clase",
+          "Template de portafolio",
+          "Librería completa de recursos",
+          "Quiz de perfil de inversionista",
+        ],
+      },
+      faq: {
+        eyebrow: "FAQ",
+        headline: "Resolvemos tus dudas.",
+        items: [
+          {
+            q: "Necesito experiencia previa en inversiones?",
+            a: "No. El curso empieza desde cero — fundamentos, vocabulario y todo lo que necesitas para empezar con confianza.",
+          },
+          {
+            q: "Qué pasa si no puedo asistir a una clase en vivo?",
+            a: "Todas las clases quedan grabadas y disponibles de forma permanente. Puedes ponerte al día en tu propio tiempo.",
+          },
+          {
+            q: "Funciona si vivo fuera de EE.UU.?",
+            a: "Sí. Cubrimos cómo invertir desde Latinoamérica, Europa y USA, incluyendo plataformas y consideraciones específicas por país.",
+          },
+          {
+            q: "Cuánto dinero necesito para empezar a invertir?",
+            a: "Puedes empezar con tan poco como $100. El objetivo es darte el conocimiento — el monto lo defines tú.",
+          },
+          {
+            q: "Hay garantía?",
+            a: "Sí. Si no quedas satisfecha, escríbenos en los primeros 7 días y te hacemos un reembolso completo.",
+          },
+          {
+            q: "Cuándo empieza la próxima cohorte?",
+            a: "Regístrate en el waitlist para recibir notificaciones sobre el lanzamiento.",
+          },
+        ],
+      },
+      finalCta: {
+        eyebrow: "Empieza hoy",
+        headline: "Tu yo del futuro ya está invirtiendo.",
+        sub: "La de hoy, cuándo empieza?",
+        cta: "Únete al waitlist →",
+        note: "Solo quedan algunos lugares al precio Early Bird.",
+      },
+    },
   },
   sessions: [
     {
-      date: "Lunes, 11/05",
+      date: "Lunes",
       title: "Inversiones 101: cómo crece el dinero",
       note: "Primero los fundamentos, el pánico después. Las estudiantes mapean su dinero, entienden el interés compuesto y aclaran qué hace realmente la inversión.",
     },
     {
-      date: "Miércoles, 13/05",
+      date: "Miércoles",
       title: "Acciones, fondos y mercados públicos",
       note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
     },
     {
-      date: "Viernes, 15/05",
+      date: "Viernes",
       title: "Práctica: abre tu cuenta + haz tu primera inversión",
       note: "Configuración práctica de corretaje, financiamiento y confianza para el primer trade en lugar de coleccionar pestañas sin fin.",
     },
     {
-      date: "Lunes, 18/05",
+      date: "Lunes",
       title: "DYOR",
       note: "Las estudiantes aprenden a investigar ideas, comparar opciones y tomar decisiones con evidencia, no con corazonadas.",
     },
     {
-      date: "Miércoles, 20/05",
-      title: "Inverstor lifestyle con Valerie Canavaggio",
+      date: "Miércoles",
+      title: "Inverstor lifestyle con Invitada Especial",
       note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
     },
     {
-      date: "Viernes, 22/05",
+      date: "Viernes",
       title: "Práctica: finanzas digitales y crypto",
       note: "Ejecución práctica, no fan fiction de crypto.",
     },
     {
-      date: "Lunes, 25/05",
+      date: "Lunes",
       title: "Cómo invertir en el mercado privado",
       note: "Inversión pre-IPO, vías de acceso y cómo evaluar oportunidades sin dejarse seducir por decks brillantes.",
     },
     {
-      date: "Martes, 26/05",
+      date: "Martes",
       title: "Bonus: mercados inmobiliarios",
       note: "Una conversación con un invitado sobre los mercados inmobiliarios y cómo se ubican junto al resto de tu portafolio.",
     },
     {
-      date: "Miércoles, 27/05",
+      date: "Miércoles",
       title: "Estrategias y principios de inversión",
       note: "Las reglas, los ritmos y los filtros que mantienen tu vida financiera coherente.",
     },
     {
-      date: "Viernes, 29/05",
+      date: "Viernes",
       title: "Práctica: diseña tu portafolio",
       note: "Las estudiantes terminan dando forma a un portafolio que realmente pueden mantener.",
     },
