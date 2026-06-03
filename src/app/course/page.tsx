@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BeehiivForm } from '@/components/beehiiv-form';
 import { SiteFooter } from '@/components/site-footer';
 import { footerLinks } from '@/lib/constants/footer-links';
 import { sessions } from '@/lib/constants/sessions';
@@ -26,9 +27,6 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
 };
-
-const STRIPE_URL =
-  'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?prefilled_promo_code=wwdw';
 
 const STUDENT_LOGOS = [
   { src: '/images/logos/bonita-logo-rojo.avif', alt: 'Bonita' },
@@ -59,14 +57,6 @@ export default function LandingPage() {
           >
             {navT.title}
           </Link>
-          <a
-            href={STRIPE_URL}
-            rel="noreferrer noopener"
-            target="_blank"
-            className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-          >
-            {t.nav.cta}
-          </a>
         </div>
       </nav>
 
@@ -83,20 +73,7 @@ export default function LandingPage() {
                 {t.hero.subheadline}
               </p>
 
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <a
-                  href={STRIPE_URL}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="inline-flex w-fit items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(183,132,173,0.35)] transition hover:-translate-y-0.5 hover:brightness-90"
-                >
-                  {t.hero.cta}
-                </a>
-                <p className="text-sm text-(--ink-soft)">
-                  <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-(--mint)" />
-                  {t.hero.trustNote}
-                </p>
-              </div>
+              <BeehiivForm className="max-w-md" />
 
               <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
                 {t.hero.stats.map((stat) => (
@@ -350,68 +327,7 @@ export default function LandingPage() {
             {t.finalCta.headline}
           </h2>
           <p className="mb-10 text-lg leading-8 text-white/80">{t.finalCta.sub}</p>
-          <a
-            href={STRIPE_URL}
-            rel="noreferrer noopener"
-            target="_blank"
-            className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-10 py-6 text-base font-semibold uppercase tracking-[0.18em] text-(--forest) shadow-[0_16px_40px_rgba(0,0,0,0.2)] transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-          >
-            {t.finalCta.cta}
-          </a>
-          <p className="mt-5 text-sm text-white/60">{t.finalCta.note}</p>
-        </div>
-      </section>
-
-      {/* ── AI Mentor Gloria ── */}
-      <section className="border-b border-(--forest) bg-(--paper) py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-10 space-y-3 text-center">
-              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                {t.mentor.headline}
-              </h2>
-              <p className="mx-auto max-w-xl text-lg leading-8 text-(--ink-soft)">
-                {t.mentor.sub}
-              </p>
-            </div>
-
-            <aside className="relative overflow-hidden rounded-4xl border border-(--forest) bg-(--card) p-3 shadow-[0_30px_80px_rgba(23,53,45,0.12)]">
-              <div className="relative overflow-hidden border border-(--forest)">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_40%),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.18)_100%)]" />
-                <div className="relative aspect-video w-full">
-                  <Image
-                    src="/images/gloria.webp"
-                    alt="Gloria, la mentora AI del curso Wealthy Women Don't Wait"
-                    fill
-                    sizes="(min-width: 1024px) 80rem, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/35 to-transparent" />
-                <div className="absolute inset-x-0 bottom-6 flex justify-center px-5">
-                  <a
-                    href={STRIPE_URL}
-                    rel="noreferrer noopener"
-                    target="_blank"
-                    className="inline-flex items-center justify-center gap-3 rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-                  >
-                    <span className="text-xl leading-none">☏</span>
-                    <span>{t.mentor.cta}</span>
-                  </a>
-                </div>
-              </div>
-              <div className="mt-4 grid gap-3 text-base leading-7 text-(--ink) lg:grid-cols-2">
-                {t.mentor.prompts.map((prompt) => (
-                  <div
-                    key={prompt}
-                    className="rounded-2xl border border-(--border) bg-white/80 px-4 py-3 italic"
-                  >
-                    {prompt}
-                  </div>
-                ))}
-              </div>
-            </aside>
-          </div>
+          <BeehiivForm className="mx-auto max-w-md" />
         </div>
       </section>
 

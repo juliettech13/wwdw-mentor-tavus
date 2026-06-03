@@ -437,7 +437,7 @@ export const es = {
           },
           {
             q: "Funciona si vivo fuera de EE.UU.?",
-            a: "Sí. Cubrimos cómo invertir desde Latinoamérica, incluyendo plataformas y consideraciones específicas por país.",
+            a: "Sí. Cubrimos cómo invertir desde Latinoamérica, Europa y USA, incluyendo plataformas y consideraciones específicas por país.",
           },
           {
             q: "Cuánto dinero necesito para empezar a invertir?",
@@ -449,7 +449,7 @@ export const es = {
           },
           {
             q: "Cuándo empieza la próxima cohorte?",
-            a: "Las fechas se anuncian por newsletter y comunidad. Reserva tu lugar ahora para asegurarlo al precio Early Bird.",
+            a: "Regístrate en el waitlist para recibir notificaciones sobre el lanzamiento.",
           },
         ],
       },
