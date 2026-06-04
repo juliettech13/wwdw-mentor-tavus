@@ -163,7 +163,7 @@ export const es = {
             emoji: "💰",
           },
           {
-            after: '',
+            after: "",
             before: "Quieres apoyo validando si un deal ",
             bold: "es bueno o es un scam",
             emoji: "🙏",
@@ -377,7 +377,7 @@ export const es = {
       instructor: {
         eyebrow: "Tu instructora",
         name: "Juliette Chevalier",
-        bio: "Después de 10+ años trabajando como Software Engineer en compañías de AI y crypto, Jules lidera Founder Success en Play Money - una plataforma para 'angel investors'. Aparte de enseñarle a más de 200 profesionales a programar (y ahora a invertir!), Jules tiene una compañía de campamentos para adultos, Adult Camp, y lidera su propio Club de Inversionistas.",
+        bio: "Después de 10+ años trabajando como Software Engineer en compañías de AI y crypto, Jules hoy lidera Founder Success en Play Money - una plataforma para angel investors. Aparte de enseñarle a más de 200 profesionales a programar (y ahora a invertir!), Jules tiene una compañía de campamentos para adultos, Adult Camp, y corre su propio Club de Inversiones.",
       },
       testimonials: {
         eyebrow: "Lo que dicen las estudiantes",
@@ -385,21 +385,21 @@ export const es = {
         items: [
           {
             quote:
-              "Llegué sin saber absolutamente nada y salí con mi cuenta abierta y mi primer ETF comprado. Jules hace que todo tenga sentido.",
-            name: "María F.",
-            city: "Ciudad de México",
+              "Entrando en el programa nunca tuve dudas de que no seria un power program, pero no me esperaba salir con el nivel de conocimiento que tengo ahora. Aprendimos muchisimo, no solo de inversiones, si no de lifestyle, finanzas y herramientas. El contenido es facil de digerir y las sesiones de workshops ayudan a que tengamos tambien practica en el momento.",
+            name: "Angie",
+            city: "Agente de Viajes. Nómada.",
           },
           {
             quote:
-              "Por fin una instructora que habla como humana. Sin jargon, sin condescendencia. El quiz de perfil de riesgo me cambió la forma en que pienso en mi dinero.",
-            name: "Valeria R.",
-            city: "Miami, FL",
+              "He estado en esta industria de unos años para acá y por fin encontré la persona que me aclarará conceptos tecnicos de una forma clara y sencilla!!!",
+            name: "Yayi",
+            city: "Family Office. Panamá",
           },
           {
             quote:
-              "Gloria, la mentora AI, es increíble. La usé entre clases para mis dudas de crypto y me respondió mejor que cualquier blog.",
-            name: "Daniela M.",
-            city: "Bogotá, Colombia",
+              "El curso que todas las mujeres debemos tomar. Jules explica todo de una forma muy fácil de entender y hace excelente uso del tiempo durante sus clases. Jamás imaginé que quedaría con ganas de aprender más sobre estos temas. Gracias, Jules!",
+            name: "Zaida",
+            city: "Emprendedora. Panamá",
           },
         ],
       },
@@ -441,7 +441,7 @@ export const es = {
           },
           {
             q: "Cuánto dinero necesito para empezar a invertir?",
-            a: "Puedes empezar con tan poco como $100. El objetivo es darte el conocimiento — el monto lo defines tú.",
+            a: "Puedes empezar con tan poco como $100. El objetivo es darte el conocimiento - el monto lo decides tú.",
           },
           {
             q: "Hay garantía?",
@@ -449,14 +449,14 @@ export const es = {
           },
           {
             q: "Cuándo empieza la próxima cohorte?",
-            a: "Regístrate en el waitlist para recibir notificaciones sobre el lanzamiento.",
+            a: "Regístrate al correo para recibir notificaciones sobre el lanzamiento.",
           },
         ],
       },
       finalCta: {
         eyebrow: "Empieza hoy",
-        headline: "Tu yo del futuro ya está invirtiendo.",
-        sub: "La de hoy, cuándo empieza?",
+        headline: "Wealthy Women. Don't Wait.",
+        sub: "Todo sea por la buena vida de la yo de 70 años.",
         cta: "Únete al waitlist →",
         note: "Solo quedan algunos lugares al precio Early Bird.",
       },
