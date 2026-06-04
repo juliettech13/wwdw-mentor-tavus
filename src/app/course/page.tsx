@@ -95,7 +95,7 @@ export default function LandingPage() {
             <div className="relative w-full max-w-sm justify-self-end overflow-hidden rounded-[2rem] border border-(--forest) p-4 shadow-[0_25px_60px_rgba(23,53,45,0.14)] lg:max-w-none">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
                 <Image
-                  src="/images/investors-club-hero.jpg"
+                  src="/images/wwdw-hero.png"
                   alt="Wealthy Women Don't Wait — comunidad de mujeres inversionistas"
                   fill
                   priority
@@ -323,7 +323,7 @@ export default function LandingPage() {
       {/* ── Final CTA ── */}
       <section className="border-b border-(--forest) bg-(--lilac-bar) py-24">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
-          <h2 className="mx-auto mb-3 max-w-3xl font-display text-6xl leading-[0.92] tracking-[-0.04em] text-white sm:text-7xl lg:text-[6rem]">
+          <h2 className="mx-auto mb-3 font-display text-[clamp(1.125rem,6.5vw,6rem)] leading-[0.92] tracking-[-0.04em] whitespace-nowrap text-white">
             {t.finalCta.headline}
           </h2>
           <p className="mb-10 text-lg leading-8 text-white/80">{t.finalCta.sub}</p>

@@ -70,6 +70,11 @@ body {
   a {
     color: inherit;
   }
+
+  details,
+  summary {
+    font-family: inherit;
+  }
 }
 
 ::selection {
