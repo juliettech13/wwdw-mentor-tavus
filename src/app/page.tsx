@@ -1,405 +1,337 @@
-"use client";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { Mentor, type MentorHandle } from "@/components/mentor";
-import { PasswordGate } from "@/components/password-gate";
-import { QuizBanner } from "@/components/quiz/quiz-banner";
-import { QuizShell } from "@/components/quiz/quiz-shell";
-import { SiteFooter } from "@/components/site-footer";
-import { TutorialsModal } from "@/components/tutorials-modal";
+import { BeehiivForm } from '@/components/beehiiv-form';
+import { SiteFooter } from '@/components/site-footer';
+import { footerLinks } from '@/lib/constants/footer-links';
+import { sessions } from '@/lib/constants/sessions';
+import { locale } from '@/lib/i18n';
 
-import { locale } from "@/lib/i18n";
-import { homework } from "@/lib/constants/homework";
-import { sessions } from "@/lib/constants/sessions";
-import { mentorPrompts } from "@/lib/constants/mentor-prompts";
-import { supportStack } from "@/lib/constants/support-stack";
+export const metadata: Metadata = {
+  title: "Wealthy Women Don't Wait — El Curso",
+  description:
+    'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+  openGraph: {
+    title: "Wealthy Women Don't Wait — El Curso",
+    description:
+      'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Wealthy Women Don't Wait — El Curso",
+    description:
+      'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+    images: ['/og-image.png'],
+  },
+};
 
-const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?prefilled_promo_code=wwdw';
+const STUDENT_LOGOS = [
+  { src: '/images/logos/bonita-logo-rojo.avif', alt: 'Bonita' },
+  { src: '/images/logos/chanel-logo.png', alt: 'Chanel' },
+  { src: '/images/logos/dorben.webp', alt: 'Dorben' },
+  { src: '/images/logos/fenomena.avif', alt: 'Fenomena' },
+  { src: '/images/logos/mama-jungla.webp', alt: 'Mamá Jungla' },
+  { src: '/images/logos/ministerio-ambiente.png', alt: 'Ministerio de Ambiente' },
+  { src: '/images/logos/mira-logo.webp', alt: 'Mira Project School' },
+  { src: '/images/logos/museo-del-canal.png', alt: 'Museo del Canal' },
+  { src: '/images/logos/play-money-logo.webp', alt: 'Play Money' },
+  { src: '/images/logos/real-madrid.png', alt: 'Real Madrid' },
+  { src: '/images/logos/rev.png', alt: 'Rev On Demand' },
+];
 
-const t = locale.ui;
+const t = locale.ui.landing;
+const navT = locale.ui.nav;
 
-export default function Page() {
-  const [isMentorOpen, setIsMentorOpen] = useState(false);
-  const [isQuizOpen, setIsQuizOpen] = useState(false);
-  const [isTutorialsOpen, setIsTutorialsOpen] = useState(false);
-  const mentorRef = useRef<MentorHandle>(null);
-
-  const requestMentorClose = async () => {
-    const didClose = await mentorRef.current?.requestClose();
-
-    if (didClose ?? true) {
-      setIsMentorOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (!isMentorOpen && !isQuizOpen && !isTutorialsOpen) {
-      return;
-    }
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isMentorOpen, isQuizOpen, isTutorialsOpen]);
-
+export default function LandingPage() {
   return (
-    <PasswordGate>
-    <main className="relative overflow-hidden bg-(--card)">
-      <div className="absolute inset-x-0 top-0 -z-10 h-152 bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.44),transparent_48%)]" />
-
-      <div className="w-full border-b border-(--forest) bg-(--lilac-bar)">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-9 text-sm uppercase tracking-[0.24em] text-white sm:px-8 lg:px-10">
-          <h4>{t.nav.title}</h4>
+    <main className="relative overflow-hidden">
+      {/* ── Sticky nav ── */}
+      <nav className="sticky top-0 z-50 w-full border-b border-(--forest) bg-(--lilac-bar)">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
           <Link
-            href="/investors-club"
-            className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+            href="/"
+            className="text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:opacity-80"
           >
-            {t.investorsClub.cta}
+            {navT.title}
           </Link>
         </div>
-      </div>
+      </nav>
 
-      <section className="border-b border-(--forest) pb-16 pt-6">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
-          <div className="flex h-full flex-col justify-center space-y-6">
-            <div className="space-y-4">
-              <h1 className="max-w-4xl font-display text-6xl leading-[0.92] tracking-[-0.04em] text-(--forest) sm:text-7xl lg:text-[6rem]">
+      {/* ── Hero ── */}
+      <section className="relative border-b border-(--forest) bg-(--card) pb-16 pt-12 lg:pb-24 lg:pt-20">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[52rem] bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.40),transparent_52%)]" />
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
+            <div className="flex flex-col gap-7">
+              <h1 className="max-w-2xl font-display text-7xl leading-[0.88] tracking-[-0.04em] text-(--forest) sm:text-8xl lg:text-[7.5rem]">
                 {t.hero.headline}
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-(--ink-soft)">
-                {t.hero.descriptionPrefix}{" "}
-                <span className="font-semibold text-(--forest)">
-                  {t.hero.courseName}
-                </span>{" "}
-                {t.hero.descriptionSuffix}
+              <p className="max-w-xl text-lg leading-8 text-(--ink-soft)">
+                {t.hero.subheadline}
               </p>
-            </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/investors-club"
-                style={{ color: "white" }}
-                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--lilac-bar) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:brightness-90"
-              >
-                {t.investorsClub.cta}
-              </Link>
-            </div>
-          </div>
+              <BeehiivForm className="max-w-md" />
 
-          <div className="relative w-full max-w-88 justify-self-end overflow-hidden border border-(--forest) p-5 rounded-4xl shadow-[0_25px_60px_rgba(23,53,45,0.12)]">
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src="/images/real-estate.webp"
-                alt="Dreams themed banner art"
-                fill
-                priority
-                sizes="(min-width: 1024px) 22rem, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      <section className="border-b border-(--forest) bg-(--forest) py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-
-            {/* Left: pricing card */}
-            <div className="order-2 rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm lg:order-1">
-              {/* Feature list */}
-              <div className="mb-6 space-y-3">
-                {t.investorsClub.features.items.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span aria-hidden="true" className="shrink-0 text-lg leading-none">
-                      {feature.emoji}
-                    </span>
-                    <span className="text-sm text-white/75">{feature.label}</span>
-                    {feature.value ? (
-                      <span className="ml-auto text-xs font-bold text-(--mustard) line-through decoration-(--mustard)">
-                        {feature.value}
-                      </span>
-                    ) : null}
+              <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
+                {t.hero.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl border border-(--border) bg-(--card-mid) px-4 py-4 text-center"
+                  >
+                    <p className="font-display text-3xl font-bold text-(--forest)">
+                      {stat.number}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-(--ink-soft)">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Current price (left) + total value (right) on same row */}
-              <div className="mb-1 flex items-baseline justify-between gap-4">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-display text-5xl font-bold text-white">
-                    {t.investorsClub.pricing.price}
-                  </span>
-                </div>
-                <span className="font-display text-3xl font-bold text-(--mustard) line-through decoration-(--mustard)">
-                  {t.investorsClub.pricing.valueTotal}
-                </span>
+            <div className="relative w-full max-w-sm justify-self-end overflow-hidden rounded-[2rem] border border-(--forest) p-4 shadow-[0_25px_60px_rgba(23,53,45,0.14)] lg:max-w-none">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
+                <Image
+                  src="/images/wwdw-hero.png"
+                  alt="Wealthy Women Don't Wait — comunidad de mujeres inversionistas"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
               </div>
-              <p className="mb-7 text-sm font-semibold text-white/80">
-                {t.investorsClub.pricing.priceLabel}
-              </p>
-
-              <a
-                href={STRIPE_URL}
-                rel="noreferrer noopener"
-                target="_blank"
-                className="flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition hover:-translate-y-0.5 hover:brightness-110"
-              >
-                {t.investorsClub.cta} →
-              </a>
             </div>
-
-            {/* Right: messaging */}
-            <div className="order-1 flex flex-col gap-6 lg:order-2">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--mustard)">
-                {t.investorsClub.hero.eyebrow}
-              </p>
-              <h2 className="font-display text-6xl leading-[0.92] tracking-[-0.04em] text-white sm:text-7xl">
-                {t.investorsClub.banner.headline}
-              </h2>
-              <p className="max-w-lg text-xl leading-8 text-white/75">
-                {t.investorsClub.banner.sub}
-              </p>
-            </div>
-
           </div>
         </div>
       </section>
 
-      <section className="border-b border-(--forest) bg-(--paper-soft) py-16">
+      {/* ── Company logos strip ── */}
+      <div className="border-b border-(--forest) bg-(--paper-strong) py-10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex items-start justify-between gap-6">
-            <div className="flex-1">
-              <div className="flex items-center gap-3">
-              </div>
-              <h2 className="mt-4 font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                {t.homework.title}
-              </h2>
-              <p className="mt-4 max-w-lg text-base leading-7 text-(--ink-soft)">
-                {t.homework.description}
-              </p>
+          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.22em] text-(--ink-soft)">
+            Estudiantes de empresas como
+          </p>
+          <div className="overflow-hidden">
+            <div className="animate-marquee flex w-max items-center gap-12">
+              {[...STUDENT_LOGOS, ...STUDENT_LOGOS].map((logo, i) => (
+                <div key={i} className={`relative shrink-0 ${logo.alt === 'Real Madrid' ? 'h-16 w-16 sm:h-20 sm:w-20' : 'h-12 w-32 sm:h-14 sm:w-40'}`}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    sizes="160px"
+                    className="object-contain"
+                  />
+                </div>
+              ))}
             </div>
-          </div>
-
-          <div className="my-8 border-t border-(--forest)" />
-
-          <div className="overflow-hidden rounded-2xl border border-(--forest)">
-            <div className="grid grid-cols-[1fr_2fr_2fr] bg-light-blue px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-(--forest)">
-              <span>{t.homework.tableDate}</span>
-              <span>{t.homework.tableClass}</span>
-              <span>{t.homework.tableHomework}</span>
-            </div>
-
-            {homework.map((item, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-[1fr_2fr_2fr] border-t border-(--border) bg-(--paper) px-6 py-5 first:border-t-0"
-              >
-                <div className="flex items-start gap-2.5 pr-4">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-(--mustard)" />
-                  <span className="text-base leading-7 text-(--forest)">
-                    {item.date}
-                  </span>
-                </div>
-                <div className="pr-6">
-                  <span className="text-base font-semibold leading-7 text-(--forest)">
-                    {item.session}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-base leading-7 text-(--ink)">{item.task}</p>
-                  {item.href && (
-                    <a
-                      href={item.href}
-                      className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) underline underline-offset-4"
-                    >
-                      {t.homework.openAssignment}
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="border-b border-(--forest) bg-(--mustard) py-16">
+      {/* ── For you / Not for you ── */}
+      <section className="border-b border-(--forest) bg-(--mustard) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-8 space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--forest)">
-              {t.resources.eyebrow}
-            </p>
+          <div className="mb-10">
             <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-              {t.resources.title}
+              {t.forYou.headline}
             </h2>
           </div>
+          <div className="grid gap-4 lg:grid-cols-[3fr_2fr] lg:items-stretch">
+            <ul className="flex flex-col gap-3">
+              {t.forYou.items.map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-4 rounded-full border border-(--border-strong) bg-(--card-mid) px-5 py-3"
+                >
+                  <span className="shrink-0 text-xl leading-none">{item.emoji}</span>
+                  <p className="text-base leading-6 text-(--ink)">{item.text}</p>
+                </li>
+              ))}
+            </ul>
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            {supportStack.map((item) => (
-              <article
+            <div className="rounded-[1.75rem] border border-(--border-strong) bg-(--card-strong) p-6">
+              <h3 className="font-display text-2xl text-(--forest)">{t.forYou.notTitle}</h3>
+              <ul className="mt-5 flex flex-col gap-3">
+                {t.forYou.notItems.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-base leading-7 text-(--ink-soft)">
+                    <span className="mt-1 text-xs font-bold text-(--rose-deep)">✗</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── What's included ── */}
+      <section className="border-b border-(--forest) bg-(--paper-strong) py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-10">
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+              {t.included.headline}
+            </h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {t.included.items.map((item) => (
+              <div
                 key={item.title}
-                className="rounded-[1.75rem] border border-(--border-strong) bg-(--card-mid) p-5"
+                className="rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-6"
               >
-                <h3 className="font-display text-3xl leading-tight text-(--forest)">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-(--ink)">
-                  {item.copy}
-                </p>
-                {item.modal === 'tutorials' ? (
-                  <button
-                    type="button"
-                    onClick={() => setIsTutorialsOpen(true)}
-                    className="mt-5 inline-flex rounded-full border border-(--forest) px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost)"
-                  >
-                    {item.label}
-                  </button>
-                ) : item.href ? (
-                  <a
-                    href={item.href}
-                    className="mt-5 inline-flex rounded-full border border-(--forest) px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:bg-(--forest-ghost)"
-                  >
-                    {item.label}
-                  </a>
-                ) : null}
-              </article>
+                <span className="mb-4 block text-4xl leading-none">{item.emoji}</span>
+                <h3 className="font-display text-2xl leading-tight text-(--forest)">{item.title}</h3>
+                <p className="mt-2 text-base leading-7 text-(--ink-soft)">{item.sub}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section
-        id="curriculum"
-        className="border-b border-(--forest) bg-(--paper-strong) py-16"
-      >
+      {/* ── Curriculum ── */}
+      <section id="curriculum" className="border-b border-(--forest) bg-(--paper-soft) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                {t.curriculum.eyebrow}
-              </p>
-              <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
-                {t.curriculum.title}
-              </h2>
-            </div>
+          <div className="mb-10">
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+              {t.curriculum.headline}
+            </h2>
           </div>
-
           <div className="grid gap-4 lg:grid-cols-2">
-            {sessions.map((session) => (
+            {sessions.map((session, i) => (
               <article
                 key={session.title}
                 className="rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-5"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--rose-deep)">
-                  {session.date}
-                </p>
-                <h3 className="mt-3 font-display text-3xl leading-tight text-(--forest)">
-                  {session.title}
-                </h3>
+                <div className="flex items-start gap-4">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard-faint-bg) text-xs font-bold text-(--forest)">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-(--rose-deep)">
+                      {session.date}
+                    </p>
+                    <h3 className="mt-1 font-display text-2xl leading-tight text-(--forest)">
+                      {session.title}
+                    </h3>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <QuizBanner onOpen={() => setIsQuizOpen(true)} />
+      {/* ── Testimonials (moved up) ── */}
+      <section className="border-b border-(--forest) bg-(--paper-light) py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-10">
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+              {t.testimonials.headline}
+            </h2>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {t.testimonials.items.map((item, i) => (
+              <figure
+                key={i}
+                className="flex flex-col gap-5 rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-7"
+              >
+                <blockquote className="flex-1 text-base italic leading-7 text-(--ink)">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
+                <figcaption>
+                  <p className="font-semibold text-(--forest)">{item.name}</p>
+                  <p className="text-sm text-(--ink-soft)">{item.city}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Instructor ── */}
+      <section className="border-b border-(--forest) bg-(--forest) py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-center">
+            {/* Photo */}
+            <div className="relative mx-auto w-full max-w-xs overflow-hidden rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.3)] lg:mx-0 lg:max-w-none">
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src="/images/juliette.png"
+                  alt="Juliette Chevalier — instructora del curso"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 80vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            </div>
+
+            {/* Bio */}
+            <div className="space-y-5">
+              <h2 className="font-display text-5xl leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl">
+                {t.instructor.name}
+              </h2>
+              <p className="max-w-lg text-lg leading-8 text-white/75">{t.instructor.bio}</p>
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                {footerLinks.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={item.label}
+                    title={item.label}
+                    className="footer-social-link transition"
+                  >
+                    <span>{item.icon}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ── FAQ ── */}
+      <section className="border-b border-(--forest) bg-(--paper-soft) py-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-10">
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
+              {t.faq.headline}
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-3xl divide-y divide-(--border)">
+            {t.faq.items.map((item, i) => (
+              <details key={i} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <span className="text-base font-semibold leading-7 text-(--forest)">{item.q}</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-(--forest) text-sm font-bold text-(--forest) transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 text-base leading-7 text-(--ink-soft)">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Final CTA ── */}
+      <section className="border-b border-(--forest) bg-(--lilac-bar) py-24">
+        <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
+          <h2 className="mx-auto mb-3 font-display text-[clamp(1.125rem,6.5vw,6rem)] leading-[0.92] tracking-[-0.04em] whitespace-nowrap text-white">
+            {t.finalCta.headline}
+          </h2>
+          <p className="mb-10 text-lg leading-8 text-white/80">{t.finalCta.sub}</p>
+          <BeehiivForm className="mx-auto max-w-md" />
+        </div>
+      </section>
 
       <SiteFooter />
-
-      {isTutorialsOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
-          <button
-            type="button"
-            aria-label={t.tutorials.close}
-            onClick={() => setIsTutorialsOpen(false)}
-            className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
-          />
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={t.tutorials.title}
-            className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
-          >
-            <TutorialsModal onClose={() => setIsTutorialsOpen(false)} />
-          </div>
-        </div>
-      ) : null}
-
-      {isQuizOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
-          <button
-            type="button"
-            aria-label={t.quiz.shell.close}
-            onClick={() => setIsQuizOpen(false)}
-            className="absolute inset-0 cursor-default bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
-          />
-
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={t.quiz.shell.eyebrow}
-            className="relative z-10 flex h-[min(94vh,920px)] w-full max-w-4xl flex-col overflow-hidden rounded-[2rem] border border-(--forest) bg-(--paper) shadow-[0_40px_120px_rgba(23,53,45,0.24)]"
-          >
-            <div className="relative flex min-h-0 flex-1">
-              <QuizShell onClose={() => setIsQuizOpen(false)} />
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {isMentorOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:px-8">
-          <button
-            type="button"
-            aria-label={t.mentor.close}
-            onClick={() => {
-              void requestMentorClose();
-            }}
-            className="absolute inset-0 bg-[rgba(24,62,53,0.34)] backdrop-blur-md"
-          />
-
-          <div className="relative z-10 flex h-[min(92vh,860px)] w-full max-w-6xl flex-col overflow-hidden rounded-4xl border border-(--forest) bg-[linear-gradient(180deg,rgba(246,241,232,0.98)_0%,rgba(237,229,215,0.96)_100%)] shadow-[0_40px_120px_rgba(23,53,45,0.24)]">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(239,200,65,0.36),transparent_58%)]" />
-
-            <div className="relative flex items-center justify-between border-b border-(--border) bg-(--card-frosted) px-5 py-4 text-(--forest)">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--ink-soft)">
-                  {t.mentor.modalEyebrow}
-                </p>
-                <p className="mt-1 font-display text-3xl text-(--forest)">
-                  {t.mentor.modalTitle}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => {
-                  void requestMentorClose();
-                }}
-                className="rounded-full border border-(--forest) bg-(--mustard) px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-              >
-                {t.mentor.close}
-              </button>
-            </div>
-
-            <div className="relative min-h-0 flex-1 bg-transparent">
-              <Mentor
-                ref={mentorRef}
-                autoStart={true}
-                onDismiss={() => setIsMentorOpen(false)}
-              />
-            </div>
-          </div>
-        </div>
-      ) : null}
     </main>
-    </PasswordGate>
   );
 }
