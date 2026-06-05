@@ -50,7 +50,7 @@ export default function LandingPage() {
     <main className="relative overflow-hidden">
       {/* ── Sticky nav ── */}
       <nav className="sticky top-0 z-50 w-full border-b border-(--forest) bg-(--lilac-bar)">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-9 sm:px-8 lg:px-10">
           <Link
             href="/"
             className="text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:opacity-80"
@@ -295,6 +295,26 @@ export default function LandingPage() {
       </section>
 
 
+      {/* ── Investors Club Banner ── */}
+      <section className="border-b border-(--forest) bg-(--light-blue) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
+            <div className="space-y-2">
+              <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
+                {t.investorsClubBanner.headline}
+              </h2>
+              <p className="max-w-xl text-base leading-7 text-(--ink)">{t.investorsClubBanner.sub}</p>
+            </div>
+            <Link
+              href="/investors-club"
+              className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+            >
+              {t.investorsClubBanner.cta}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ── */}
       <section className="border-b border-(--forest) bg-(--paper-soft) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -323,8 +343,9 @@ export default function LandingPage() {
       {/* ── Final CTA ── */}
       <section className="border-b border-(--forest) bg-(--lilac-bar) py-24">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
-          <h2 className="mx-auto mb-3 font-display text-[clamp(1.125rem,6.5vw,6rem)] leading-[0.92] tracking-[-0.04em] whitespace-nowrap text-white">
-            {t.finalCta.headline}
+          <h2 className="mb-3 font-display text-5xl leading-tight tracking-[-0.04em] text-white sm:text-6xl">
+            <span className="block">{t.finalCta.headlineTop}</span>
+            <span className="block">{t.finalCta.headlineBottom}</span>
           </h2>
           <p className="mb-10 text-lg leading-8 text-white/80">{t.finalCta.sub}</p>
           <BeehiivForm className="mx-auto max-w-md" />
