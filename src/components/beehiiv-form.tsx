@@ -21,6 +21,10 @@ export function BeehiivForm({ className }: BeehiivFormProps) {
     script.setAttribute('data-beehiiv-form', BEEHIIV_FORM_ID);
     script.async = true;
     container.appendChild(script);
+
+    return () => {
+      container.innerHTML = '';
+    };
   }, []);
 
   return <div ref={containerRef} className={className} />;

@@ -1,6 +1,11 @@
 export const en = {
   ui: {
     nav: {
+      aboutJules: 'About Jules',
+      course: 'Course',
+      hub: 'Hub',
+      investorsClub: "Investors' Club",
+      newsletter: 'Newsletter',
       title: "Wealthy Women Don't Wait",
     },
     hero: {

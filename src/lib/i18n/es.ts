@@ -1,6 +1,11 @@
 export const es = {
   ui: {
     nav: {
+      aboutJules: 'Sobre Jules',
+      course: 'Curso',
+      hub: 'Hub',
+      investorsClub: 'Club de Inversoras',
+      newsletter: 'Newsletter',
       title: "Wealthy Women Don't Wait",
     },
     hero: {
@@ -379,6 +384,11 @@ export const es = {
         name: "Juliette Chevalier",
         bio: "Después de 10+ años trabajando como Software Engineer en compañías de AI y crypto, Jules hoy lidera Founder Success en Play Money - una plataforma para angel investors. Aparte de enseñarle a más de 200 profesionales a programar (y ahora a invertir!), Jules tiene una compañía de campamentos para adultos, Adult Camp, y corre su propio Club de Inversiones.",
       },
+      investorsClubBanner: {
+        cta: "Conoce el Investors Club →",
+        headline: "Investors Club 💰",
+        sub: "Terminaste el curso y quieres seguir creciendo tu portafolio? Únete al club donde seguimos invirtiendo juntas, cada mes.",
+      },
       testimonials: {
         eyebrow: "Lo que dicen las estudiantes",
         headline: "Ellas lo explican mejor que yo",
@@ -455,8 +465,9 @@ export const es = {
       },
       finalCta: {
         eyebrow: "Empieza hoy",
-        headline: "Wealthy Women. Don't Wait.",
-        sub: "Todo sea por la buena vida de la yo de 70 años.",
+        headlineBottom: "Poverty loves waiting.",
+        headlineTop: "Money loves speed.",
+        sub: "Wealthy Women Don't Wait.",
         cta: "Únete al waitlist →",
         note: "Solo quedan algunos lugares al precio Early Bird.",
       },
