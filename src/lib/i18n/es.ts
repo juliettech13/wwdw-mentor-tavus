@@ -252,18 +252,18 @@ export const es = {
     },
     landing: {
       nav: {
-        cta: "Únete al waitlist",
+        cta: "Quiero invertir →",
       },
       hero: {
-        eyebrow: "De cero a inversionista en 3 semanas",
+        eyebrow: "De cero a inversionista en 4 semanas",
         headline: "Wealthy Women Don't Wait",
         subheadline:
-          "Programa para mujeres rockstars listas para su libertad financiera",
-        cta: "Únete al waitlist →",
+          "Programa para mujeres profesionales, listas para crecer su patrimonio y tener libertad financiera",
+        cta: "Quiero aprender a invertir →",
         trustNote: "+50 mujeres ya han tomado el curso",
         stats: [
           { number: "10", label: "Clases en vivo" },
-          { number: "3", label: "Semanas" },
+          { number: "4", label: "Semanas" },
           { number: "24/7", label: "Mentora AI" },
           { number: "100%", label: "Salen invirtiendo" },
         ],
@@ -333,7 +333,7 @@ export const es = {
       },
       curriculum: {
         eyebrow: "Curriculum",
-        headline: "10 clases. 3 semanas.",
+        headline: "10 clases. 4 semanas.",
       },
       mentor: {
         eyebrow: "Tu mentora AI, disponible 24/7",
@@ -369,7 +369,11 @@ export const es = {
           },
           {
             emoji: "🌎",
-            text: "Hablas español de LATAM o España",
+            text: "Hablas español",
+          },
+          {
+            emoji: "📍",
+            text: "Vives en LATAM, USA o Europa",
           },
         ],
         notTitle: "Honestamente, no es para ti si...",
@@ -386,8 +390,24 @@ export const es = {
       },
       investorsClubBanner: {
         cta: "Conoce el Investors Club →",
-        headline: "Investors Club 💰",
-        sub: "Terminaste el curso y quieres seguir creciendo tu portafolio? Únete al club donde seguimos invirtiendo juntas, cada mes.",
+        headline: "Ya inviertes pero te sientes estancada? 💰",
+        sub: "Únete al Investors Club, donde invertimos juntas y analizamos una nueva industria todos los meses.",
+      },
+      waitlistBanner: {
+        headline: "¿Quieres tomarlo, pero no puedes ahorita?",
+        body: "Regístrate a la lista de espera y sé la primera en enterarte del próximo cohort.",
+      },
+      startInvestingBanner: {
+        ctaFull: "Un solo pago",
+        ctaPaymentPlan: "3 cuotas",
+        dates: "10 clases · julio 27 - agosto 19",
+        earlyBirdLabel: "Early Bird (hasta domingo 12 de julio)",
+        earlyBirdPrice: "$658",
+        headline: "Estás lista para crecer tu patrimonio?",
+        paymentPlanLabel: "Plan De Pago",
+        paymentPlanPrice: "$225 x 3 cuotas",
+        regularPriceLabel: "Precio Regular",
+        strikePrice: "$732",
       },
       testimonials: {
         eyebrow: "Lo que dicen las estudiantes",
@@ -395,13 +415,13 @@ export const es = {
         items: [
           {
             quote:
-              "Entrando en el programa nunca tuve dudas de que no seria un power program, pero no me esperaba salir con el nivel de conocimiento que tengo ahora. Aprendimos muchisimo, no solo de inversiones, si no de lifestyle, finanzas y herramientas. El contenido es facil de digerir y las sesiones de workshops ayudan a que tengamos tambien practica en el momento.",
+              "Entrando en el programa nunca tuve dudas de que no sería un power program, pero no me esperaba salir con el nivel de conocimiento que tengo ahora. Aprendimos muchísimo, no solo de inversiones, sino de lifestyle, finanzas y herramientas. El contenido es fácil de digerir y las sesiones de workshops ayudan a que tengamos también práctica en el momento. Además de conocer a otras mujeres que tengan tu misma visión, es un added bonus!",
             name: "Angie",
             city: "Agente de Viajes. Nómada.",
           },
           {
             quote:
-              "He estado en esta industria de unos años para acá y por fin encontré la persona que me aclarará conceptos tecnicos de una forma clara y sencilla!!!",
+              "He estado en esta industria de unos años para acá y por fin encontré la persona que me aclarará conceptos técnicos de una forma clara y sencilla, te agradezco y éxitos!!!",
             name: "Yayi",
             city: "Family Office. Panamá",
           },
@@ -410,6 +430,24 @@ export const es = {
               "El curso que todas las mujeres debemos tomar. Jules explica todo de una forma muy fácil de entender y hace excelente uso del tiempo durante sus clases. Jamás imaginé que quedaría con ganas de aprender más sobre estos temas. Gracias, Jules!",
             name: "Zaida",
             city: "Emprendedora. Panamá",
+          },
+          {
+            quote:
+              "Gracias por esta información tan valiosa, empoderadora y relevante. Eres lo máximo!",
+            name: "Natalie",
+            city: "Responsabilidad Social. Panamá",
+          },
+          {
+            quote:
+              "Sentía bastante miedo de tomar control de las cuentas de inversión de mi familia, pensé que siempre tenía que estar pendiente de los movimientos de mercado para saber cuándo comprar y cuándo vender. Ahora por lo menos sé que hay más estrategias para invertir y puedo empezar con una estrategia sencilla, y cuando agarre más confianza, empezar a \"jugar\" un poco más con los movimientos. Cada vez que terminaba la clase empezaba a conversar con mi esposo sobre nuestras inversiones y me ayudó a que habláramos el mismo idioma y entre los dos seguíamos aprendiendo algo nuevo — un ejemplo, lo de los margin accounts, él no sabía mucho sobre eso y explicarle se sintió súpppper bien! Muchas graciaaas por todo!!",
+            name: "Adri",
+            city: "NGO. Panamá",
+          },
+          {
+            quote:
+              "Jules, gracias por este curso! Entré con miedo a invertir aunque estaba lista, y salí sintiéndome muy informada, con cuenta de inversión y plata invertida!! Ya había leído y visto miles de videos en YouTube pero tus clases me lo explicaron de una manera que por fin hizo click en mi cerebro. La clase de crypto 101 fue la más comprensiva que he visto, ya entiendo las funciones de bitcoin, ETH y solana que compré hace años 😂. Había dejado de invertir porque no entendía qué estaba comprando, y ya entiendo en qué está invertido mi 401k después de tantos años. Fue un excelente grupo de mujeres! Keep empowering the girlies!!",
+            name: "Claudia",
+            city: "Diseñadora. USA",
           },
         ],
       },
@@ -422,7 +460,7 @@ export const es = {
         strikePrice: "$455",
         valueLabel: "Valor total incluido:",
         valueTotal: "$1,200+",
-        cta: "Únete al waitlist →",
+        cta: "Quiero invertir →",
         secure: "🔒 Pago seguro vía Stripe · Garantía de 7 días",
         items: [
           "10 clases en vivo + grabaciones permanentes",
@@ -435,7 +473,7 @@ export const es = {
       },
       faq: {
         eyebrow: "FAQ",
-        headline: "Resolvemos tus dudas.",
+        headline: "¿Alguna pregunta?",
         items: [
           {
             q: "Necesito experiencia previa en inversiones?",
@@ -468,61 +506,71 @@ export const es = {
         headlineBottom: "Poverty loves waiting.",
         headlineTop: "Money loves speed.",
         sub: "Wealthy Women Don't Wait.",
-        cta: "Únete al waitlist →",
+        cta: "Quiero invertir →",
         note: "Solo quedan algunos lugares al precio Early Bird.",
       },
     },
   },
   sessions: [
     {
-      date: "Lunes",
+      date: "Lun 27 jul · 12:00 PM",
       title: "Inversiones 101: cómo crece el dinero",
       note: "Primero los fundamentos, el pánico después. Las estudiantes mapean su dinero, entienden el interés compuesto y aclaran qué hace realmente la inversión.",
+      link: "https://lu.ma/2lxu10tu",
     },
     {
-      date: "Miércoles",
+      date: "Mié 29 jul · 12:00 PM",
       title: "Acciones, fondos y mercados públicos",
       note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
+      link: "https://lu.ma/h47qcfp8",
     },
     {
-      date: "Viernes",
+      date: "Lun 3 ago · 12:00 PM",
       title: "Práctica: abre tu cuenta + haz tu primera inversión",
       note: "Configuración práctica de corretaje, financiamiento y confianza para el primer trade en lugar de coleccionar pestañas sin fin.",
+      link: "https://lu.ma/8uqgixri",
     },
     {
-      date: "Lunes",
+      date: "Mié 5 ago · 12:00 PM",
       title: "DYOR",
       note: "Las estudiantes aprenden a investigar ideas, comparar opciones y tomar decisiones con evidencia, no con corazonadas.",
+      link: "https://lu.ma/8lrq8vqy",
     },
     {
-      date: "Miércoles",
+      date: "Vie 7 ago · 12:00 PM",
       title: "Inverstor lifestyle con Invitada Especial",
       note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
+      link: "https://lu.ma/ac0ljx6w",
     },
     {
-      date: "Viernes",
+      date: "Lun 10 ago · 12:00 PM",
       title: "Práctica: finanzas digitales y crypto",
       note: "Ejecución práctica, no fan fiction de crypto.",
+      link: "https://lu.ma/vydby9ht",
     },
     {
-      date: "Lunes",
+      date: "Mié 12 ago · 12:00 PM",
       title: "Cómo invertir en el mercado privado",
       note: "Inversión pre-IPO, vías de acceso y cómo evaluar oportunidades sin dejarse seducir por decks brillantes.",
+      link: "https://lu.ma/9pzjc40t",
     },
     {
-      date: "Martes",
+      date: "Vie 14 ago · 12:00 PM",
       title: "Bonus: mercados inmobiliarios",
       note: "Una conversación con un invitado sobre los mercados inmobiliarios y cómo se ubican junto al resto de tu portafolio.",
+      link: "https://lu.ma/leu7utm2",
     },
     {
-      date: "Miércoles",
+      date: "Lun 17 ago · 12:00 PM",
       title: "Estrategias y principios de inversión",
       note: "Las reglas, los ritmos y los filtros que mantienen tu vida financiera coherente.",
+      link: "https://lu.ma/udl721wt",
     },
     {
-      date: "Viernes",
+      date: "Mié 19 ago · 12:00 PM",
       title: "Práctica: diseña tu portafolio",
       note: "Las estudiantes terminan dando forma a un portafolio que realmente pueden mantener.",
+      link: "https://lu.ma/1ioxwc8r",
     },
   ] as const,
   homework: [

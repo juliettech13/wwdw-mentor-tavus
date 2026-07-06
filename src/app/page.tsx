@@ -4,29 +4,37 @@ import Link from 'next/link';
 
 import { BeehiivForm } from '@/components/beehiiv-form';
 import { SiteFooter } from '@/components/site-footer';
+import { TestimonialsCarousel } from '@/components/testimonials-carousel';
 import { footerLinks } from '@/lib/constants/footer-links';
 import { sessions } from '@/lib/constants/sessions';
 import { locale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
-  title: "Wealthy Women Don't Wait — El Curso",
+  title: "Wealthy Women Don't Wait - Investing Course",
   description:
-    'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+    '10 clases. 4 semanas. Programa para mujeres profesionales que quieren crecer su patrimonio y empezar a invertir!',
   openGraph: {
-    title: "Wealthy Women Don't Wait — El Curso",
+    title: "Wealthy Women Don't Wait - Investing Course",
     description:
-      'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+      '10 clases. 4 semanas. Programa para mujeres profesionales que quieren crecer su patrimonio y empezar a invertir!',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Wealthy Women Don't Wait — El Curso",
+    title: "Wealthy Women Don't Wait - Investing Course",
     description:
-      'El curso de 3 semanas que te lleva de "algún día voy a invertir" a tener un portafolio real.',
+      '10 clases. 4 semanas. Programa para mujeres profesionales que quieren crecer su patrimonio y empezar a invertir!',
     images: ['/og-image.png'],
   },
 };
+
+const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/fZu3cvcGt0kYd274wUaIM0a';
+const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/aFa4gzcGtebOe6b2oMaIM0b';
+const LUMA_CALENDAR_URL = 'https://luma.com/wwdw-v3';
+
+const PILL_CTA_CLASSNAME =
+  'inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)';
 
 const STUDENT_LOGOS = [
   { src: '/images/logos/bonita-logo-rojo.avif', alt: 'Bonita' },
@@ -73,7 +81,9 @@ export default function LandingPage() {
                 {t.hero.subheadline}
               </p>
 
-              <BeehiivForm className="max-w-md" />
+              <Link href={STRIPE_CHECKOUT_URL} className={PILL_CTA_CLASSNAME}>
+                {t.hero.cta}
+              </Link>
 
               <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
                 {t.hero.stats.map((stat) => (
@@ -194,16 +204,27 @@ export default function LandingPage() {
       {/* ── Curriculum ── */}
       <section id="curriculum" className="border-b border-(--forest) bg-(--paper-soft) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-10">
+          <div className="mb-10 flex items-center justify-between gap-4">
             <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
               {t.curriculum.headline}
             </h2>
+            <a
+              href={LUMA_CALENDAR_URL}
+              target="_blank"
+              rel="noreferrer"
+              className={PILL_CTA_CLASSNAME}
+            >
+              Calendario
+            </a>
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
             {sessions.map((session, i) => (
-              <article
+              <a
                 key={session.title}
-                className="rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-5"
+                href={session.link}
+                target="_blank"
+                rel="noreferrer"
+                className="block rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-5 transition hover:-translate-y-0.5"
               >
                 <div className="flex items-start gap-4">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard-faint-bg) text-xs font-bold text-(--forest)">
@@ -218,36 +239,41 @@ export default function LandingPage() {
                     </h3>
                   </div>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── Investors Club Banner ── */}
+      <section className="border-b border-(--forest) bg-(--light-blue) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
+            <div className="space-y-2">
+              <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
+                {t.investorsClubBanner.headline}
+              </h2>
+              <p className="max-w-xl text-base leading-7 text-(--ink)">{t.investorsClubBanner.sub}</p>
+            </div>
+            <Link
+              href="/investors-club"
+              className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+            >
+              {t.investorsClubBanner.cta}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Testimonials (moved up) ── */}
-      <section className="border-b border-(--forest) bg-(--paper-light) py-20">
+      <section className="border-b border-(--forest) bg-(--paper-strong) py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-10">
             <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-(--forest) sm:text-6xl">
               {t.testimonials.headline}
             </h2>
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {t.testimonials.items.map((item, i) => (
-              <figure
-                key={i}
-                className="flex flex-col gap-5 rounded-[1.75rem] border border-(--forest) bg-(--card-strong) p-7"
-              >
-                <blockquote className="flex-1 text-base italic leading-7 text-(--ink)">
-                  &ldquo;{item.quote}&rdquo;
-                </blockquote>
-                <figcaption>
-                  <p className="font-semibold text-(--forest)">{item.name}</p>
-                  <p className="text-sm text-(--ink-soft)">{item.city}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <TestimonialsCarousel items={t.testimonials.items} />
         </div>
       </section>
 
@@ -295,22 +321,78 @@ export default function LandingPage() {
       </section>
 
 
-      {/* ── Investors Club Banner ── */}
-      <section className="border-b border-(--forest) bg-(--light-blue) py-16">
+      {/* ── Empieza a invertir Banner ── */}
+      <section className="border-b border-(--forest) bg-(--mustard) py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
-            <div className="space-y-2">
-              <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
-                {t.investorsClubBanner.headline}
-              </h2>
-              <p className="max-w-xl text-base leading-7 text-(--ink)">{t.investorsClubBanner.sub}</p>
+          <div className="mb-10 text-center">
+            <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
+              {t.startInvestingBanner.headline}
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-3xl rounded-[2rem] border border-(--forest) bg-(--card-strong) px-8 py-10">
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {t.included.items
+                .filter((item) => item.title !== 'Apoyo')
+                .map((item) => (
+                  <li key={item.title} className="flex items-start gap-3 text-base leading-7 text-(--ink)">
+                    <span aria-hidden="true" className="shrink-0 text-lg leading-none">
+                      {item.emoji}
+                    </span>
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+            </ul>
+
+            <p className="mt-8 border-t border-(--forest) pt-6 text-center font-display text-2xl font-bold uppercase leading-tight tracking-[0.05em] text-(--forest)">
+              {t.startInvestingBanner.dates}
+            </p>
+
+            <div className="mt-6 flex flex-col gap-4">
+              <div className="flex items-baseline justify-between gap-4">
+                <p className="text-sm font-semibold text-(--ink-soft)">
+                  {t.startInvestingBanner.regularPriceLabel}
+                </p>
+                <p className="shrink-0 font-display text-2xl text-(--ink-soft) line-through decoration-(--ink-soft)">
+                  {t.startInvestingBanner.strikePrice}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
+                <p className="text-sm font-semibold text-(--ink-soft)">
+                  {t.startInvestingBanner.earlyBirdLabel}
+                </p>
+                <p className="shrink-0 font-display text-2xl text-(--forest)">
+                  {t.startInvestingBanner.earlyBirdPrice}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
+                <p className="text-sm font-semibold text-(--ink-soft)">
+                  {t.startInvestingBanner.paymentPlanLabel}
+                </p>
+                <p className="shrink-0 font-display text-2xl text-(--forest)">
+                  {t.startInvestingBanner.paymentPlanPrice}
+                </p>
+              </div>
             </div>
-            <Link
-              href="/investors-club"
-              className="inline-flex shrink-0 items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-            >
-              {t.investorsClubBanner.cta}
-            </Link>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href={STRIPE_CHECKOUT_URL}
+                className="inline-flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:brightness-110"
+              >
+                {t.startInvestingBanner.ctaFull}
+              </Link>
+              <a
+                href={STRIPE_PAYMENT_PLAN_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-full border border-(--forest) bg-transparent px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--forest) hover:text-white"
+              >
+                {t.startInvestingBanner.ctaPaymentPlan}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -324,7 +406,7 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div className="mx-auto max-w-3xl divide-y divide-(--border)">
+          <div className="max-w-3xl divide-y divide-(--border)">
             {t.faq.items.map((item, i) => (
               <details key={i} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
@@ -340,6 +422,21 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Waitlist Banner ── */}
+      <section className="border-b border-(--forest) bg-(--paper-strong) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
+            <div className="space-y-2">
+              <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
+                {t.waitlistBanner.headline}
+              </h2>
+              <p className="max-w-xl text-base leading-7 text-(--ink)">{t.waitlistBanner.body}</p>
+            </div>
+            <BeehiivForm className="w-full max-w-sm shrink-0" />
+          </div>
+        </div>
+      </section>
+
       {/* ── Final CTA ── */}
       <section className="border-b border-(--forest) bg-(--lilac-bar) py-24">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
@@ -348,7 +445,9 @@ export default function LandingPage() {
             <span className="block">{t.finalCta.headlineBottom}</span>
           </h2>
           <p className="mb-10 text-lg leading-8 text-white/80">{t.finalCta.sub}</p>
-          <BeehiivForm className="mx-auto max-w-md" />
+          <Link href={STRIPE_CHECKOUT_URL} className={`${PILL_CTA_CLASSNAME} mx-auto`}>
+            {t.finalCta.cta}
+          </Link>
         </div>
       </section>
 
