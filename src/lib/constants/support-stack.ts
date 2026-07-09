@@ -1,6 +1,6 @@
 import { locale } from '@/lib/i18n';
 
-type SupportItem = {
+export type SupportItem = {
   title: string;
   copy: string;
   href?: string;
