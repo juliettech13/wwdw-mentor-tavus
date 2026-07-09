@@ -5,15 +5,24 @@ import { type ReactNode, useEffect, useState } from 'react';
 
 import { locale } from '@/lib/i18n';
 
-const SESSION_KEY = 'wwdw_auth';
-
-const t = locale.ui.passwordGate;
+const DEFAULT_SESSION_KEY = 'wwdw_auth';
 
 interface PasswordGateProps {
   children: ReactNode;
+  sessionKey?: string;
+  expectedPassword?: string;
+  copy?: typeof locale.ui.passwordGate;
+  logoAlt?: string;
 }
 
-export function PasswordGate({ children }: PasswordGateProps) {
+export function PasswordGate({
+  children,
+  sessionKey = DEFAULT_SESSION_KEY,
+  expectedPassword = process.env.NEXT_PUBLIC_WWDW_PASSWORD ?? '',
+  copy = locale.ui.passwordGate,
+  logoAlt = "Wealthy Women Don't Wait",
+}: PasswordGateProps) {
+  const t = copy;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -21,19 +30,18 @@ export function PasswordGate({ children }: PasswordGateProps) {
 
   useEffect(() => {
     queueMicrotask(() => {
-      const stored = sessionStorage.getItem(SESSION_KEY);
+      const stored = sessionStorage.getItem(sessionKey);
       if (stored === 'true') {
         setIsAuthenticated(true);
       }
       setHasMounted(true);
     });
-  }, []);
+  }, [sessionKey]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const expected = process.env.NEXT_PUBLIC_WWDW_PASSWORD ?? '';
-    if (inputValue.trim().toLowerCase() === expected.toLowerCase()) {
-      sessionStorage.setItem(SESSION_KEY, 'true');
+    if (inputValue.trim().toLowerCase() === expectedPassword.toLowerCase()) {
+      sessionStorage.setItem(sessionKey, 'true');
       setIsAuthenticated(true);
     } else {
       setHasError(true);
@@ -65,7 +73,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
           <div className="mb-8 flex justify-center">
             <Image
               src="/images/logo-small.webp"
-              alt="Wealthy Women Don't Wait"
+              alt={logoAlt}
               width={56}
               height={56}
               className="h-14 w-auto"

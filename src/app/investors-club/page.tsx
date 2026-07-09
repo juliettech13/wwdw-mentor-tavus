@@ -48,14 +48,19 @@ export default function InvestorsClubPage() {
           <Link href="/" className="transition hover:opacity-80">
             {navT.title}
           </Link>
-          <a
-            href={STRIPE_URL}
-            rel="noreferrer noopener"
-            target="_blank"
-            className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-          >
-            {t.cta}
-          </a>
+          <div className="flex items-center gap-6">
+            <Link href="/investors-club/hub" className="transition hover:opacity-80">
+              {t.back}
+            </Link>
+            <a
+              href={STRIPE_URL}
+              rel="noreferrer noopener"
+              target="_blank"
+              className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+            >
+              {t.cta}
+            </a>
+          </div>
         </div>
       </div>
 

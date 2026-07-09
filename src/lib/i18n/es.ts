@@ -250,6 +250,33 @@ export const es = {
         title: "Qué vamos a explorar?",
       },
     },
+    investorsClubHub: {
+      calendarCta: "Ver Calendario",
+      passwordGate: {
+        error: "Contraseña incorrecta. Inténtalo de nuevo.",
+        eyebrow: "Acceso exclusivo",
+        placeholder: "Contraseña",
+        submit: "Entrar",
+        subtitle: "Ingresa la contraseña para acceder al hub del Investors Club.",
+        title: "Bienvenida de vuelta",
+      },
+      hero: {
+        headline: "Hola Inversionista",
+        descriptionPrefix: "Bienvenida al hub del",
+        courseName: "Investors Club",
+        descriptionSuffix:
+          "— todo lo que necesitas para seguir invirtiendo, mes a mes.",
+      },
+      resources: {
+        eyebrow: "Todo lo que necesitas",
+        title: "Recursos del Club",
+      },
+      curriculum: {
+        eyebrow: "Calendario",
+        title: "Qué vamos a explorar?",
+        cta: "Ver fechas en el calendario →",
+      },
+    },
     landing: {
       nav: {
         cta: "Quiero invertir →",
@@ -609,6 +636,32 @@ export const es = {
       title: "Grabaciones",
       copy: "Ponte al día con lo que hemos cubierto.",
       href: "https://drive.google.com/drive/folders/1d39YYs5NwKGnKtvW9otKT8KjSq7ndWZJ?usp=sharing",
+      label: "Abrir",
+    },
+    {
+      title: "Recursos",
+      copy: "Guías, libros, herramientas y plataformas para invertir.",
+      label: "Abrir",
+      modal: "tutorials" as const,
+    },
+  ],
+  investorsClubSupportStack: [
+    {
+      title: "Slides",
+      copy: "Slides de las masterclasses del Investors Club, para ponerte al día con lo que hemos cubierto.",
+      href: "https://docs.google.com/presentation/d/1gHybj3xTcFDBM7n5YlAfDCFk_xGTvPj6MCSvpRuDUM0/edit?slide=id.g3f38103f25f_0_20#slide=id.g3f38103f25f_0_20",
+      label: "Abrir",
+    },
+    {
+      title: "Calendario",
+      copy: "Suscríbete para no perderte ninguna masterclass ni office hours.",
+      href: "https://lu.ma/investors-club",
+      label: "Abrir",
+    },
+    {
+      title: "Grabaciones",
+      copy: "Grabaciones de las masterclasses y office hours, por si te perdiste alguna.",
+      href: "https://drive.google.com/drive/u/1/folders/1pI8CV-jzCrGUSUuuRl6pdyLisO3q_phF",
       label: "Abrir",
     },
     {
