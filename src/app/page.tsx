@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/fZu3cvcGt0kYd274wUaIM0a';
-const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/aFa4gzcGtebOe6b2oMaIM0b';
+const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/5kQaEX21PffS1jp6F2aIM0c';
+const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/cNicN535TebO7HN1kIaIM0e';
 const LUMA_CALENDAR_URL = 'https://luma.com/wwdw-v3';
 
 const PILL_CTA_CLASSNAME =
@@ -349,21 +349,12 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-6 flex flex-col gap-4">
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="flex items-center justify-between gap-4">
                 <p className="text-sm font-semibold text-(--ink-soft)">
-                  {t.startInvestingBanner.regularPriceLabel}
-                </p>
-                <p className="shrink-0 font-display text-2xl text-(--ink-soft) line-through decoration-(--ink-soft)">
-                  {t.startInvestingBanner.strikePrice}
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
-                <p className="text-sm font-semibold text-(--ink-soft)">
-                  {t.startInvestingBanner.earlyBirdLabel}
+                  {t.startInvestingBanner.priceLabel}
                 </p>
                 <p className="shrink-0 font-display text-2xl text-(--forest)">
-                  {t.startInvestingBanner.earlyBirdPrice}
+                  {t.startInvestingBanner.price}
                 </p>
               </div>
 
