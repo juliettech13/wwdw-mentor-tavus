@@ -736,6 +736,18 @@ export const es = {
       href: "https://juliettech.notion.site/wwdw-ibkr-token",
     },
     {
+      id: "ibkr-quick-deep-dive",
+      title: "IBKR Quick Deep Dive",
+      summary:
+        "Un repaso rápido y a fondo de Interactive Brokers — lo esencial de la plataforma en un solo video.",
+      platform: "IBKR",
+      category: "Setup",
+      minutes: 0,
+      swatch: "mustard" as const,
+      glyph: "◐",
+      href: "https://drive.google.com/file/d/1RTm1OJDAj8do6Ub8yBKXcDMA4SsAKUGI/view?usp=drive_link",
+    },
+    {
       id: "ai-dashboard",
       title: "Configura tu dashboard de AI",
       summary:
