@@ -1,3 +1,86 @@
+const sharedCohortSessions = [
+  {
+    date: "Lun 27 jul · 12:00 PM",
+    title: "Inversiones 101: cómo crece el dinero",
+    note: "Primero los fundamentos, el pánico después. Las estudiantes mapean su dinero, entienden el interés compuesto y aclaran qué hace realmente la inversión.",
+    link: "https://lu.ma/2lxu10tu",
+  },
+  {
+    date: "Mié 29 jul · 12:00 PM",
+    title: "Acciones, fondos y mercados públicos",
+    note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
+    link: "https://lu.ma/h47qcfp8",
+  },
+  {
+    date: "Lun 3 ago · 12:00 PM",
+    title: "Práctica: abre tu cuenta + haz tu primera inversión",
+    note: "Configuración práctica de corretaje, financiamiento y confianza para el primer trade en lugar de coleccionar pestañas sin fin.",
+    link: "https://lu.ma/8uqgixri",
+  },
+  {
+    date: "Mié 5 ago · 12:00 PM",
+    title: "DYOR",
+    note: "Las estudiantes aprenden a investigar ideas, comparar opciones y tomar decisiones con evidencia, no con corazonadas.",
+    link: "https://lu.ma/8lrq8vqy",
+  },
+  {
+    date: "Vie 7 ago · 12:00 PM",
+    title: "Inverstor lifestyle con Invitada Especial",
+    note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
+    link: "https://lu.ma/ac0ljx6w",
+  },
+  {
+    date: "Lun 10 ago · 12:00 PM",
+    title: "Práctica: finanzas digitales y crypto",
+    note: "Ejecución práctica, no fan fiction de crypto.",
+    link: "https://lu.ma/vydby9ht",
+  },
+  {
+    date: "Mié 12 ago · 12:00 PM",
+    title: "Cómo invertir en el mercado privado",
+    note: "Inversión pre-IPO, vías de acceso y cómo evaluar oportunidades sin dejarse seducir por decks brillantes.",
+    link: "https://lu.ma/9pzjc40t",
+  },
+  {
+    date: "Vie 14 ago · 12:00 PM",
+    title: "Bonus: mercados inmobiliarios",
+    note: "Una conversación con un invitado sobre los mercados inmobiliarios y cómo se ubican junto al resto de tu portafolio.",
+    link: "https://lu.ma/leu7utm2",
+  },
+  {
+    date: "Lun 17 ago · 12:00 PM",
+    title: "Estrategias y principios de inversión",
+    note: "Las reglas, los ritmos y los filtros que mantienen tu vida financiera coherente.",
+    link: "https://lu.ma/udl721wt",
+  },
+  {
+    date: "Mié 19 ago · 12:00 PM",
+    title: "Práctica: diseña tu portafolio",
+    note: "Las estudiantes terminan dando forma a un portafolio que realmente pueden mantener.",
+    link: "https://lu.ma/1ioxwc8r",
+  },
+];
+
+const sharedCohortHomework = [
+  {
+    date: "Lunes, 11/05",
+    session: "Inversiones 101: cómo crece el dinero",
+    task: "Determina cuánto debes invertir para llegar a tu retiro ideal.",
+    href: "https://www.nerdwallet.com/investing/calculators/retirement-calculator",
+  },
+  {
+    date: "Miércoles, 13/05",
+    session: "Mercado público, acciones y fondos",
+    task: "Recopilar documentos abrir tu cuenta de inversión",
+    href: "https://www.interactivebrokers.com/en/general/what-you-need-sb.php",
+  },
+  {
+    date: "Viernes, 15/05",
+    session: "Play time: Abrir tu cuenta de inversión",
+    task: "Encuentra una acción o fondo que te guste para compartir con la clase el Lunes.",
+  },
+];
+
 export const es = {
   ui: {
     nav: {
@@ -31,9 +114,26 @@ export const es = {
       tableHomework: "Tarea",
       openAssignment: "Abrir →",
     },
+    hubSelector: {
+      eyebrow: "Acceso exclusivo",
+      title: "Elige tu hub",
+      subtitle: "Selecciona tu cohorte para entrar.",
+      cta: "Entrar →",
+      investorsClubLabel: "Investors Club",
+      investorsClubTagline: "Masterclasses y office hours, mes a mes",
+    },
     resources: {
       eyebrow: "Todo lo que necesitas",
       title: "Recursos del Curso",
+    },
+    notFound: {
+      code: "404",
+      cta: "Volver al inicio →",
+      description:
+        "La página que buscas no existe o cambió de lugar. Revisa el enlace o vuelve al inicio.",
+      eyebrow: "Página no encontrada",
+      hubCta: "Ir a mi hub",
+      title: "Te perdiste?",
     },
     mentor: {
       badge: "CONOCE A GLORIA — TU MENTORA DE AI",
@@ -515,107 +615,156 @@ export const es = {
       },
     },
   },
-  sessions: [
-    {
-      date: "Lun 27 jul · 12:00 PM",
-      title: "Inversiones 101: cómo crece el dinero",
-      note: "Primero los fundamentos, el pánico después. Las estudiantes mapean su dinero, entienden el interés compuesto y aclaran qué hace realmente la inversión.",
-      link: "https://lu.ma/2lxu10tu",
+  sessions: sharedCohortSessions,
+  cohorts: {
+    "1": {
+      label: "WWDW Curso v1",
+      tagline: "Marzo – Abril 2026",
+      hero: {
+        headline: "Hola Inversionista",
+        descriptionPrefix: "Bienvenida al hub de",
+        courseName: "Wealthy Women Don't Wait",
+        descriptionSuffix:
+          "— donde encontrarás todo lo que necesitas para empezar a invertir.",
+      },
+      resourceLinks: {
+        calendar: "https://luma.com/wealthy-women-v2",
+        recordings:
+          "https://drive.google.com/drive/folders/1d39YYs5NwKGnKtvW9otKT8KjSq7ndWZJ?usp=sharing",
+      },
+      sessions: sharedCohortSessions,
+      homework: sharedCohortHomework,
     },
-    {
-      date: "Mié 29 jul · 12:00 PM",
-      title: "Acciones, fondos y mercados públicos",
-      note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
-      link: "https://lu.ma/h47qcfp8",
+    "2": {
+      label: "WWDW Curso v2",
+      tagline: "Mayo 2026",
+      hero: {
+        headline: "Hola Inversionista",
+        descriptionPrefix: "Bienvenida al hub de",
+        courseName: "Wealthy Women Don't Wait",
+        descriptionSuffix:
+          "— donde encontrarás todo lo que necesitas para empezar a invertir.",
+      },
+      resourceLinks: {
+        calendar: "https://luma.com/wealthy-women-v2",
+        recordings:
+          "https://drive.google.com/drive/folders/1d39YYs5NwKGnKtvW9otKT8KjSq7ndWZJ?usp=sharing",
+      },
+      sessions: sharedCohortSessions,
+      homework: sharedCohortHomework,
     },
-    {
-      date: "Lun 3 ago · 12:00 PM",
-      title: "Práctica: abre tu cuenta + haz tu primera inversión",
-      note: "Configuración práctica de corretaje, financiamiento y confianza para el primer trade en lugar de coleccionar pestañas sin fin.",
-      link: "https://lu.ma/8uqgixri",
+    "3": {
+      label: "WWDW Curso v3",
+      tagline: "Julio – Agosto 2026",
+      hero: {
+        headline: "Hola Inversionista",
+        descriptionPrefix: "Bienvenida al hub de",
+        courseName: "Wealthy Women Don't Wait",
+        descriptionSuffix:
+          "— donde encontrarás todo lo que necesitas para empezar a invertir.",
+      },
+      resourceLinks: {
+        calendar: "https://lu.ma/wwdw-v3",
+        recordings:
+          "https://drive.google.com/drive/u/1/folders/1_chhEApvRPqjx3utyU-04rDYqJxz1V2J",
+      },
+      sessions: [
+        {
+          date: "Lun 27 jul · 12:00 PM",
+          title: "Inversiones 101: cómo crece el dinero",
+          note: "Primero los fundamentos, el pánico después. Las estudiantes mapean su dinero, entienden el interés compuesto y aclaran qué hace realmente la inversión.",
+          link: "https://lu.ma/2lxu10tu",
+        },
+        {
+          date: "Jue 30 jul · 12:00 PM",
+          title: "Acciones, fondos y mercados públicos",
+          note: "Qué estamos comprando, por qué lo compramos y cómo dejamos de fingir que cada ticker es un rasgo de personalidad?",
+          link: "https://lu.ma/h47qcfp8",
+        },
+        {
+          date: "Lun 3 ago · 12:00 PM",
+          title: "Práctica: abre tu cuenta + haz tu primera inversión",
+          note: "Configuración práctica de corretaje, financiamiento y confianza para el primer trade en lugar de coleccionar pestañas sin fin.",
+          link: "https://lu.ma/8uqgixri",
+        },
+        {
+          date: "Jue 6 ago · 12:00 PM",
+          title: "DYOR y revisión de inversiones",
+          note: "Las estudiantes aprenden a investigar ideas, comparar opciones y tomar decisiones con evidencia, no con corazonadas.",
+          link: "https://lu.ma/8lrq8vqy",
+        },
+        {
+          date: "Vie 7 ago · 12:00 PM",
+          title: "Investor lifestyle",
+          note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
+          link: "https://lu.ma/ac0ljx6w",
+        },
+        {
+          date: "Lun 10 ago · 12:00 PM",
+          title: "Finanzas digitales y crypto: qué, por qué y cómo",
+          note: "Ejecución práctica, no fan fiction de crypto.",
+          link: "https://lu.ma/vydby9ht",
+        },
+        {
+          date: "Jue 13 ago · 12:00 PM",
+          title: "Angel investing y mercados privados: invertir pre-IPO",
+          note: "Inversión pre-IPO, vías de acceso y cómo evaluar oportunidades sin dejarse seducir por decks brillantes.",
+          link: "https://lu.ma/9pzjc40t",
+        },
+        {
+          date: "Vie 14 ago · 12:00 PM",
+          title:
+            "Bonus: mercados inmobiliarios con Giannilicious (CEO, Dorben Capital)",
+          note: "Una conversación con un invitado sobre los mercados inmobiliarios y cómo se ubican junto al resto de tu portafolio.",
+          link: "https://lu.ma/leu7utm2",
+        },
+        {
+          date: "Lun 17 ago · 12:00 PM",
+          title: "Estrategias y principios de inversión",
+          note: "Las reglas, los ritmos y los filtros que mantienen tu vida financiera coherente.",
+          link: "https://lu.ma/udl721wt",
+        },
+        {
+          date: "Jue 20 ago · 12:00 PM",
+          title: "Práctica: diseña tu portafolio",
+          note: "Las estudiantes terminan dando forma a un portafolio que realmente pueden mantener.",
+          link: "https://lu.ma/1ioxwc8r",
+        },
+      ],
+      homework: [
+        {
+          date: "Lunes, 27/07",
+          session: "Inversiones 101: cómo crece el dinero",
+          task: "Determina cuánto debes invertir para llegar a tu retiro ideal.",
+          href: "https://www.nerdwallet.com/investing/calculators/retirement-calculator",
+        },
+      ],
     },
-    {
-      date: "Mié 5 ago · 12:00 PM",
-      title: "DYOR",
-      note: "Las estudiantes aprenden a investigar ideas, comparar opciones y tomar decisiones con evidencia, no con corazonadas.",
-      link: "https://lu.ma/8lrq8vqy",
-    },
-    {
-      date: "Vie 7 ago · 12:00 PM",
-      title: "Inverstor lifestyle con Invitada Especial",
-      note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
-      link: "https://lu.ma/ac0ljx6w",
-    },
-    {
-      date: "Lun 10 ago · 12:00 PM",
-      title: "Práctica: finanzas digitales y crypto",
-      note: "Ejecución práctica, no fan fiction de crypto.",
-      link: "https://lu.ma/vydby9ht",
-    },
-    {
-      date: "Mié 12 ago · 12:00 PM",
-      title: "Cómo invertir en el mercado privado",
-      note: "Inversión pre-IPO, vías de acceso y cómo evaluar oportunidades sin dejarse seducir por decks brillantes.",
-      link: "https://lu.ma/9pzjc40t",
-    },
-    {
-      date: "Vie 14 ago · 12:00 PM",
-      title: "Bonus: mercados inmobiliarios",
-      note: "Una conversación con un invitado sobre los mercados inmobiliarios y cómo se ubican junto al resto de tu portafolio.",
-      link: "https://lu.ma/leu7utm2",
-    },
-    {
-      date: "Lun 17 ago · 12:00 PM",
-      title: "Estrategias y principios de inversión",
-      note: "Las reglas, los ritmos y los filtros que mantienen tu vida financiera coherente.",
-      link: "https://lu.ma/udl721wt",
-    },
-    {
-      date: "Mié 19 ago · 12:00 PM",
-      title: "Práctica: diseña tu portafolio",
-      note: "Las estudiantes terminan dando forma a un portafolio que realmente pueden mantener.",
-      link: "https://lu.ma/1ioxwc8r",
-    },
-  ] as const,
-  homework: [
-    {
-      date: "Lunes, 11/05",
-      session: "Inversiones 101: cómo crece el dinero",
-      task: "Determina cuánto debes invertir para llegar a tu retiro ideal.",
-      href: "https://www.nerdwallet.com/investing/calculators/retirement-calculator",
-    },
-    {
-      date: "Miércoles, 13/05",
-      session: "Mercado público, acciones y fondos",
-      task: "Recopilar documentos abrir tu cuenta de inversión",
-      href: "https://www.interactivebrokers.com/en/general/what-you-need-sb.php",
-    },
-    {
-      date: "Viernes, 15/05",
-      session: "Play time: Abrir tu cuenta de inversión",
-      task: "Encuentra una acción o fondo que te guste para compartir con la clase el Lunes.",
-    },
-  ],
+  },
   supportStack: [
     {
+      id: "slides" as const,
       title: "Slides",
       copy: "Slides del curso para ponerte al día con lo que hemos cubierto.",
       href: "https://docs.google.com/presentation/d/1Dhecipg0ze3xiARoru4hasqQc8VmDcx-aGbp82QbNY8/edit?usp=sharing",
       label: "Abrir",
     },
     {
+      id: "calendar" as const,
       title: "Calendario",
       copy: "Suscríbete para no perderte ninguna clase.",
       href: "https://luma.com/wealthy-women-v2",
       label: "Abrir",
     },
     {
+      id: "recordings" as const,
       title: "Grabaciones",
       copy: "Ponte al día con lo que hemos cubierto.",
       href: "https://drive.google.com/drive/folders/1d39YYs5NwKGnKtvW9otKT8KjSq7ndWZJ?usp=sharing",
       label: "Abrir",
     },
     {
+      id: "resources" as const,
       title: "Recursos",
       copy: "Guías, libros, herramientas y plataformas para invertir.",
       label: "Abrir",
@@ -624,24 +773,28 @@ export const es = {
   ],
   investorsClubSupportStack: [
     {
+      id: "slides" as const,
       title: "Slides",
       copy: "Slides de las masterclasses del Investors Club, para ponerte al día con lo que hemos cubierto.",
       href: "https://docs.google.com/presentation/d/1gHybj3xTcFDBM7n5YlAfDCFk_xGTvPj6MCSvpRuDUM0/edit?slide=id.g3f38103f25f_0_20#slide=id.g3f38103f25f_0_20",
       label: "Abrir",
     },
     {
+      id: "calendar" as const,
       title: "Calendario",
       copy: "Suscríbete para no perderte ninguna masterclass ni office hours.",
       href: "https://lu.ma/investors-club",
       label: "Abrir",
     },
     {
+      id: "recordings" as const,
       title: "Grabaciones",
       copy: "Grabaciones de las masterclasses y office hours, por si te perdiste alguna.",
       href: "https://drive.google.com/drive/u/1/folders/1pI8CV-jzCrGUSUuuRl6pdyLisO3q_phF",
       label: "Abrir",
     },
     {
+      id: "resources" as const,
       title: "Recursos",
       copy: "Guías, libros, herramientas y plataformas para invertir.",
       label: "Abrir",
