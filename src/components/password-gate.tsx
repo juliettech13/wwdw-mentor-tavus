@@ -40,6 +40,14 @@ export function PasswordGate({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // An unset env var would otherwise make an empty submission match and open the gate.
+    if (!expectedPassword) {
+      setHasError(true);
+      setInputValue('');
+      return;
+    }
+
     if (inputValue.trim().toLowerCase() === expectedPassword.toLowerCase()) {
       sessionStorage.setItem(sessionKey, 'true');
       setIsAuthenticated(true);
@@ -102,6 +110,7 @@ export function PasswordGate({
               aria-invalid={hasError}
               aria-describedby={hasError ? 'password-error' : undefined}
               autoComplete="current-password"
+              required
               className="w-full rounded-2xl border border-(--forest) bg-(--paper) px-5 py-3.5 text-sm text-(--forest) placeholder:text-(--ink-soft) focus:outline-none focus:ring-2 focus:ring-(--forest)/30"
             />
 
