@@ -25,7 +25,7 @@ const sharedCohortSessions = [
   },
   {
     date: "Vie 7 ago · 12:00 PM",
-    title: "Inverstor lifestyle con Invitada Especial",
+    title: "Investor lifestyle con Invitada Especial",
     note: "Un recorrido sensato por los activos digitales, dónde encajan y qué merece tu curiosidad versus tu escepticismo.",
     link: "https://lu.ma/ac0ljx6w",
   },
