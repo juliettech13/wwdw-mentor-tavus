@@ -4,7 +4,7 @@ export const en = {
       aboutJules: 'About Jules',
       course: 'Course',
       hub: 'Hub',
-      investorsClub: "Investors' Club",
+      investorsClub: 'Investors Club',
       newsletter: 'Newsletter',
       title: "Wealthy Women Don't Wait",
     },
@@ -115,7 +115,6 @@ export const en = {
       externalLabel: 'External',
     },
     investorsClub: {
-      back: '← Back to hub',
       banner: {
         headline: 'Feed your inner grandma',
         proof: 'Built on the Wealthy Women Don\'t Wait program',
@@ -125,6 +124,7 @@ export const en = {
       cta: 'Join the Investors Club',
       ctaFinal: 'Join now →',
       discountBanner: 'Use code "WWDW" for a discount',
+      learnMore: 'See all the details →',
       features: {
         eyebrow: "What's included",
         items: [
@@ -148,7 +148,7 @@ export const en = {
           { after: '?"', before: 'Is this legit or just a ', bold: 'scam', emoji: '🙏' },
           { after: ' that invests', before: 'Be part of a ', bold: "women's club", emoji: '👯' },
           { after: ' and stop improvising', before: 'You want a ', bold: 'real strategy', emoji: '✍️' },
-          { after: ' on AI, health & sustainability', before: 'You want to ', bold: 'go deeper', emoji: '👩‍💻' },
+          { after: ' on sustainability, consumer goods & SaaS', before: 'You want to ', bold: 'go deeper', emoji: '👩‍💻' },
           { after: " isn't taboo", before: 'A space where ', bold: 'talking money', emoji: '💸' },
         ],
         title: "Investors Club is for you if...",
@@ -158,14 +158,52 @@ export const en = {
         headline: 'Investors Club 💰',
         subheadline: 'For women who finished the course and want to keep growing their portfolio.',
       },
+      past: {
+        eyebrow: 'Our track record',
+        months: [
+          {
+            emoji: '🤖',
+            highlights: [
+              'AI: hype or bubble?',
+              'AI and data center ETFs',
+              'Dashboards & tools for analysing stocks',
+              'Robo-advisors: worth it?',
+            ],
+            label: 'AI',
+            month: 'July',
+          },
+          {
+            emoji: '🌿',
+            highlights: [
+              'Biotech, healthtech, or wellness?',
+              'Biotech stocks',
+              'Wellness & longevity trends',
+              'Global health ETFs',
+            ],
+            label: 'Health & Wellness',
+            month: 'August',
+          },
+        ],
+        stats: [
+          { label: 'Industries analysed', number: '2' },
+          { label: 'Live masterclasses', number: '2' },
+          { label: 'Office hours with Jules', number: '2' },
+          { label: 'Stocks on the table', number: '10+' },
+        ],
+        subtitle:
+          'The Club kicked off in July and we have already covered two full industries — masterclasses, office hours, deep dives and stocks analysed together.',
+        title: 'What have we done so far?',
+      },
       pricing: {
         ctaHere: 'Join here →',
         ctaPaymentPlan: 'Payment plan →',
         eyebrow: 'Pricing',
-        paymentPlanInstallment: '$155',
+        paymentPlanInstallment: '$138',
         paymentPlanLabel: '3-installment payment plan',
-        price: '$445',
-        priceLabel: 'All included, price valid until Sunday June 7',
+        price: '$385',
+        priceIncrease: '$465',
+        priceIncreaseLabel: 'Goes up to the regular price on Sunday the 23rd',
+        priceLabel: 'Early bird — 3 months, all included',
         sectionTitle: 'How much does it cost?',
         title: 'Investors Club 💰',
         valueTotal: '$1,396+',
@@ -176,26 +214,26 @@ export const en = {
         months: [
           {
             topics: [
-              'ChatGPT for stock analysis',
-              'AI-focused ETFs',
-              'Automate your portfolio',
-              'Robo-advisors: worth it?',
-            ],
-          },
-          {
-            topics: [
-              'Pharma & biotech: how to invest',
-              'Mental health companies on the market',
-              'Wellness & longevity trends',
-              'Global health ETFs',
-            ],
-          },
-          {
-            topics: [
               'ESG: what it means for your portfolio',
               'Renewable energy as an investment',
               'Clean tech & impact funds',
               'Measuring your financial footprint',
+            ],
+          },
+          {
+            topics: [
+              'Investing in the brands already in your cart',
+              'The business behind your favorite brands: Sephora, Lululemon, Starbucks',
+              'Which business models work best in CPG?',
+              'Boring brands, delicious dividends',
+            ],
+          },
+          {
+            topics: [
+              'What is SaaS and why does it scale so fast?',
+              'Key metrics: ARR, churn and retention',
+              'The software giants: who wins?',
+              'Software & cloud ETFs',
             ],
           },
         ],

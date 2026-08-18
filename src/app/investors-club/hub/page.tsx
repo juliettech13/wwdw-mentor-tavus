@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Mentor, type MentorHandle } from "@/components/mentor";
 import { PasswordGate } from "@/components/password-gate";
@@ -12,10 +13,23 @@ import { investorsClubSupportStack } from "@/lib/constants/investors-club-suppor
 
 const LUMA_CALENDAR_URL = 'https://lu.ma/investors-club';
 
+/**
+ * TODO: swap for the dedicated $258 2-month extension checkout link once it exists in
+ * Stripe. Until then the CTA sends members to the Investors Club page. When swapping in
+ * the Stripe URL, also change the `Link` that renders it to an `<a>` with
+ * `target="_blank" rel="noreferrer noopener"`, matching every other checkout CTA here.
+ */
+const INVESTORS_CLUB_EXTENSION_URL = '/investors-club';
+
+const EXTENSION_MONTH_COLORS = [
+  'var(--investors-cpg-light)',
+  'var(--investors-saas-light)',
+] as const;
+
 const SCHEDULE_MONTHS = [
-  { color: 'var(--investors-ai)', emoji: '🤖', label: 'AI' },
-  { color: 'var(--mustard-deep)', emoji: '🌿', label: 'Salud & Wellness' },
   { color: 'var(--investors-teal)', emoji: '♻️', label: 'Sostenibilidad' },
+  { color: 'var(--investors-cpg)', emoji: '🛒', label: 'Consumer Product Goods' },
+  { color: 'var(--investors-saas)', emoji: '☁️', label: 'SaaS' },
 ] as const;
 
 const t = locale.ui;
@@ -114,6 +128,69 @@ export default function Page() {
             </div>
           </div>
         </div>
+        </div>
+      </section>
+
+      {/* Extension offer — Oct + Nov at the OG-member rate */}
+      <section className="border-b border-(--forest) bg-(--forest) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="flex flex-col gap-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--mustard)">
+                {th.extension.eyebrow}
+              </p>
+              <h2 className="font-display text-5xl leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl">
+                {th.extension.title}
+              </h2>
+              <p className="max-w-xl text-lg leading-8 text-white/75">
+                {th.extension.subtitle}
+              </p>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                {th.extension.months.map((month, idx) => (
+                  <div
+                    key={month.month}
+                    className="flex flex-1 items-center gap-3 overflow-hidden rounded-[1.5rem] border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-sm"
+                  >
+                    <span aria-hidden="true" className="text-3xl leading-none">
+                      {month.emoji}
+                    </span>
+                    <div>
+                      <p
+                        className="text-xs font-semibold uppercase tracking-[0.18em]"
+                        style={{ color: EXTENSION_MONTH_COLORS[idx] }}
+                      >
+                        {month.month}
+                      </p>
+                      <p className="font-display text-xl leading-tight text-white">
+                        {month.label}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                {th.extension.priceLabel}
+              </p>
+              <p className="mt-2 font-display text-6xl font-bold leading-none text-(--mustard)">
+                {th.extension.price}
+              </p>
+              <p className="mt-4 text-sm leading-6 text-white/70">
+                {th.extension.note}
+              </p>
+
+              <Link
+                href={INVESTORS_CLUB_EXTENSION_URL}
+                style={{ color: "white" }}
+                className="mt-7 flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition hover:-translate-y-0.5 hover:brightness-110"
+              >
+                {th.extension.cta}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -216,6 +293,43 @@ export default function Page() {
                 ) : null}
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Referral — invite friends with the og-club code */}
+      <section className="border-b border-(--forest) bg-(--light-blue) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--forest)">
+                {th.referral.eyebrow}
+              </p>
+              <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-(--forest) sm:text-5xl">
+                {th.referral.title}
+              </h2>
+              <p className="max-w-xl text-base leading-7 text-(--ink)">
+                {th.referral.description}
+              </p>
+            </div>
+
+            <div className="flex shrink-0 flex-col gap-4 rounded-[2rem] border border-(--forest) bg-(--card-strong) px-7 py-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-(--ink-soft)">
+                  {th.referral.codeLabel}
+                </p>
+                <p className="mt-1.5 font-display text-4xl font-bold tracking-[-0.02em] text-(--forest)">
+                  {th.referral.code}
+                </p>
+              </div>
+
+              <Link
+                href="/investors-club"
+                className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+              >
+                {th.referral.cta}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
