@@ -87,7 +87,7 @@ export const es = {
       aboutJules: 'Sobre Jules',
       course: 'Curso',
       hub: 'Hub',
-      investorsClub: 'Club de Inversoras',
+      investorsClub: 'Investors Club',
       newsletter: 'Newsletter',
       title: "Wealthy Women Don't Wait",
     },
@@ -218,7 +218,6 @@ export const es = {
       externalLabel: "Externo",
     },
     investorsClub: {
-      back: "← Volver al hub",
       banner: {
         headline: "Investors Club 💰",
         proof: "Basado en el programa Wealthy Women Don't Wait",
@@ -228,6 +227,7 @@ export const es = {
       cta: "Únete al Investors Club",
       ctaFinal: "Únete ahora →",
       discountBanner: 'Usa el código "WWDW" para obtener el descuento',
+      learnMore: "Conoce todos los detalles →",
       features: {
         eyebrow: "Todo incluido",
         items: [
@@ -292,7 +292,7 @@ export const es = {
             emoji: "✍️",
           },
           {
-            after: " en AI, salud y sostenibilidad",
+            after: " en sostenibilidad, consumo masivo y SaaS",
             before: "Te interesa ",
             bold: "profundizar",
             emoji: "👩‍💻",
@@ -306,14 +306,52 @@ export const es = {
         subheadline:
           "Un Club para mujeres profesionales que quieren crecer su patrimonio, portafolio, y libertad financiera.",
       },
+      past: {
+        eyebrow: "Nuestro track record",
+        months: [
+          {
+            emoji: "🤖",
+            highlights: [
+              "AI: hype o burbuja?",
+              "ETFs enfocados en AI y data centers",
+              "Dashboards & tools para analizar acciones",
+              "Robo-advisors: valen la pena?",
+            ],
+            label: "AI",
+            month: "Julio",
+          },
+          {
+            emoji: "🌿",
+            highlights: [
+              "Biotech, healthtech, o wellness?",
+              "Acciones de biotech",
+              "Wellness & longevity trends",
+              "ETFs de salud global",
+            ],
+            label: "Salud & Wellness",
+            month: "Agosto",
+          },
+        ],
+        stats: [
+          { label: "Industrias analizadas", number: "2" },
+          { label: "Masterclasses en vivo", number: "2" },
+          { label: "Office hours con Jules", number: "2" },
+          { label: "Acciones en la mesa", number: "10+" },
+        ],
+        subtitle:
+          "El Club arrancó en julio y ya llevamos dos industrias completas — con masterclasses, office hours, deep dives y acciones analizadas en comunidad.",
+        title: "Qué hemos hecho hasta ahora?",
+      },
       pricing: {
         ctaHere: "Únete aquí →",
         ctaPaymentPlan: "Plan de pago →",
         eyebrow: "Precio",
-        paymentPlanInstallment: "$155",
+        paymentPlanInstallment: "$138",
         paymentPlanLabel: "Plan de pago en 3 cuotas",
-        price: "$445",
-        priceLabel: "Todo incluido, precio válido hasta el domingo 7 de junio",
+        price: "$385",
+        priceIncrease: "$465",
+        priceIncreaseLabel: "El domingo 23 sube al precio regular",
+        priceLabel: "Early bird — 3 meses, todo incluido",
         sectionTitle: "Cuánto cuesta?",
         title: "Investors Club 💰",
         valueTotal: "$1,396+",
@@ -324,26 +362,26 @@ export const es = {
         months: [
           {
             topics: [
-              "AI hype or bubble?",
-              "ETFs enfocados en AI y data centers",
-              "Dashboards & tools",
-              "Robo-advisors?",
-            ],
-          },
-          {
-            topics: [
-              "Biotech, healthtech, o wellness?",
-              "Acciones de biotech",
-              "Wellness & longevity trends",
-              "ETFs de salud global",
-            ],
-          },
-          {
-            topics: [
               "ESG: qué significa para tu portafolio?",
               "Energía renovable como inversión",
               "Clean tech & impact funds",
               "Cómo medir tu huella financiera?",
+            ],
+          },
+          {
+            topics: [
+              "Invertir en las marcas que ya están en tu carrito",
+              "El negocio detrás de tus marcas favoritas: Sephora, Lululemon, Starbucks",
+              "Cuáles son los mejores modelos de negocio detrás de CPG?",
+              "Marcas aburridas, dividendos deliciosos",
+            ],
+          },
+          {
+            topics: [
+              "Qué es SaaS y por qué escala tan rápido?",
+              "Métricas clave: ARR, churn y retención",
+              "Los gigantes del software: quién gana?",
+              "ETFs de software & cloud",
             ],
           },
         ],
@@ -375,6 +413,30 @@ export const es = {
         eyebrow: "Calendario",
         title: "Qué vamos a explorar?",
         cta: "Ver fechas en el calendario →",
+      },
+      extension: {
+        cta: "Extender mi membresía →",
+        eyebrow: "Extiende tu membresía",
+        months: [
+          { emoji: "🛒", label: "Consumer Product Goods", month: "Octubre" },
+          { emoji: "☁️", label: "SaaS", month: "Noviembre" },
+        ],
+        note: "Precio exclusivo para miembras actuales del Club. Septiembre ya está incluido en tu membresía.",
+        price: "$258",
+        priceLabel: "2 meses para miembras OG",
+        secondaryCta: "Ver qué viene →",
+        subtitle:
+          "El Club sigue en octubre y noviembre con dos industrias nuevas. Como ya eres parte, solo pagas los 2 meses que te faltan.",
+        title: "Seguimos hasta noviembre 🎉",
+      },
+      referral: {
+        code: "og-club",
+        codeLabel: "Tu código de referido",
+        cta: "Compartir el Investors Club →",
+        description:
+          "Comparte este código con quien quieras invitar: quien lo use recibe 15% de descuento en su membresía del Club.",
+        eyebrow: "Invita a tus amigas",
+        title: "Trae a tus amigas al Club 👯",
       },
     },
     landing: {

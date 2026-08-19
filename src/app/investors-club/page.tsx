@@ -25,13 +25,18 @@ export const metadata: Metadata = {
 const t = locale.ui.investorsClub;
 const navT = locale.ui.nav;
 
-const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/8x24gz0XLebO0fl5AYaIM07';
-const STRIPE_URL = 'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?';
+const STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/bJe4gBgGudIJdPgaG04Rq01';
+const STRIPE_URL = 'https://buy.stripe.com/28E3cxdui3459z07tO4Rq00';
+
+const PAST_MONTHS = [
+  { color: 'var(--investors-ai)', number: '07' },
+  { color: 'var(--mustard-deep)', number: '08' },
+] as const;
 
 const SCHEDULE_MONTHS = [
-  { color: 'var(--investors-ai)', emoji: '🤖', label: 'AI', month: 'Julio', number: '07' },
-  { color: 'var(--mustard-deep)', emoji: '🌿', label: 'Salud & Wellness', month: 'Agosto', number: '08' },
   { color: 'var(--investors-teal)', emoji: '♻️', label: 'Sostenibilidad', month: 'Septiembre', number: '09' },
+  { color: 'var(--investors-cpg)', emoji: '🛒', label: 'Consumer Product Goods', month: 'Octubre', number: '10' },
+  { color: 'var(--investors-saas)', emoji: '☁️', label: 'SaaS', month: 'Noviembre', number: '11' },
 ] as const;
 
 const WEEK_ICONS = ['💌', '🎙️', '💌', '👩‍🏫'] as const;
@@ -48,19 +53,14 @@ export default function InvestorsClubPage() {
           <Link href="/" className="transition hover:opacity-80">
             {navT.title}
           </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/investors-club/hub" className="transition hover:opacity-80">
-              {t.back}
-            </Link>
-            <a
-              href={STRIPE_URL}
-              rel="noreferrer noopener"
-              target="_blank"
-              className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
-            >
-              {t.cta}
-            </a>
-          </div>
+          <a
+            href={STRIPE_URL}
+            rel="noreferrer noopener"
+            target="_blank"
+            className="inline-flex items-center justify-center rounded-full border border-(--forest) bg-(--mustard) px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--forest) transition hover:-translate-y-0.5 hover:bg-(--mustard-deep)"
+          >
+            {t.cta}
+          </a>
         </div>
       </div>
 
@@ -254,6 +254,89 @@ export default function InvestorsClubPage() {
         </div>
       </section>
 
+      {/* Track record — what the Club has covered so far */}
+      <section className="border-b border-(--forest) bg-(--forest) py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mb-8 space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-(--mustard)">
+              {t.past.eyebrow}
+            </p>
+            <h2 className="font-display text-5xl leading-none tracking-[-0.04em] text-white sm:text-6xl">
+              {t.past.title}
+            </h2>
+            <p className="max-w-2xl text-base leading-7 text-white/75">
+              {t.past.subtitle}
+            </p>
+          </div>
+
+          <dl className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {t.past.stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col-reverse rounded-[1.75rem] border border-white/20 bg-white/10 px-5 py-6 text-center backdrop-blur-sm"
+              >
+                <dt className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+                  {stat.label}
+                </dt>
+                <dd className="font-display text-5xl font-bold leading-none text-(--mustard)">
+                  {stat.number}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {t.past.months.map((month, idx) => (
+              <article
+                key={month.month}
+                className="overflow-hidden rounded-[1.75rem] border border-(--forest) bg-(--card-strong)"
+              >
+                <div className="h-2" style={{ backgroundColor: PAST_MONTHS[idx].color }} />
+                <div className="p-6">
+                  <div className="flex items-baseline gap-2.5">
+                    <span
+                      className="font-display text-5xl font-bold leading-none"
+                      style={{ color: PAST_MONTHS[idx].color }}
+                    >
+                      {PAST_MONTHS[idx].number}
+                    </span>
+                    <span
+                      className="font-display text-xl font-semibold leading-none"
+                      style={{ color: PAST_MONTHS[idx].color }}
+                    >
+                      {month.month}
+                    </span>
+                  </div>
+
+                  <div className="mt-4 flex items-center gap-3">
+                    <span aria-hidden="true" className="text-3xl leading-none">
+                      {month.emoji}
+                    </span>
+                    <h3 className="font-display text-3xl leading-tight text-(--forest)">
+                      {month.label}
+                    </h3>
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-2">
+                    {month.highlights.map((highlight) => (
+                      <p key={highlight} className="text-sm leading-6 text-(--ink)">
+                        <span
+                          className="mr-1.5 font-semibold"
+                          style={{ color: PAST_MONTHS[idx].color }}
+                        >
+                          ✓
+                        </span>
+                        {highlight}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pricing summary */}
       <section className="border-b border-(--forest) bg-(--mustard) py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -287,9 +370,19 @@ export default function InvestorsClubPage() {
                   {t.pricing.paymentPlanInstallment}
                 </p>
               </div>
+
+              {/* Deadline — regular price kicks in after the early-bird window */}
+              <div className="flex items-center justify-between gap-4 border-t border-(--forest) pt-4">
+                <p className="text-sm font-semibold text-(--rose-deep)">
+                  {t.pricing.priceIncreaseLabel}
+                </p>
+                <p className="shrink-0 font-display text-2xl font-bold text-(--rose-deep)">
+                  {t.pricing.priceIncrease}
+                </p>
+              </div>
             </div>
 
-            <div className="mt-8 flex flex-row gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={STRIPE_URL}
                 rel="noreferrer noopener"

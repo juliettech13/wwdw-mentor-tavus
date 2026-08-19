@@ -10,8 +10,8 @@ export type CohortSlug = '1' | '2' | '3';
 
 export const COHORT_SLUGS: ReadonlyArray<CohortSlug> = ['1', '2', '3'];
 
-const DEFAULT_STRIPE_URL =
-  'https://book.stripe.com/8x228r9uhc3G7HN5AYaIM04?prefilled_promo_code=wwdw';
+/** Investors Club early-bird checkout for WWDW students — $385, 3 months. */
+const DEFAULT_STRIPE_URL = 'https://buy.stripe.com/28E3cxdui3459z07tO4Rq00';
 
 /**
  * Next.js only inlines statically-analysable `process.env.X` references into the
@@ -24,10 +24,19 @@ const COHORT_PASSWORDS: Record<CohortSlug, string | undefined> = {
   '3': process.env.NEXT_PUBLIC_WWDW_COHORT_3_PASSWORD,
 };
 
+/** Investors Club early-bird payment plan for WWDW students — $138 x 3. */
+const DEFAULT_STRIPE_PAYMENT_PLAN_URL = 'https://buy.stripe.com/bJe4gBgGudIJdPgaG04Rq01';
+
 const COHORT_STRIPE_URLS: Record<CohortSlug, string> = {
   '1': DEFAULT_STRIPE_URL,
   '2': DEFAULT_STRIPE_URL,
   '3': DEFAULT_STRIPE_URL,
+};
+
+const COHORT_STRIPE_PAYMENT_PLAN_URLS: Record<CohortSlug, string> = {
+  '1': DEFAULT_STRIPE_PAYMENT_PLAN_URL,
+  '2': DEFAULT_STRIPE_PAYMENT_PLAN_URL,
+  '3': DEFAULT_STRIPE_PAYMENT_PLAN_URL,
 };
 
 /**
@@ -37,7 +46,7 @@ const COHORT_STRIPE_URLS: Record<CohortSlug, string> = {
 const COHORT_INVESTORS_CLUB_PROMO: Record<CohortSlug, boolean> = {
   '1': true,
   '2': true,
-  '3': false,
+  '3': true,
 };
 
 export interface HomeworkAssignment {
@@ -73,6 +82,7 @@ export interface Cohort {
   sessionKey: string;
   password: string;
   stripeUrl: string;
+  stripePaymentPlanUrl: string;
   hasInvestorsClubPromo: boolean;
 }
 
@@ -104,6 +114,7 @@ function buildCohort(slug: CohortSlug): Cohort {
     sessionKey: `wwdw_auth_${slug}`,
     password: COHORT_PASSWORDS[slug] ?? '',
     stripeUrl: COHORT_STRIPE_URLS[slug],
+    stripePaymentPlanUrl: COHORT_STRIPE_PAYMENT_PLAN_URLS[slug],
     hasInvestorsClubPromo: COHORT_INVESTORS_CLUB_PROMO[slug],
   };
 }

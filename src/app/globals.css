@@ -47,6 +47,11 @@
   --chip-avoid-text: #7a1c1e;
   --investors-ai: #9e2022;
   --investors-teal: #078073;
+  --investors-cpg: #b57497;
+  --investors-saas: #4a5fa8;
+  /* Lighter tints of the two new topic colors, for use on the dark forest banners. */
+  --investors-cpg-light: #e3aecb;
+  --investors-saas-light: #a5b3da;
 }
 
 * {

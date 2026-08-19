@@ -14,6 +14,23 @@ import { locale } from "@/lib/i18n";
 
 const t = locale.ui;
 
+/** Rendered on the dark forest banner, so these are the light tints of each topic color. */
+const INVESTORS_CLUB_MONTHS = [
+  { color: 'var(--mint)', emoji: '♻️', label: 'Sostenibilidad', month: 'Septiembre' },
+  {
+    color: 'var(--investors-cpg-light)',
+    emoji: '🛒',
+    label: 'Consumer Product Goods',
+    month: 'Octubre',
+  },
+  {
+    color: 'var(--investors-saas-light)',
+    emoji: '☁️',
+    label: 'SaaS',
+    month: 'Noviembre',
+  },
+] as const;
+
 interface CohortHubProps {
   cohort: Cohort;
 }
@@ -149,14 +166,25 @@ export function CohortHub({ cohort }: CohortHubProps) {
                 {t.investorsClub.pricing.priceLabel}
               </p>
 
-              <a
-                href={cohort.stripeUrl}
-                rel="noreferrer noopener"
-                target="_blank"
-                className="flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition hover:-translate-y-0.5 hover:brightness-110"
-              >
-                {t.investorsClub.cta} →
-              </a>
+              <div className="flex flex-col gap-3">
+                <a
+                  href={cohort.stripeUrl}
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="flex w-full items-center justify-center rounded-full border border-(--lilac-bar) bg-(--lilac-bar) px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.3)] transition hover:-translate-y-0.5 hover:brightness-110"
+                >
+                  {t.investorsClub.cta} →
+                </a>
+                <a
+                  href={cohort.stripePaymentPlanUrl}
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="flex w-full items-center justify-center rounded-full border border-white/40 bg-transparent px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  {t.investorsClub.pricing.paymentPlanInstallment} x 3 ·{' '}
+                  {t.investorsClub.pricing.ctaPaymentPlan}
+                </a>
+              </div>
             </div>
 
             {/* Right: messaging */}
@@ -170,6 +198,35 @@ export function CohortHub({ cohort }: CohortHubProps) {
               <p className="max-w-lg text-xl leading-8 text-white/75">
                 {t.investorsClub.banner.sub}
               </p>
+
+              <div className="flex flex-col gap-2">
+                {INVESTORS_CLUB_MONTHS.map((month) => (
+                  <div
+                    key={month.label}
+                    className="flex items-center gap-3 rounded-[1.25rem] border border-white/20 bg-white/10 px-4 py-3"
+                  >
+                    <span aria-hidden="true" className="shrink-0 text-2xl leading-none">
+                      {month.emoji}
+                    </span>
+                    <span className="font-display text-xl leading-tight text-white">
+                      {month.label}
+                    </span>
+                    <span
+                      className="ml-auto text-xs font-semibold uppercase tracking-[0.18em]"
+                      style={{ color: month.color }}
+                    >
+                      {month.month}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/investors-club"
+                className="inline-flex w-fit items-center justify-center rounded-full border border-(--mustard) px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-(--mustard) transition hover:bg-(--mustard) hover:text-(--forest)"
+              >
+                {t.investorsClub.learnMore}
+              </Link>
             </div>
 
           </div>
